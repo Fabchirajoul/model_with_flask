@@ -1,0 +1,128 @@
+
+
+
+post http://127.0.0.1:5000/register
+Content-Type: application/json
+
+{
+    "username": "buddy",
+    "role": "software dev",
+    "password": "12345"
+}
+
+###
+GET http://127.0.0.1:5000/api/historical_data/
+###
+
+GET http://127.0.0.1:5000/api/UCS_virginstress/
+
+###
+GET http://127.0.0.1:5000/api/SRF_hist/
+
+
+
+###
+post http://127.0.0.1:5000/api/Jn_model
+Content-Type: application/json
+
+{
+    "description": 0
+}
+
+###
+post http://127.0.0.1:5000/api/Ja_model
+Content-Type: application/json
+
+{
+    "description": 23
+}
+
+###
+post http://127.0.0.1:5000/api/Jr_model
+Content-Type: application/json
+
+{
+    "description": 200
+}
+
+### 
+post http://127.0.0.1:5000/api/rmr_model
+Content-Type: application/json
+
+{
+    "Q_Value": 0.069333,
+    "LNQ" : -2.668829
+}
+
+###
+post http://127.0.0.1:5000/api/mus_model
+Content-Type: application/json
+
+{
+    "Q_Value": 0.123,
+    "ESR_VALUE": 1.213
+}
+
+
+###
+post http://127.0.0.1:5000/api/Jw_model
+Content-Type: application/json
+
+{
+    "description": 10
+}
+
+###
+post http://127.0.0.1:5000/api/q_model
+Content-Type: application/json
+
+{
+    "RQD": 52.00, 
+    "Jn" : 12, 
+    "Jr" :  2.0, 
+    "Ja" : 2.0,  
+    "Jw" : 0.40
+}
+
+###
+post http://127.0.0.1:5000/api/srf_model
+Content-Type: application/json
+
+{
+    "Virgin_stress_ratio": 15.757250
+}
+
+###
+
+# ESR not working
+post http://127.0.0.1:5000/api/esr_model
+Content-Type: application/json
+
+{
+    "ESR_Conditions": 5
+}
+
+###
+post http://127.0.0.1:5000/api/ucs_model
+Content-Type: application/json
+
+{    
+    "Density" : 27000.0,
+    "Depth" : 11.98,
+    "UCS" : 50.0
+}
+
+
+###
+post http://127.0.0.1:5000/api/rqd_model
+Content-Type: application/json
+
+{
+    
+    "DepthFrom": 9.42,
+    "DepthTo": 10.6,
+    "Truethickness": 8.47,
+    "Hardness": 3.0
+}
+###
+get http://127.0.0.1:5000/api/historical_data/

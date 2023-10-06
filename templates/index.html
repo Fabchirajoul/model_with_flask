@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MUS API</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="/static/js/code.js"></script>
+    <!-- Compiled and minified CSS -->
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+        integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="static/css/style.css" rel="stylesheet" />
+
+    <style>
+        [x-cloak] {
+
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body class="" x-data="CAPSTONEWIDGET">
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-black">
+        <div class="container">
+            <a class="navbar-brand mt-2 mt-lg-0" href="/"> MAXIMUM UNSUPPORTED SPAN
+            </a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="link-secondary me-3" x-on:click="openHome('mainMenu')" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="link-secondary me-3" x-on:click="openHome('about')" x-cloak>ABOUT</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="link-secondary me-3" x-on:click="openHome('contact_us')">CONTACT US</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="link-secondary me-3" x-on:click="openHome('history')">HISTORY</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/logout" class="link-secondary me-3">SIGN OUT</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <br>
+
+
+    <main class="container">
+
+        <!-- Main board section divided into dashboard and computation interface -->
+
+        <div>
+            <div class="row">
+                <!-- Section for the dashboard linls -->
+                <div class="col-md-3 text-center" x-show="dashboard" style="background-color: yellowgreen;">
+                    <h4>ACTION BUTTONS</h4>
+                    <hr>
+                    <button x-on:click="openHome('UCS_Virgin_Stress_Ratio')"
+                        class="btn btn-block btn-success">UCS/Virgin Stress Ratio</button><br>
+                    <button x-on:click="openHome('Stress_Reduction_Ratio')" class="btn btn-block btn-success">Stress
+                        Reduction Ratio (SRF)</button><br>
+                    <button x-on:click="openHome('Jn_Description')" class="btn btn-block btn-success">Jn
+                        Description</button><br>
+                    <button x-on:click="openHome('Jr_Description')" class="btn btn-block btn-success">Jr
+                        Description</button><br>
+                    <button x-on:click="openHome('Ja_Description')" class="btn btn-block btn-success">Ja
+                        Description</button><br>
+                    <button x-on:click="openHome('Jw_Description')" class="btn btn-block btn-success">Jw
+                        Description</button><br>
+                    <button x-on:click="openHome('Rock_Quality_Designator')" class="btn btn-block btn-success">Rock
+                        Quality Designator</button><br>
+
+                    <button x-on:click="openHome('Rock_Quality_Index_Q_Value')" class="btn btn-block btn-success">Rock
+                        Quality Index (Q Value)</button><br>
+                    <button x-on:click="openHome('Rock_Mass_Rating')" class="btn btn-block btn-success">Rock
+                        Mass Rating (RMR)</button><br>
+                    <button x-on:click="openHome('Excavation_Category')" class="btn btn-block btn-success">Excavation
+                        Category (ESR)</button><br>
+                    <button x-on:click="openHome('Maximum_Unsupported_Span')"
+                        class="btn btn-block btn-success">MUS</button><br>
+                </div>
+                <!-- section for the computation of the dashboard links -->
+                <div class="col-md-9">
+                    <br>
+
+                    <!--1 HOME PAGE -->
+
+                    <div  x-show="homepage">
+                        <br>
+                        <br><br><br><br>
+
+                        <h1 id="home-text" class="text-center">ENHANCING SAFETY</h1><br><br>
+                        <h1 id="home-text" class="text-center">IN MINING</h1><br><br>
+                        <h1 id="home-text" class="text-center">USING 4IR TECHNOLOGY</h1>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <!-- 2 UCS/Virgin Stress Ratio -->
+                        <div class="col-md-10" x-show="UCS_Virgin_Stress_Ratio">
+                            <!--  -->
+                            <h4 style="text-align: center;">UNIAXIAL COMPRESSIVE STRENGTH / VIRGIN STRESS RATIO</h4>
+
+
+                            <hr><br>
+
+                            <h5>PREDICTED VALUE: <span x-text="ucsvsr_value"></span></h5>
+                            <br>
+                            <hr>
+
+                            <label>Density (Kg/mm^3)</label><br>
+                            <input class="form-control" x-model="Density" type="number"
+                                placeholder="Click to Enter the value of the density e.g 27000"><br>
+
+                            <label>Depth/Height (m)</label><br>
+                            <input class="form-control" x-model="Depth" type="number"
+                                placeholder="Click to Enter the value of the Depth below surface in meters e.g 10"><br>
+
+                            <label>UCS (MPa)</label><br>
+                            <input class="form-control" x-model="UCS" type="number"
+                                placeholder="Click to Enter the Uniaxial Compressive Stress value e.g 50"><br>
+
+
+                            <button @click="ucs_vsr()" class="btn btn-info">ucs/vsr predict</button>
+                            <button @click="refresh()" class="btn btn-info">refresh</button>
+                            <!--  -->
+
+                            <!-- UCS historical data -->
+                            <table class="table">
+                                <thead>
+                                    <th>DENSITY</th>
+                                    <th>DEPTH</th>
+                                    <th>UCS</th>
+                                    <th>UCS PREDICTED VALUE</th>
+                                </thead>
+
+                                <tbody>
+                                    <template x-for="i in UCS_Hist">
+                                        <tr>
+                                            <td x-text="i.Density"></td>
+                                            <td x-text="i.Depth"></td>
+                                            <td x-text="i.UCS"></td>
+                                            <td x-text="i.UCS_PredictedValue"></td>
+                                        </tr>
+                                    </template>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <!--3 SRF Section -->
+                        <div class="col-md-10" x-show="Stress_Reduction_Ratio">
+
+                            <h4 style="text-align: center;">STRESS REDUCTION RATIO</h4>
+                            <hr>
+                            <br>
+
+                            <h5>PREDICTED VALUE: <span x-text="srf_value"></span></h5>
+
+                            <br>
+                            <hr>
+
+                            <label>UCS/Virgin stress ratio</label><br>
+                            <input class="form-control" x-model="Virgin_stress_ratio" type="number"
+                                placeholder="Click to Enter the ucs/vsr from your previous prediction">
+                            <br>
+
+                            <button @click="SRF()" class="btn btn-info">SRF PREDICT</button>
+                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+
+                            <!-- SRF historical data -->
+                            <table class="table">
+                                <thead>
+                                    <th>DENSITY</th>
+                                    <th>DEPTH</th>
+                                    <th>UCS</th>
+                                    <th>UCS PREDICTED VALUE</th>
+                                    <th>SRF PREDICTED VALUE</th>
+
+                                </thead>
+
+                                <tbody>
+                                    <template x-for="i in SRF_Hist">
+                                        <tr>
+                                            <td x-text="i.Density"></td>
+                                            <td x-text="i.Depth"></td>
+                                            <td x-text="i.UCS"></td>
+                                            <td x-text="i.UCS_PredictedValue"></td>
+                                            <td x-text="i.SRF_PredictedValue"></td>
+                                        </tr>
+                                    </template>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                        <!--4 Jn Section -->
+                        <div class="col-md-10" x-show="Jn_Description">
+                            <h4 style="text-align: center;">JN DESCRIPTION</h4>
+
+                            <hr>
+                            <br>
+
+                            <h5>PREDICTED VALUE: <span x-text="JnVal"></span></h5>
+
+                            <br>
+                            <hr>
+
+
+                            <label>Jn Description</label>
+                            <input class="form-control" list="Jn Data" name="Jn Description" id="Jn Description"
+                                x-model="JnDesc" placeholder="Type to filter the Joint set description"><br>
+                            <datalist id="Jn Data">
+                                <template x-for="data in dictJn">
+                                    <option x-model="data.split(':')[0]"></option>
+                                </template>
+                            </datalist>
+
+                            <button class="btn btn-info" @click="JnDescription">Jn PREDICT</button>
+                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+
+                        </div>
+
+                        <!--5 Jr Section -->
+                        <div class="col-md-10" x-show="Jr_Description">
+
+                            <h4 style="text-align: center;">Jr DESCRIPTION</h4>
+
+                            <hr>
+                            <br>
+
+                            <h5>PREDICTED VALUE: <span x-text="JrVal"></span></h5>
+
+                            <br>
+                            <hr>
+
+
+                            <label>Jr Description</label><br>
+                            <input class="form-control" list="Jr Data" name="Jr Description" id="Jr Description"
+                                x-model="JrDesc" placeholder="Type to filter the Joint roughness description"><br>
+                            <datalist id="Jr Data">
+                                <template x-for="data in dictJr">
+                                    <option x-model="data.split(':')[0]"></option>
+                                </template>
+                            </datalist>
+
+                            <button class="btn btn-info" @click="JrDescription">Jr PREDICT</button>
+                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+
+
+                        </div>
+
+                        <!--6 Ja Section -->
+                        <div class="col-md-10" x-show="Ja_Description">
+                            <h4 style="text-align: center;">Ja DESCRIPTION</h4>
+
+                            <hr>
+                            <br>
+
+                            <h5>PREDICTED VALUE: <span x-text="JaVal"></span></h5>
+
+                            <br>
+                            <hr>
+
+                            <label>Ja Description</label>
+                            <input class="form-control" list="Ja Data" name="Ja Description" id="Ja Description"
+                                x-model="JaDesc" placeholder="Type to filter the Joint orientation description"><br>
+                            <datalist id="Ja Data">
+                                <template x-for="data in dictJa">
+                                    <option x-model="data.split(':')[0]"></option>
+                                </template>
+                            </datalist>
+
+                            <button class="btn btn-info" @click="JaDescription">Ja PREDICT</button>
+                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+
+
+                        </div>
+
+
+                        <!--7 Jw Section -->
+                        <div class="col-md-10" x-show="Jw_Description">
+                            <h4 style="text-align: center;">Jw PREDICTION</h4>
+
+                            <hr>
+                            <br>
+
+                            <h5>PREDICTED VALUE: <span x-text="JwVal"></span></h5>
+
+                            <br>
+                            <hr>
+
+                            <label>Jw Description</label>
+                            <input class="form-control" list="Jw Data" name="Jw Description" id="Jw Description"
+                                x-model="JwDesc" placeholder="Type to filter the Joint water description"><br>
+                            <datalist id="Jw Data">
+                                <template x-for="data in dictJw">
+                                    <option x-model="data.split(':')[0]"></option>
+                                </template>
+                            </datalist>
+
+                            <button class="btn btn-info" @click="JwDescription">Jw PREDICT</button>
+                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+
+                        </div>
+
+
+                        <!--8  RQD Section -->
+                        <div class="col-md-10" x-show="Rock_Quality_Designator">
+                            <h4 style="text-align: center;">ROCK QUALITY DESIGNATOR</h4>
+
+                            <hr>
+                            <br>
+
+                            <h5>PREDICTED VALUE: <span x-text="RQDValue"></span></h5>
+
+                            <br>
+                            <hr>
+
+                            <label>Depth From (m) Surface</label>
+                            <input class="form-control" x-model="Depth_from_surface" type="number"
+                                placeholder="Click to Enter the depth from in meters"><br>
+                            <label>Depth to (m) Surface</label>
+                            <input class="form-control" x-model="depth_to_surface" type="number"
+                                placeholder="Click to Enter the depth to in meters"><br>
+                            <label>True Thickness</label>
+                            <input class="form-control" x-model="true_thickness" type="number"
+                                placeholder="Click to Enter the run length in meters"><br>
+                            <label>Hardness Property</label>
+                            <input class="form-control" x-model="hardness_property" type="number"
+                                placeholder="Click to Enter the run length in meters"><br>
+                            <br>
+
+
+                            <button @click="RQD()" class="btn btn-info">RQD PREDICT</button>
+                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            <button @click="rock_mass_quality" class="btn btn-info">ROCK MASS
+                                QUALITY</button>
+
+                            <!-- <p><span x-text="RQDMessage"></span></p> -->
+                            <div x-show="openRockMassQuality">
+
+                                <button @click="closeRockMassQuality=!closeRockMassQuality"
+                                    class="btn btn-info">Open/close</button>
+                                <div x-show="closeRockMassQuality">
+
+                                    <table class="responsive-table">
+                                        <thead>
+                                            <td><b> RQD (%)</b></td>
+                                            <td><b>QUALITY</b></td>
+                                            <td><b>MINING METHODS</b></td>
+                                            <td><b> APPLICABLE SUPPORT</b></td>
+                                            <td><b> APPLICABLE EXCAVATION</b></td>
+                                        </thead>
+                                        <template x-for="i in rmq_value "></template>
+                                        <tbody x-show="NumRQD >0">
+                                            <td x-text="NumRQD"></td>
+                                            <td x-text="rmqMessage"></td>
+                                            <td x-text="ImpMessage"></td>
+                                            <td x-text="SuppMessage"></td>
+                                            <td x-text="ExcMessage"></td>
+                                        </tbody>
+                                        </template>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <!--9 Q Section -->
+                        <div class="col-md-10" x-show="Rock_Quality_Index_Q_Value">
+                            <h4 style="text-align: center;">Q-VALUE</h4>
+
+                            <hr>
+                            <br>
+
+                            <h5>PREDICTED VALUE: <span x-text="QValue"></span></h5>
+
+                            <div>
+                                <span x-text="QMessage"></span>
+                            </div>
+
+                            <br>
+                            <hr>
+                            <label>Joint set number Predicted Value (Jn Predict)</label>
+                            <input class="form-control" x-model="JnValue" type="number"
+                                placeholder="Click to Enter the value of the Joint set number previously calculated"><br>
+                            <label>Joint orientation number Predicted Value (Jr Predict)</label>
+                            <input class="form-control" x-model="JrValue" type="number"
+                                placeholder="Click to Enter the value of the Joint orientation number previously calculated"><br>
+                            <label>Joint alteration number Predicted Value (Ja Predict)</label>
+                            <input class="form-control" x-model="JaValue" type="number"
+                                placeholder="Click to Enter the value of the Joint alteration number previously calculated"><br>
+                            <label> Water reduction Predicted Value (Jw Predict)</label>
+                            <input class="form-control" x-model="JwValue" type="number"
+                                placeholder="Click to Enter the value of the water reduction number previously calculated"><br>
+                            <label>SRF Predicted Value (SRF Predict)</label>
+                            <input class="form-control" x-model="SRFValue" type="number"
+                                placeholder="Click to Enter the value of the stress reduction factor previously calculated"><br>
+                            <label>Rock Quality Designator (RQD Predict)</label>
+                            <input class="form-control" x-model="RQDValue" type="number"
+                                placeholder="Click to Enter the value of the RQD previously calculated"> <br>
+
+
+                            <button @click="Q()" class="btn btn-info">Q PREDICT</button>
+                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            <button class="btn btn-info">SUPPORT REQUIREMENT</button>
+
+
+                            <br>
+
+                        </div>
+
+
+                        <!--10  RMR Section -->
+                        <div class="col-md-10" x-show="Rock_Mass_Rating">
+                            <h4 style="text-align: center;">ROCK MASS RATING</h4>
+
+
+                            <hr>
+                            <br>
+
+                            <h5>PREDICTED VALUE: <span x-text="rmr_val"></span></h5>
+
+                            <br>
+                            <hr>
+
+                            <label>Q Value (Q Predict)</label>
+                            <input class="form-control" type="number" x-model="Q_Value"
+                                placeholder="Click to Enter the Q value previously predicted (Q PREDICT)"><br>
+                            <!-- <input class="form-control" type="number" x-model="LNQ" placeholder="Click to Enter the LNQ"> LNQ value<br> -->
+
+
+                            <button class="btn btn-info" @click="RMR">rmr predict</button>
+                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+
+
+                        </div>
+
+
+                        <!--11 ESR Section -->
+                        <div class="col-md-10" x-show="Excavation_Category">
+                            <h4 style="text-align: center;">EXCAVATION CATEGORY`</h4>
+
+                            <hr>
+                            <br>
+
+                            <h5>PREDICTED VALUE: <span x-text="EsrVal"></span></h5>
+
+                            <br>
+                            <hr>
+
+                            <label>Esr Description</label>
+                            <input class="form-control" list="Esr Data" name="Esr Description" id="Esr Description"
+                                x-model="JrDesc" placeholder="Type to filter the Excavation Category"><br>
+                            <datalist id="Esr Data">
+                                <template x-for="data in dictEsr">
+                                    <option x-model="data.split(':')[0]"></option>
+                                </template>
+                            </datalist>
+
+                            <button class="btn btn-info" @click="ESR()">Esr PREDICT</button>
+                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+
+
+                        </div>
+
+
+                        <!-- 12 Unsupported Span Section -->
+                        <div class="col-md-10" x-show="Maximum_Unsupported_Span">
+                            <h4 style="text-align: center;">MAXIMUM UNSUPPORTED SPAN</h4>
+
+                            <hr>
+                            <br>
+
+                            <h5>PREDICTED VALUE: <span x-text="MUSValue"></span></h5>
+
+                            <br>
+                            <hr>
+                            <label>ESR Value</label>
+                            <input class="form-control" x-model="Q_Value" type="number"
+                                placeholder="Click to Enter the numerical value of excavation category from previous computation"><br>
+                            <label>Q Value</label>
+                            <input class="form-control" x-model="ESR_VALUE" type="number"
+                                placeholder="Click to Enter the Q-factor value previously predicted"><br>
+
+                            <button @click="MUS()" class="btn btn-info">Unsupported span
+                                prediction</button>
+                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            <button class="btn btn-info">GET
+                                RECOMMENDATION</button>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- about page -->
+        <div class="row justify-content-center" x-show="about">
+            <div class="col-md-10 text-center ">
+                <br>
+                <h5>ABOUT</h5>
+                <hr>
+                <p>The Maximum Unsupported Span API is an application programming interface designed to
+                    enhance the safety
+                    within the mining Industry. This API makes use of multi-modal machine learning
+                    ensemble-algorithms
+                    (Classifiers and Regressors) to bring about an accurate prediction of the Maximum
+                    Unsupported Span (MUS)
+                    that will result in cost reduction, mining optimization and the overal improvement
+                    of safety thereby
+                    safe-gaurding the human lives. To be able to adequately use the system, users are
+                    expected to follow the
+                    sequential steps outlined in the workflow below
+                </p>
+
+                <br>
+                <h5>WORK FLOW</h5>
+                <hr>
+                <p>The action button have been aligned accordingly and every user is expected to follow the sequence
+                    inorder to
+                    get their predictions. A full list of the input class="form-control" and the corresponding output
+                    for the action buttons can be seen here: <a href="#" @click="workflow=!workflow"
+                        style="text-align: center;">click to view/close the workflow</a>
+                </p>
+
+                <table class="table responsive-table" style="color: blueviolet;" x-show="workflow">
+                    <thead>
+                        <td> Action Button</td>
+                        <td>Required Input</td>
+                        <td>Output @click Button Predict</td>
+                    </thead>
+
+                    <tbody>
+                        <td>UCS/Virgin Stress Ratio</td>
+                        <td>Density(kg/mm^3)<br> Depth/Height(m)<br> UCS(MPA)</td>
+                        <td>UCS/VSR Predict</td>
+                    </tbody>
+                    <tbody>
+                        <td>Stress Reduction Ratio</td>
+                        <td>UCS/VSR Predict</td>
+                        <td>SRF Predict</td>
+                    </tbody>
+                    <tbody>
+                        <td>Jn Description</td>
+                        <td>Description of the Joint set number</td>
+                        <td>Jn number</td>
+                    </tbody>
+                    <tbody>
+                        <td>Jr Description</td>
+                        <td>Description of the orientation number</td>
+                        <td>Jr number</td>
+                    </tbody>
+                    <tbody>
+                        <td>Ja Description</td>
+                        <td>Description of the Joint alteration number</td>
+                        <td>Ja number</td>
+                    </tbody>
+                    <tbody>
+                        <td>Jw Description</td>
+                        <td>Description of the Joint water reduction number</td>
+                        <td>Jw number</td>
+                    </tbody>
+                    <tbody>
+                        <td>Rock Quality Designator</td>
+                        <td>Depth below surface<br> Depth below surface <br>True thickness<br> Hardness</td>
+                        <td>RQD Predict</td>
+                    </tbody>
+                    <tbody>
+                        <td>Rock Quality Index (Q Value)</td>
+                        <td>SRF Predict<br> Jn number <br>Jr number<br> Ja number <br>Jw number<br> RQD Predict</td>
+                        <td>Q Predict</td>
+                    </tbody>
+                    <tbody>
+                        <td>ROck Mass Rating (RMR)</td>
+                        <td>Q Predict</td>
+                        <td>RMR Predict</td>
+                    </tbody>
+                    <tbody>
+                        <td>Excavation Category (ESR)</td>
+                        <td>Excavation category description</td>
+                        <td>ESR Predict</td>
+                    </tbody>
+                    <tbody>
+                        <td>MUS</td>
+                        <td>Q Predict<br>ESR Predict</td>
+                        <td>Maximum Unsupproted span prediction</td>
+                    </tbody>
+
+                </table>
+
+                <br>
+                <h5>CAPABILTIES</h5>
+                <hr>
+                <p> The maximum unsupported span API does not only predicts, its respective output based on its input.
+                    It
+                    also gives proposals based on its predictive results so that users can be aware of situations way
+                    before
+                    they happen and what they will have to do inorder to make a bad situation turn good.
+                </p>
+
+                <table class="table responsive-table" style="color: blueviolet;">
+                    <thead>
+                        <td> CAPABILITIES</td>
+                        <td>ACTION BUTTON @CLICK</td>
+                        <td>RESULT UPON CLICKING THE ACTION BUTTON</td>
+                    </thead>
+
+                    <tbody>
+                        <td>Soil Classification</td>
+                        <td>Rock Mass Quality</td>
+                        <td>Soil Quality,&nbsp;Applicable Mining Method,&nbsp;Applicable Support,&nbsp;Applicable
+                            Excavation</td>
+                    </tbody>
+
+                    <!-- <tbody >
+                    <td >Support Requirements</td>
+                    <td >Rock Mass Quality</td>
+                    <td >Soil Quality,&nbsp;Applicable Mining Method,&nbsp;Applicable Support,&nbsp;Applicable Excavation</td>
+                </tbody> -->
+                    <tbody>
+                        <td>Unsupported Span</td>
+                        <td>Action button @Get recommendations</td>
+                        <td>Immediate collapse,&nbsp;No support required,&nbsp;Duration it will take before a
+                            collapse,&nbsp;stable or unstable,&nbsp;Factor of safety </td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Contact us section -->
+
+        <div x-show="contact_us" x-cloak>
+            <br>
+                <h5 class="text-center">GET IN TOUCH</h5>
+                <hr>
+            <div class="row" >
+                 <!-- Fabchi -->
+                <div class="col-md-3 card">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+
+                    <img src="./static/images/RJ.jpeg" class="img-fluid" />
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <b>
+                        <p>Surname: &nbsp;<span>Fabchi</span></p>
+                        <p>Initials: &nbsp;<span>RJ</span></p>
+                        <p>Email: &nbsp;<span>fabchirajoul@gmail.com</span></p>
+                        <p>Phone Number: &nbsp;<span>+2763382663</span></p>
+                        <p>Discipline: &nbsp;<span>Mining Engineer | Machine learning Expert</span></p>
+                    </b>
+                </div>
+
+
+            </div>
+
+            <div class="col-md-3 card">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+
+                    <img src="./static/images/KLR.jpeg" class="img-fluid" />
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                    </a>
+                </div>
+                <b>
+                    <p>Surname: &nbsp;<span>LUKWAGO</span></p>
+                    <p>Initials: &nbsp;<span>RK</span></p>
+                    <p>Email: &nbsp;<span>lukwagorsaved@gmail.com</span></p>
+                    <p>Phone Number: &nbsp;<span>+27738976343</span></p>
+                    <p>Discipline: &nbsp;<span>INFORMATION TECH AND SYSTEMS | Machine learning Expert</span></p>
+                </b>
+
+            </div>
+
+            <div class="col-md-3 card">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+
+                    <img src="./static/images/MTE.jpeg" class="img-fluid" />
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                    </a>
+                </div>
+
+
+                <b>
+                    <p>Surname: &nbsp;<span>MOJEWA</span></p>
+                    <p>Initials: &nbsp;<span>T</span></p>
+                    <p>Email: &nbsp;<span>tswelopelemojewa@gmail.com</span></p>
+                    <p>Phone Number: &nbsp;<span>+27790985214</span></p>
+                    <p>Discipline: &nbsp;<span>ELECTRICAL ENGINEERING | Machine learning Expert</span></p>
+                </b>
+
+            </div>
+
+            <div class="col-md-3 card">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+
+                    <img src="./static/images/OBY.jpeg" class="img-fluid" />
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                    </a>
+                </div>
+
+                <b>
+                    <p>Surname: &nbsp;<span>NWOSU</span></p>
+                    <p>Initials: &nbsp;<span>OCV</span></p>
+                    <p>Email: &nbsp;<span>kingemjay3355@gmail.com</span></p>
+                    <p>Phone Number: &nbsp;<span>+27683443129</span></p>
+                    <p>Discipline: &nbsp;<span>GEOPHYSICS | Machine learning Expert</span></p>
+                </b>
+
+            </div>
+
+            </div>
+            
+        </div>
+
+        <!-- History section -->
+ 
+            <div  x-cloak x-show="history">
+                <br>
+                <h5 class="text-center">HISTORICAL DATA</h5>
+                <hr>
+                <div class="row" x-show="history">
+
+                    <div x-show="history">
+                       
+                            <h6>Username: </h6>
+                            <h6>Employee ID: </h6>
+                       
+                    </div>
+                    <!-- <p style="text-align: center;">FRONT-END INPUT DATA FOR ML API COMPUTATION</p> -->
+
+                    <!-- Historical inputs by the admins -->
+                    <!-- <table x-show="history">
+                        <tr>
+                            <th>tghjk</th>
+                            <th>ghgj</th>
+                        </tr>
+
+                    </table> -->
+
+                    <br>
+                    <p style="text-align: center;">HISTORICAL COMPUTATION BY THE MULTI-MODAL ML MODEL</p>
+                    <!-- Numerical computation value by the machine learning model -->
+
+                    <table class="table" x-show="history">
+                        <thead>
+
+                            <th>Jn</th>
+                            <th>Ja</th>
+                            <th>Jr</th>
+                            <th>Jw</th>
+                            <th>UCS/VSR</th>
+                            <th>RQD</th>
+                            <th>Q</th>
+                            <th>SRF</th>
+                            <th>RMR</th>
+                            <th>ESR</th>
+                            <th>MUS</th>
+
+                        </thead>
+
+                        <tbody>
+                            <template x-for="i in history">
+                                <tr>
+                                    <td x-text="i.Jn"></td>
+                                    <td x-text="i.Ja"></td>
+                                    <td x-text="i.Jr"></td>
+                                    <td x-text="i.Jw"></td>
+                                    <td x-text="i.UCS_Virgin_stress_ratio"></td>
+                                    <td x-text="i.RQD_p"></td>
+                                    <td x-text="i.Q_Value"></td>
+                                    <td x-text="i.SRF"></td>
+                                    <td x-text="i.RMR"></td>
+                                    <td x-text="i.ESR_VALUE"></td>
+                                    <td x-text="i.Maximum_unsupported_span"></td>
+                                </tr>
+                            </template>
+
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+
+            </div>
+
+
+
+        
+    </main>
+
+    <br>
+    <div class="container footer">
+
+        <section>
+
+            <footer class="page-footer">
+
+                <div class="footer-copyright">
+                    <div class="row">
+                        <div class="footer" style="text-align: center;">
+                            © 2023 Copyright Reserved<br>
+
+                            <a class="footer" href="#!">UJ & ACCENTURE WORK READINESS PROGRAM</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </section>
+    </div>
+
+
+</html>
