@@ -17,12 +17,12 @@ conn = sqlite3.connect('capstonedb.db')
 c = conn.cursor()
 
 # UCS
-with open('models/ucsvsr.pkl','rb') as f:
+with open('models/ucsvsr_update.pkl','rb') as f:
         ucsvsr_model = pickle.load(f)
 
 
 # RQD
-with open('models/rqd_GBR_rqd.pkl','rb') as f:
+with open('models/rqd_update.pkl','rb') as f:
         RQD_model_GBR = pickle.load(f)
 
 
