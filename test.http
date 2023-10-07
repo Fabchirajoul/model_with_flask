@@ -45,13 +45,21 @@ Content-Type: application/json
     "description": 200
 }
 
+
+###
+post http://127.0.0.1:5000/api/Jw_model
+Content-Type: application/json
+
+{
+    "description": 200
+}
 ### 
 post http://127.0.0.1:5000/api/rmr_model
 Content-Type: application/json
 
 {
-    "Q_Value": 0.069333,
-    "LNQ" : -2.668829
+    "Q_Value": 0.069333
+    
 }
 
 ###
@@ -81,7 +89,8 @@ Content-Type: application/json
     "Jn" : 12, 
     "Jr" :  2.0, 
     "Ja" : 2.0,  
-    "Jw" : 0.40
+    "Jw" : 0.40,
+    "SRF" : 7
 }
 
 ###

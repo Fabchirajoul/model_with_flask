@@ -7,7 +7,6 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for, s
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-
 import os
 
 app = Flask(__name__)
@@ -16,11 +15,13 @@ app.secret_key = 'Group_1_Raj_the_leader'
 conn = sqlite3.connect('capstonedb.db')
 c = conn.cursor()
 
-#1.  UCS
-with open('models/ucsvsr.pkl','rb') as f:
-        ucsvsr_model = pickle.load(f)
+# 1.  UCS
+with open('models/ucsvsr.pkl', 'rb') as f:
+    ucsvsr_model = pickle.load(f)
 
 # connect models
+
+
 @app.route('/api/ucs_model', methods=['POST'])
 def UCS_Pred():
     if request.method == 'POST':
@@ -35,19 +36,21 @@ def UCS_Pred():
         prediction = ucsvsr_model.predict(features)[0]
 
         return jsonify({'prediction': prediction.tolist()})
-    
-# 2. SRF 
-with open('models/extra_tree_srf.pkl','rb') as f:
-        srf_model = pickle.load(f)
+
+
+# 2. SRF
+with open('models/extra_tree_srf.pkl', 'rb') as f:
+    srf_model = pickle.load(f)
 
 # connect models
+
+
 @app.route('/api/srf_model', methods=['POST'])
 def SRF_Pred():
     if request.method == 'POST':
         data = request.get_json()
         # Extract the features from the datapip
         Virgin_stress_ratio = float(data['Virgin_stress_ratio'])
-        
 
         # Reshape features and make prediction using the loaded model
         features = np.array([[Virgin_stress_ratio]])
@@ -56,11 +59,11 @@ def SRF_Pred():
         return jsonify({'prediction': prediction.tolist()})
 
 
+# 7. RQD
+with open('models/rqd_GBR_rqd.pkl', 'rb') as f:
+    RQD_model_GBR = pickle.load(f)
 
-# RQD
-with open('models/rqd_GBR_rqd.pkl','rb') as f:
-        RQD_model_GBR = pickle.load(f)
-# RQD 
+
 @app.route('/api/rqd_model', methods=['POST'])
 def RQD_Pred():
     if request.method == 'POST':
@@ -78,6 +81,51 @@ def RQD_Pred():
         return jsonify({'prediction': prediction.tolist()})
 
 
+# 8. Q
+with open('models/q.pkl', 'rb') as f:
+    q_model = pickle.load(f)
+
+
+@app.route('/api/q_model', methods=['POST'])
+def Q_Pred():
+    if request.method == 'POST':
+        data = request.get_json()
+        # Extract the features from the data
+        RQD = float(data['RQD'])
+        Jn = float(data['Jn'])
+        Jr = float(data['Jr'])
+        Ja = float(data['Ja'])
+        Jw = float(data['Jw'])
+        SRF = float(data['SRF'])
+
+        # Reshape features and make prediction using the loaded model
+        features = np.array([[RQD, Jn, Jr, Ja, Jw, SRF]])
+        prediction = q_model.predict(features)[0]
+
+        return jsonify({'prediction': prediction.tolist()})
+
+
+# 9. RMR
+with open('models/rmr.pkl','rb') as f:
+        rmr_model = pickle.load(f)
+
+
+@app.route('/api/rmr_model', methods=['POST'])
+def RMR_Pred():
+    if request.method == 'POST':
+        data = request.get_json()
+        # Extract the features from the data
+        Q_Value = float(data['Q_Value'])
+        
+
+        # Reshape features and make prediction using the loaded model
+        features = np.array([[Q_Value]])
+        prediction = rmr_model.predict(features)[0]
+
+        return jsonify({'prediction': prediction.tolist()})
+    
+
+
 
 
 # Create SQLite capstone and table
@@ -92,18 +140,18 @@ conn.commit()
 conn.close()
 
 
-
-
-
 # Function to hash the password
 def hash_password(password):
     return generate_password_hash(password)
 
 # Function to verify hashed password
+
+
 def verify_password(hashed_password, password):
     return check_password_hash(hashed_password, password)
 
 # ... (existing code)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -117,7 +165,8 @@ def register():
 
         conn = sqlite3.connect('capstonedb.db')
         c = conn.cursor()
-        c.execute("INSERT INTO users (username,  password) VALUES (?, ?)", (username, hashed_password))
+        c.execute("INSERT INTO users (username,  password) VALUES (?, ?)",
+                  (username, hashed_password))
         conn.commit()
         conn.close()
 
@@ -147,7 +196,6 @@ def login():
     return render_template('login.html')
 
 
-
 @app.route('/')
 def home():
     username = session.get('username')
@@ -163,7 +211,6 @@ def logout():
     return redirect(url_for('home'))
 
 
-
 # retrieve historical data
 @app.route('/api/historical_data/')
 def historical_data():
@@ -174,16 +221,12 @@ def historical_data():
     conn.close()
 
     # Convert the data to a list of dictionaries for JSON serialization
-    results = [{"id": row[0], "column1": row[1], "column2": row[2], "column2": row[2],"column2": row[2]} for row in data]
+    results = [{"id": row[0], "column1": row[1], "column2": row[2],
+                "column2": row[2], "column2": row[2]} for row in data]
 
     return jsonify({"RESULTS": results})
 
 # historical_data()
-
-
-
-
-
 
 
 if __name__ == '__main__':
