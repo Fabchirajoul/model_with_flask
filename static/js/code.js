@@ -3026,7 +3026,7 @@ document.addEventListener("alpine:init", () => {
           .post("/api/rqd_model", {
             DepthFrom: this.Depth_from_surface,
             DepthTo: this.depth_to_surface,
-            TrueThickness: this.true_thickness,
+            Truethickness: this.true_thickness,
             Hardness: this.hardness_property,
           })
           .then((res) => {
@@ -3035,8 +3035,8 @@ document.addEventListener("alpine:init", () => {
             // val = val.split("]")[0];
             this.rmq_value = parseInt(val);
             this.RQDValue =
-              "Based on your input, the predicted Q value is " + val + "%";
-            this.NumRQD = val;
+              "Based on your input, the predicted Q value is " + val.toFixed(2) + "%";
+            this.NumRQD = val.toFixed(2);
           });
       },
       rock_mass_quality() {

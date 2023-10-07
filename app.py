@@ -2,6 +2,7 @@ import sqlite3
 import pickle
 import sys
 import numpy as np
+from sklearn.preprocessing import LabelEncoder
 # from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -60,8 +61,8 @@ def SRF_Pred():
 
 
 # 7. RQD
-with open('models/rqd_GBR_rqd.pkl','rb') as f:
-        RQD_model_GBR = pickle.load(f)
+with open('models/rqd_GBR_rqd.pkl', 'rb') as f:
+    rqd_model = pickle.load(f)
 
 
 @app.route('/api/rqd_model', methods=['POST'])
@@ -71,12 +72,12 @@ def RQD_Pred():
         # Extract the features from the data
         DepthFrom = float(data['DepthFrom'])
         DepthTo = float(data['DepthTo'])
-        TrueThickness = float(data['TrueThickness'])
+        Truethickness = float(data['Truethickness'])
         Hardness = float(data['Hardness'])
 
         # Reshape features and make prediction using the loaded model
-        features = np.array([[DepthFrom, DepthTo, TrueThickness, Hardness]])
-        prediction = RQD_model_GBR.predict(features)[0]
+        features = np.array([[DepthFrom, DepthTo, Truethickness, Hardness]])
+        prediction = rqd_model.predict(features)[0]
 
         return jsonify({'prediction': prediction.tolist()})
 
@@ -106,8 +107,8 @@ def Q_Pred():
 
 
 # 9. RMR
-with open('models/rmr.pkl','rb') as f:
-        rmr_model = pickle.load(f)
+with open('models/rmr.pkl', 'rb') as f:
+    rmr_model = pickle.load(f)
 
 
 @app.route('/api/rmr_model', methods=['POST'])
@@ -116,19 +117,48 @@ def RMR_Pred():
         data = request.get_json()
         # Extract the features from the data
         Q_Value = float(data['Q_Value'])
-        
 
         # Reshape features and make prediction using the loaded model
         features = np.array([[Q_Value]])
         prediction = rmr_model.predict(features)[0]
 
         return jsonify({'prediction': prediction.tolist()})
-    
+
+
+# 10. ESR
+# with open('models/model_LR_esr.pkl', 'rb') as f:
+#     model_esr = pickle.load(f)
+
+
+# @app.route('/api/esr_model', methods=['POST'])
+# def ESR_Pred():
+#     try:
+#         data = request.get_json()  # Assuming you are receiving JSON data from the frontend
+#         ESR_Conditions = data['ESR_Conditions']
+
+#         # Load the LabelEncoder (previously trained on your data)
+#         with open('models/model_LR_esr.pkl', 'rb') as encoder_file:
+#             label_encoder = pickle.load(encoder_file)
+
+#         # Encode the categorical features
+#         encoded_features = label_encoder.transform(ESR_Conditions)
+
+#         # Make predictions with your model
+#         prediction = model_esr.predict(
+#             np.array(encoded_features).reshape(1, -1))
+
+#         # Return the prediction as JSON response
+#         response = {'prediction': prediction[0]}
+#         return jsonify(response)
+
+#     except Exception as e:
+#         return jsonify({'error': str(e)})
 
     # 11. MUS
-with open('models/ababoost_us.pkl','rb') as f:
-        mus_model = pickle.load(f)
-        
+with open('models/ababoost_us.pkl', 'rb') as f:
+    mus_model = pickle.load(f)
+
+
 @app.route('/api/mus_model', methods=['POST'])
 def MUS_Pred():
     if request.method == 'POST':
@@ -138,13 +168,10 @@ def MUS_Pred():
         ESR_VALUE = float(data['ESR_VALUE'])
 
         # Reshape features and make prediction using the loaded model
-        features = np.array([[Q_Value,ESR_VALUE]])
+        features = np.array([[Q_Value, ESR_VALUE]])
         prediction = mus_model.predict(features)[0]
 
         return jsonify({'prediction': prediction.tolist()})
-    
-
-
 
 
 # Create SQLite capstone and table

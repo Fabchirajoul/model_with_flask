@@ -108,7 +108,7 @@ post http://127.0.0.1:5000/api/esr_model
 Content-Type: application/json
 
 {
-    "ESR_Conditions": 5
+    "ESR_Conditions": "Temporary mine openings"
 }
 
 ###
@@ -124,6 +124,20 @@ Content-Type: application/json
 
 ###
 post http://127.0.0.1:5000/api/rqd_model
+Content-Type: application/json
+
+{
+    
+    "DepthFrom": 9.42,
+    "DepthTo": 10.6,
+    "Truethickness": 8.47,
+    "Hardness": 3.0
+}
+
+
+
+###
+post http://127.0.0.1:5000/api/esr_model
 Content-Type: application/json
 
 {
