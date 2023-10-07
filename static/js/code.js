@@ -2920,8 +2920,8 @@ document.addEventListener("alpine:init", () => {
             .then((res) => {
               console.log(res.data);
               let val = res.data.predictions[0];
-              val = val.split("[")[1];
-              val = val.split("]")[0];
+              // val = val.split("[")[1];
+              // val = val.split("]")[0];
               this.srf_value =
                 "Based on your input, the predicted Stress Reduction value is " +
                 val;

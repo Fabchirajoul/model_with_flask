@@ -16,47 +16,9 @@ app.secret_key = 'Group_1_Raj_the_leader'
 conn = sqlite3.connect('capstonedb.db')
 c = conn.cursor()
 
-# UCS
-with open('models/ucsvsr_update.pkl','rb') as f:
+#1.  UCS
+with open('models/ucsvsr.pkl','rb') as f:
         ucsvsr_model = pickle.load(f)
-
-
-# RQD
-with open('models/rqd_update.pkl','rb') as f:
-        RQD_model_GBR = pickle.load(f)
-
-
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///capstonedb.db'
-# db = SQLAlchemy(app)
-
-# class UCSVirginStress(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     Density = db.Column(db.Float)
-#     Depth = db.Column(db.Float)
-#     UCS = db.Column(db.Float)
-#     PredictedValue = db.Column(db.Float)
-
-
-# @app.route('/api/ucs_model', methods=['POST'])
-# def UCS_Pred():
-#     if request.method == 'POST':
-#         data = request.get_json()
-#         Density = float(data['Density'])
-#         Depth = float(data['Depth'])
-#         UCS = float(data['UCS'])
-
-#         features = np.array([[Density, Depth, UCS]])
-#         prediction = ucsvsr_model.predict(features)[0]
-
-#         db.create_all()
-
-#         # Create a UCSRecord instance and add it to the database
-#         record = UCSVirginStress(Density=Density, Depth=Depth, UCS=UCS, PredictedValue=prediction)
-#         db.session.add(record)
-#         db.session.commit()
-
-#         return jsonify({'prediction': prediction.tolist()})
-
 
 # connect models
 @app.route('/api/ucs_model', methods=['POST'])
@@ -72,14 +34,32 @@ def UCS_Pred():
         features = np.array([[Density, Depth, UCS]])
         prediction = ucsvsr_model.predict(features)[0]
 
-        # Save the input and prediction to the database
-        # c.execute("INSERT INTO ucs_virgin_stress  VALUES (?, ?, ?, ?)", (Density, Depth, UCS, prediction))
-        # conn.commit()
-
         return jsonify({'prediction': prediction.tolist()})
     
+# 2. SRF 
+with open('models/extra_tree_srf.pkl','rb') as f:
+        srf_model = pickle.load(f)
+
+# connect models
+@app.route('/api/srf_model', methods=['POST'])
+def SRF_Pred():
+    if request.method == 'POST':
+        data = request.get_json()
+        # Extract the features from the datapip
+        Virgin_stress_ratio = float(data['Virgin_stress_ratio'])
+        
+
+        # Reshape features and make prediction using the loaded model
+        features = np.array([[Virgin_stress_ratio]])
+        prediction = srf_model.predict(features)[0]
+
+        return jsonify({'prediction': prediction.tolist()})
 
 
+
+# RQD
+with open('models/rqd_GBR_rqd.pkl','rb') as f:
+        RQD_model_GBR = pickle.load(f)
 # RQD 
 @app.route('/api/rqd_model', methods=['POST'])
 def RQD_Pred():
@@ -95,11 +75,8 @@ def RQD_Pred():
         features = np.array([[DepthFrom, DepthTo, Truethickness, Hardness]])
         prediction = RQD_model_GBR.predict(features)[0]
 
-        # Save the input and prediction to the database
-        # c.execute("INSERT INTO ucs_virgin_stress  VALUES (?, ?, ?, ?)", (DepthFrom, DepthTo, Truethickness, Hardness, prediction))
-        # conn.commit()
-
         return jsonify({'prediction': prediction.tolist()})
+
 
 
 
