@@ -388,21 +388,21 @@
                                 <br>
                                 <div x-show="closeRockMassQuality">
 
-                                    <table class="responsive-table">
-                                        <thead style="background-color: rgba(0, 255, 149, 0.634)">
-                                            <td><b> RQD(%)</b></td>
-                                            <td><b>QUALITY</b></td>
-                                            <td><b>MINING METHODS</b></td>
-                                            <td><b> APPLICABLE SUPPORT</b></td>
-                                            <td><b> APPLICABLE EXCAVATION</b></td>
+                                    <table class="responsive-table" style="border: 2;">
+                                        <thead>
+                                            <td style="background-color: rgba(205, 228, 255, 0.451);"><b> RQD(%)</b></td>
+                                            <td style="background-color: rgba(221, 220, 245, 0.51);"><b>QUALITY</b></td>
+                                            <td style="background-color: rgba(255, 240, 254, 0.432);"><b>MINING METHODS</b></td>
+                                            <td style="background-color: rgba(102, 255, 0, 0.403);"><b> APPLICABLE SUPPORT</b></td>
+                                            <td style="background-color: rgba(215, 221, 250, 0.319);"><b> APPLICABLE EXCAVATION</b></td>
                                         </thead>
                                         <template x-for="i in rmq_value "></template>
                                         <tbody x-show="NumRQD >0">
-                                            <td x-text="NumRQD"></td>
-                                            <td x-text="rmqMessage"></td>
-                                            <td x-text="ImpMessage"></td>
-                                            <td x-text="SuppMessage"></td>
-                                            <td x-text="ExcMessage"></td>
+                                           <b><td x-text="NumRQD" style="background-color: rgba(205, 228, 255, 0.451);"></td></b> 
+                                           <b><td x-text="rmqMessage" style="background-color: rgba(221, 220, 245, 0.51);"></td></b> 
+                                           <b><td x-text="ImpMessage" style="background-color: rgba(255, 240, 254, 0.432);"></td></b> 
+                                           <b><td x-text="SuppMessage" style="background-color: rgba(102, 255, 0, 0.403);"></td></b> 
+                                           <b><td x-text="ExcMessage" style="background-color: rgba(215, 221, 250, 0.319);"></td></b> 
                                         </tbody>
                                         </template>
                                     </table>

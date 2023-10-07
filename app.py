@@ -61,7 +61,7 @@ def SRF_Pred():
 
 
 # 7. RQD
-with open('models/rqd_GBR_rqd.pkl', 'rb') as f:
+with open('models/mlp_rqd.pkl', 'rb') as f:
     rqd_model = pickle.load(f)
 
 
