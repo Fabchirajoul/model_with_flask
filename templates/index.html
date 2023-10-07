@@ -113,13 +113,16 @@
 
                     <!--1 HOME PAGE -->
 
-                    <div  x-show="homepage">
+                    <div x-show="homepage">
                         <br>
-                        <br><br><br><br>
+                        <h3 id="home-text" class="text-center">ENHANCING SAFETY IN MINING USING 4IR TECHNOLOGY</h3><br><br>
+                        <!-- <h1 id="home-text" class="text-center">IN MINING</h1><br><br>
+                        <h1 id="home-text" class="text-center">USING 4IR TECHNOLOGY</h1> -->
+                        <div style="text-align: justify;">
+                            <p>VISUALIZATION OF THE UNDERGROUND EXCAVATION</p>
+                            <img src="./static/images/chamber.png" class="img-fluid" width="80%"/>
+                        </div>
 
-                        <h1 id="home-text" class="text-center">ENHANCING SAFETY</h1><br><br>
-                        <h1 id="home-text" class="text-center">IN MINING</h1><br><br>
-                        <h1 id="home-text" class="text-center">USING 4IR TECHNOLOGY</h1>
                     </div>
 
                     <div class="row justify-content-center">
@@ -356,21 +359,21 @@
                             <label>Hardness Property</label>
                             <input class="form-control" x-model="hardness_property" type="number"
                                 placeholder="Click to Enter the run length in meters"><br>
-                           
-                           <div style="text-align: center;">
-                            <button @click="RQD()" class="btn btn-info">RQD PREDICT</button>
-                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
-                            <button @click="rock_mass_quality" class="btn btn-info">ROCK MASS
-                                QUALITY</button>
-                           </div>
-                                <br><br>
+
+                            <div style="text-align: center;">
+                                <button @click="RQD()" class="btn btn-info">RQD PREDICT</button>
+                                <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                                <button @click="rock_mass_quality" class="btn btn-info">ROCK MASS
+                                    QUALITY</button>
+                            </div>
+                            <br><br>
                             <!-- <p><span x-text="RQDMessage"></span></p> -->
                             <div x-show="openRockMassQuality">
                                 <div style="text-align: center;">
                                     <button @click="closeRockMassQuality=!closeRockMassQuality"
-                                    class="btn btn-info" >Open/close</button>
+                                        class="btn btn-info">Open/close</button>
                                 </div>
-                                
+
                                 <div x-show="closeRockMassQuality">
 
                                     <table class="responsive-table">
@@ -429,11 +432,11 @@
                                 placeholder="Click to Enter the value of the RQD previously calculated"> <br>
 
 
-                           <div style="text-align: center;">
-                            <button @click="Q()" class="btn btn-info">Q PREDICT</button>
-                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
-                            <button @click="Q_value_analysis()" class="btn btn-info">SUPPORT REQUIREMENT</button>
-                           </div>
+                            <div style="text-align: center;">
+                                <button @click="Q()" class="btn btn-info">Q PREDICT</button>
+                                <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                                <button @click="Q_value_analysis()" class="btn btn-info">SUPPORT REQUIREMENT</button>
+                            </div>
 
 
                             <br>
@@ -472,11 +475,8 @@
                             <h4 style="text-align: center;">EXCAVATION CATEGORY`</h4>
 
                             <hr>
-                            <br>
 
                             <h5>PREDICTED VALUE: <span x-text="EsrVal"></span></h5>
-
-                            <br>
                             <hr>
 
                             <label>Esr Description</label>
@@ -488,8 +488,10 @@
                                 </template>
                             </datalist>
 
-                            <button class="btn btn-info" @click="ESR()">Esr PREDICT</button>
-                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            <div style="text-align: center;">
+                                <button class="btn btn-info" @click="ESR()">Esr PREDICT</button>
+                                <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            </div>
 
 
                         </div>
@@ -508,11 +510,13 @@
                             <input class="form-control" x-model="ESR_VALUE" type="number"
                                 placeholder="Click to Enter the Q-factor value previously predicted"><br>
 
-                            <button @click="MUS()" class="btn btn-info">Unsupported span
-                                prediction</button>
-                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
-                            <button class="btn btn-info">GET
-                                RECOMMENDATION</button>
+                            <div style="text-align: center;">
+                                <button @click="MUS()" class="btn btn-info">Unsupported span
+                                    prediction</button>
+                                <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                                <button class="btn btn-info">GET
+                                    RECOMMENDATION</button>
+                            </div>
 
 
                         </div>
@@ -660,110 +664,110 @@
 
         <div x-show="contact_us" x-cloak>
             <br>
-                <h5 class="text-center">GET IN TOUCH</h5>
-                <hr>
-            <div class="row" >
-                 <!-- Fabchi -->
+            <h5 class="text-center">GET IN TOUCH</h5>
+            <hr>
+            <div class="row">
+                <!-- Fabchi -->
                 <div class="col-md-3 card">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
 
-                    <img src="./static/images/RJ.jpeg" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
-                    </a>
+                        <img src="./static/images/RJ.jpeg" class="img-fluid" />
+                        <a href="#!">
+                            <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <b>
+                            <p>Surname: &nbsp;<span>Fabchi</span></p>
+                            <p>Initials: &nbsp;<span>RJ</span></p>
+                            <p>Email: &nbsp;<span>fabchirajoul@gmail.com</span></p>
+                            <p>Phone Number: &nbsp;<span>+2763382663</span></p>
+                            <p>Discipline: &nbsp;<span>Mining Engineer | Machine learning Expert</span></p>
+                        </b>
+                    </div>
+
+
                 </div>
-                <div class="card-body">
+
+                <div class="col-md-3 card">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+
+                        <img src="./static/images/KLR.jpeg" class="img-fluid" />
+                        <a href="#!">
+                            <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                        </a>
+                    </div>
                     <b>
-                        <p>Surname: &nbsp;<span>Fabchi</span></p>
-                        <p>Initials: &nbsp;<span>RJ</span></p>
-                        <p>Email: &nbsp;<span>fabchirajoul@gmail.com</span></p>
-                        <p>Phone Number: &nbsp;<span>+2763382663</span></p>
-                        <p>Discipline: &nbsp;<span>Mining Engineer | Machine learning Expert</span></p>
+                        <p>Surname: &nbsp;<span>LUKWAGO</span></p>
+                        <p>Initials: &nbsp;<span>RK</span></p>
+                        <p>Email: &nbsp;<span>lukwagorsaved@gmail.com</span></p>
+                        <p>Phone Number: &nbsp;<span>+27738976343</span></p>
+                        <p>Discipline: &nbsp;<span>INFORMATION TECH AND SYSTEMS | Machine learning Expert</span></p>
                     </b>
+
                 </div>
 
+                <div class="col-md-3 card">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
 
-            </div>
+                        <img src="./static/images/MTE.jpeg" class="img-fluid" />
+                        <a href="#!">
+                            <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                        </a>
+                    </div>
 
-            <div class="col-md-3 card">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
 
-                    <img src="./static/images/KLR.jpeg" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
-                    </a>
-                </div>
-                <b>
-                    <p>Surname: &nbsp;<span>LUKWAGO</span></p>
-                    <p>Initials: &nbsp;<span>RK</span></p>
-                    <p>Email: &nbsp;<span>lukwagorsaved@gmail.com</span></p>
-                    <p>Phone Number: &nbsp;<span>+27738976343</span></p>
-                    <p>Discipline: &nbsp;<span>INFORMATION TECH AND SYSTEMS | Machine learning Expert</span></p>
-                </b>
+                    <b>
+                        <p>Surname: &nbsp;<span>MOJEWA</span></p>
+                        <p>Initials: &nbsp;<span>T</span></p>
+                        <p>Email: &nbsp;<span>tswelopelemojewa@gmail.com</span></p>
+                        <p>Phone Number: &nbsp;<span>+27790985214</span></p>
+                        <p>Discipline: &nbsp;<span>ELECTRICAL ENGINEERING | Machine learning Expert</span></p>
+                    </b>
 
-            </div>
-
-            <div class="col-md-3 card">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-
-                    <img src="./static/images/MTE.jpeg" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
-                    </a>
                 </div>
 
+                <div class="col-md-3 card">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
 
-                <b>
-                    <p>Surname: &nbsp;<span>MOJEWA</span></p>
-                    <p>Initials: &nbsp;<span>T</span></p>
-                    <p>Email: &nbsp;<span>tswelopelemojewa@gmail.com</span></p>
-                    <p>Phone Number: &nbsp;<span>+27790985214</span></p>
-                    <p>Discipline: &nbsp;<span>ELECTRICAL ENGINEERING | Machine learning Expert</span></p>
-                </b>
+                        <img src="./static/images/OBY.jpeg" class="img-fluid" />
+                        <a href="#!">
+                            <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                        </a>
+                    </div>
 
-            </div>
+                    <b>
+                        <p>Surname: &nbsp;<span>NWOSU</span></p>
+                        <p>Initials: &nbsp;<span>OCV</span></p>
+                        <p>Email: &nbsp;<span>kingemjay3355@gmail.com</span></p>
+                        <p>Phone Number: &nbsp;<span>+27683443129</span></p>
+                        <p>Discipline: &nbsp;<span>GEOPHYSICS | Machine learning Expert</span></p>
+                    </b>
 
-            <div class="col-md-3 card">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-
-                    <img src="./static/images/OBY.jpeg" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
-                    </a>
                 </div>
 
-                <b>
-                    <p>Surname: &nbsp;<span>NWOSU</span></p>
-                    <p>Initials: &nbsp;<span>OCV</span></p>
-                    <p>Email: &nbsp;<span>kingemjay3355@gmail.com</span></p>
-                    <p>Phone Number: &nbsp;<span>+27683443129</span></p>
-                    <p>Discipline: &nbsp;<span>GEOPHYSICS | Machine learning Expert</span></p>
-                </b>
-
             </div>
 
-            </div>
-            
         </div>
 
         <!-- History section -->
- 
-            <div  x-cloak x-show="history">
-                <br>
-                <h5 class="text-center">HISTORICAL DATA</h5>
-                <hr>
-                <div class="row" x-show="history">
 
-                    <div x-show="history">
-                       
-                            <h6>Username: </h6>
-                            <h6>Employee ID: </h6>
-                       
-                    </div>
-                    <!-- <p style="text-align: center;">FRONT-END INPUT DATA FOR ML API COMPUTATION</p> -->
+        <div x-cloak x-show="history">
+            <br>
+            <h5 class="text-center">HISTORICAL DATA</h5>
+            <hr>
+            <div class="row" x-show="history">
 
-                    <!-- Historical inputs by the admins -->
-                    <!-- <table x-show="history">
+                <div x-show="history">
+
+                    <h6>Username: </h6>
+                    <h6>Employee ID: </h6>
+
+                </div>
+                <!-- <p style="text-align: center;">FRONT-END INPUT DATA FOR ML API COMPUTATION</p> -->
+
+                <!-- Historical inputs by the admins -->
+                <!-- <table x-show="history">
                         <tr>
                             <th>tghjk</th>
                             <th>ghgj</th>
@@ -771,56 +775,56 @@
 
                     </table> -->
 
-                    <br>
-                    <p style="text-align: center;">HISTORICAL COMPUTATION BY THE MULTI-MODAL ML MODEL</p>
-                    <!-- Numerical computation value by the machine learning model -->
+                <br>
+                <p style="text-align: center;">HISTORICAL COMPUTATION BY THE MULTI-MODAL ML MODEL</p>
+                <!-- Numerical computation value by the machine learning model -->
 
-                    <table class="table" x-show="history">
-                        <thead>
+                <table class="table" x-show="history">
+                    <thead>
 
-                            <th>Jn</th>
-                            <th>Ja</th>
-                            <th>Jr</th>
-                            <th>Jw</th>
-                            <th>UCS/VSR</th>
-                            <th>RQD</th>
-                            <th>Q</th>
-                            <th>SRF</th>
-                            <th>RMR</th>
-                            <th>ESR</th>
-                            <th>MUS</th>
+                        <th>Jn</th>
+                        <th>Ja</th>
+                        <th>Jr</th>
+                        <th>Jw</th>
+                        <th>UCS/VSR</th>
+                        <th>RQD</th>
+                        <th>Q</th>
+                        <th>SRF</th>
+                        <th>RMR</th>
+                        <th>ESR</th>
+                        <th>MUS</th>
 
-                        </thead>
+                    </thead>
 
-                        <tbody>
-                            <template x-for="i in history">
-                                <tr>
-                                    <td x-text="i.Jn"></td>
-                                    <td x-text="i.Ja"></td>
-                                    <td x-text="i.Jr"></td>
-                                    <td x-text="i.Jw"></td>
-                                    <td x-text="i.UCS_Virgin_stress_ratio"></td>
-                                    <td x-text="i.RQD_p"></td>
-                                    <td x-text="i.Q_Value"></td>
-                                    <td x-text="i.SRF"></td>
-                                    <td x-text="i.RMR"></td>
-                                    <td x-text="i.ESR_VALUE"></td>
-                                    <td x-text="i.Maximum_unsupported_span"></td>
-                                </tr>
-                            </template>
+                    <tbody>
+                        <template x-for="i in history">
+                            <tr>
+                                <td x-text="i.Jn"></td>
+                                <td x-text="i.Ja"></td>
+                                <td x-text="i.Jr"></td>
+                                <td x-text="i.Jw"></td>
+                                <td x-text="i.UCS_Virgin_stress_ratio"></td>
+                                <td x-text="i.RQD_p"></td>
+                                <td x-text="i.Q_Value"></td>
+                                <td x-text="i.SRF"></td>
+                                <td x-text="i.RMR"></td>
+                                <td x-text="i.ESR_VALUE"></td>
+                                <td x-text="i.Maximum_unsupported_span"></td>
+                            </tr>
+                        </template>
 
-                        </tbody>
+                    </tbody>
 
-                    </table>
+                </table>
 
-
-                </div>
 
             </div>
 
+        </div>
 
 
-        
+
+
     </main>
 
     <br>
