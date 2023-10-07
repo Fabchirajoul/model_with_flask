@@ -43,8 +43,14 @@ Windows
    Create an account on render.com
 
    Create a web service
+
+
    configure the web service as a Python 3
+
+
    click on create web service
+
+   
    link: https://group1-uavo.onrender.com
 
 
