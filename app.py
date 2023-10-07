@@ -60,8 +60,8 @@ def SRF_Pred():
 
 
 # 7. RQD
-with open('models/rqd_GBR_rqd.pkl', 'rb') as f:
-    RQD_model_GBR = pickle.load(f)
+with open('models/rqd_GBR_rqd.pkl','rb') as f:
+        RQD_model_GBR = pickle.load(f)
 
 
 @app.route('/api/rqd_model', methods=['POST'])

@@ -2578,10 +2578,10 @@ document.addEventListener("alpine:init", () => {
       Q_Value: "",
       rmr_val: "",
       // RQD value declaration
-      Depth_from_surface: "",
-      depth_to_surface: "",
-      true_thickness: "",
-      hardness_property: "",
+      DepthFrom: "",
+      DepthTo: "",
+      Truethickness: "",
+      Hardness: "",
       RQDValue: "",
       NumRQD: "",
       ImpMessage: "",
@@ -3017,10 +3017,10 @@ document.addEventListener("alpine:init", () => {
       RQD() {
         axios
           .post("/api/rqd_model", {
-            DepthFrom: this.Depth_from_surface,
-            DepthTo: this.depth_to_surface,
-            Truethickness: this.true_thickness,
-            Hardness: this.hardness_property,
+            DepthFrom: this.DepthFrom,
+            DepthTo: this.DepthTo,
+            Truethickness: this.Truethickness,
+            Hardness: this.Hardness,
           })
           .then((res) => {
             let val = res.data.prediction;
