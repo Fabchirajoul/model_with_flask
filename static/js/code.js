@@ -2578,10 +2578,10 @@ document.addEventListener("alpine:init", () => {
       Q_Value: "",
       rmr_val: "",
       // RQD value declaration
-      DepthFrom: "",
-      DepthTo: "",
-      Truethickness: "",
-      Hardness: "",
+      Depth_from_surface: "",
+      depth_to_surface: "",
+      true_thickness: "",
+      hardness_property: "",
       RQDValue: "",
       NumRQD: "",
       ImpMessage: "",
@@ -2603,6 +2603,13 @@ document.addEventListener("alpine:init", () => {
       QValue: "",
       SRFValue: "",
       QMessage: "",
+      Q_value: 0,
+      NumQ: "",
+
+      // Analysys function based on the Q value declarations
+      qAnalysMessage1: "",
+      qAnalysMessage2: "",
+      qAnalysMessage3: "",
 
       // SRF value declarations
       Virgin_stress_ratio: "",
@@ -3017,15 +3024,15 @@ document.addEventListener("alpine:init", () => {
       RQD() {
         axios
           .post("/api/rqd_model", {
-            DepthFrom: this.DepthFrom,
-            DepthTo: this.DepthTo,
-            Truethickness: this.Truethickness,
-            Hardness: this.Hardness,
+            DepthFrom: this.Depth_from_surface,
+            DepthTo: this.depth_to_surface,
+            TrueThickness: this.true_thickness,
+            Hardness: this.hardness_property,
           })
           .then((res) => {
             let val = res.data.prediction;
-
-            console.log(res.data);
+            // val = val.split("[")[1];
+            // val = val.split("]")[0];
             this.rmq_value = parseInt(val);
             this.RQDValue =
               "Based on your input, the predicted Q value is " + val + "%";
@@ -3093,13 +3100,49 @@ document.addEventListener("alpine:init", () => {
             SRF: this.SRFValue,
           })
           .then((res) => {
-            let val = res.data.predictions[0];
-            val = val.split("[")[1];
-            val = val.split("]")[0];
+            let val = res.data.prediction;
+            // val = val.split("[")[1];
+            // val = val.split("]")[0];
             console.log(res.data);
             this.QValue =
               "Based on your input, the predicted Q value is " + val;
+            this.NumQ = val;
           });
+      },
+
+      Q_value_analysis() {
+        val = this.Q_value;
+        if (val <= 0 && val < 10) {
+          this.qAnalysMessage1 =
+            "Indicates an extremely poor and unstable rock mass,";
+          this.qAnalysMessage2 =
+            "Severe support requirements are necessary to ensure safety during mining or tunneling,";
+          this.qAnalysMessage3 = "High risk of rockfalls and ground collapses";
+        } else if (val > 10 && val <= 20) {
+          this.qAnalysMessage1 =
+            "Suggests a weak rock mass with significant stability concerns,";
+          this.qAnalysMessage2 =
+            "Substantial support measures are needed for safe mining or tunneling";
+          this.qAnalysMessage3 =
+            "Increased risk of rockfalls and ground instability";
+        } else if (val > 20 && val <= 40) {
+          this.qAnalysMessage1 = "Signifies a moderately stable rock mass, .";
+          this.qAnalysMessage2 =
+            "Support requirements are moderate but should still be considered,";
+          this.qAnalysMessage3 =
+            "Reasonable conditions for mining or tunneling, with proper engineering measures";
+        } else if (val > 40 && val <= 60) {
+          this.qAnalysMessage = "Indicates a strong and stable rock mass,";
+          this.qAnalysMessage2 = "Support requirements are generally low,";
+          this.qAnalysMessage3 =
+            "Favorable conditions for mining or tunneling with minimal support";
+        } else if (val <= 60) {
+          this.qAnalysMessage1 =
+            "Represents an exceptionally stable and strong rock mass,";
+          this.qAnalysMessage2 = "Minimal to no support is typically required,";
+          this.qAnalysMessage3 =
+            "Ideal conditions for mining or tunneling operations";
+        }
       },
       RMR() {
         axios
@@ -3136,6 +3179,7 @@ document.addEventListener("alpine:init", () => {
           });
         setTimeout(() => (this.EsrVal = ""), 30000);
       },
+
       MUS() {
         axios
           .post("/api/mus_model", {

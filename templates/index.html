@@ -198,7 +198,7 @@
                             <button @click="refresh()" class="btn btn-info">REFRESH</button>
 
                             <!-- SRF historical data -->
-                            <!-- <table class="table">
+                            <table class="table">
                                 <thead>
                                     <th>DENSITY</th>
                                     <th>DEPTH</th>
@@ -219,7 +219,7 @@
                                         </tr>
                                     </template>
 
-                                </tbody> -->
+                                </tbody>
 
                             </table>
 
@@ -341,38 +341,36 @@
                             <h4 style="text-align: center;">ROCK QUALITY DESIGNATOR</h4>
 
                             <hr>
-                            <br>
-
                             <h5>PREDICTED VALUE: <span x-text="RQDValue"></span></h5>
-
-                            <br>
                             <hr>
 
                             <label>Depth From (m) Surface</label>
-                            <input class="form-control" x-model="DepthFrom" type="number"
+                            <input class="form-control" x-model="Depth_from_surface" type="number"
                                 placeholder="Click to Enter the depth from in meters"><br>
                             <label>Depth to (m) Surface</label>
-                            <input class="form-control" x-model="DepthTo" type="number"
+                            <input class="form-control" x-model="depth_to_surface" type="number"
                                 placeholder="Click to Enter the depth to in meters"><br>
                             <label>True Thickness</label>
-                            <input class="form-control" x-model="Truethickness" type="number"
+                            <input class="form-control" x-model="true_thickness" type="number"
                                 placeholder="Click to Enter the run length in meters"><br>
                             <label>Hardness Property</label>
-                            <input class="form-control" x-model="Hardness" type="number"
+                            <input class="form-control" x-model="hardness_property" type="number"
                                 placeholder="Click to Enter the run length in meters"><br>
-                            <br>
-
-
+                           
+                           <div style="text-align: center;">
                             <button @click="RQD()" class="btn btn-info">RQD PREDICT</button>
                             <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             <button @click="rock_mass_quality" class="btn btn-info">ROCK MASS
                                 QUALITY</button>
-
+                           </div>
+                                <br><br>
                             <!-- <p><span x-text="RQDMessage"></span></p> -->
                             <div x-show="openRockMassQuality">
-
-                                <button @click="closeRockMassQuality=!closeRockMassQuality"
-                                    class="btn btn-info">Open/close</button>
+                                <div style="text-align: center;">
+                                    <button @click="closeRockMassQuality=!closeRockMassQuality"
+                                    class="btn btn-info" >Open/close</button>
+                                </div>
+                                
                                 <div x-show="closeRockMassQuality">
 
                                     <table class="responsive-table">
@@ -412,8 +410,6 @@
                             <div>
                                 <span x-text="QMessage"></span>
                             </div>
-
-                            <br>
                             <hr>
                             <label>Joint set number Predicted Value (Jn Predict)</label>
                             <input class="form-control" x-model="JnValue" type="number"
@@ -435,9 +431,11 @@
                                 placeholder="Click to Enter the value of the RQD previously calculated"> <br>
 
 
+                           <div style="text-align: center;">
                             <button @click="Q()" class="btn btn-info">Q PREDICT</button>
                             <button @click="refresh()" class="btn btn-info">REFRESH</button>
-                            <button class="btn btn-info">SUPPORT REQUIREMENT</button>
+                            <button @click="Q_value_analysis()" class="btn btn-info">SUPPORT REQUIREMENT</button>
+                           </div>
 
 
                             <br>

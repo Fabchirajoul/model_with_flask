@@ -71,11 +71,11 @@ def RQD_Pred():
         # Extract the features from the data
         DepthFrom = float(data['DepthFrom'])
         DepthTo = float(data['DepthTo'])
-        Truethickness = float(data['Truethickness'])
+        TrueThickness = float(data['TrueThickness'])
         Hardness = float(data['Hardness'])
 
         # Reshape features and make prediction using the loaded model
-        features = np.array([[DepthFrom, DepthTo, Truethickness, Hardness]])
+        features = np.array([[DepthFrom, DepthTo, TrueThickness, Hardness]])
         prediction = RQD_model_GBR.predict(features)[0]
 
         return jsonify({'prediction': prediction.tolist()})
