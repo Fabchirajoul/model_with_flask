@@ -81,7 +81,7 @@ def RQD_Pred():
         return jsonify({'prediction': prediction.tolist()})
 
 
-# 8. Q
+# 8. Q working both online and offline
 with open('models/q.pkl', 'rb') as f:
     q_model = pickle.load(f)
 
@@ -121,6 +121,25 @@ def RMR_Pred():
         # Reshape features and make prediction using the loaded model
         features = np.array([[Q_Value]])
         prediction = rmr_model.predict(features)[0]
+
+        return jsonify({'prediction': prediction.tolist()})
+    
+
+    # 11. MUS
+with open('models/ababoost_us.pkl','rb') as f:
+        mus_model = pickle.load(f)
+        
+@app.route('/api/mus_model', methods=['POST'])
+def MUS_Pred():
+    if request.method == 'POST':
+        data = request.get_json()
+        # Extract the features from the data
+        Q_Value = float(data['Q_Value'])
+        ESR_VALUE = float(data['ESR_VALUE'])
+
+        # Reshape features and make prediction using the loaded model
+        features = np.array([[Q_Value,ESR_VALUE]])
+        prediction = mus_model.predict(features)[0]
 
         return jsonify({'prediction': prediction.tolist()})
     

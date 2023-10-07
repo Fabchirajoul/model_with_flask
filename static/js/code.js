@@ -3150,9 +3150,9 @@ document.addEventListener("alpine:init", () => {
             Q_Value: this.Q_Value,
           })
           .then((res) => {
-            let val = res.data.prediction[0];
-            val = val.split("[")[1];
-            val = val.split("]")[0];
+            let val = res.data.prediction;
+            // val = val.split("[")[1];
+            // val = val.split("]")[0];
             console.log(res.data);
             this.rmr_val =
               "Based on your input, the rock mass rating value is " + val;
@@ -3187,9 +3187,9 @@ document.addEventListener("alpine:init", () => {
             ESR_VALUE: this.ESR_VALUE,
           })
           .then((res) => {
-            let val = res.data.predictions[0];
-            val = val.split("[")[1];
-            val = val.split("]")[0];
+            let val = res.data.prediction;
+            // val = val.split("[")[1];
+            // val = val.split("]")[0];
             this.MUS_value = parseInt(val);
             console.log(res.data);
             this.MUSValue =
