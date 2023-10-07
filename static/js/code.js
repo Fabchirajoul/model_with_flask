@@ -2610,6 +2610,8 @@ document.addEventListener("alpine:init", () => {
       qAnalysMessage1: "",
       qAnalysMessage2: "",
       qAnalysMessage3: "",
+      openQAanalysis: false,
+      closeQAanalysis: true,
 
       // SRF value declarations
       Virgin_stress_ratio: "",
@@ -3112,6 +3114,8 @@ document.addEventListener("alpine:init", () => {
 
       Q_value_analysis() {
         val = this.Q_value;
+        this.openQAanalysis = true;
+        this.closeQAanalysis = false;
         if (val <= 0 && val < 10) {
           this.qAnalysMessage1 =
             "Indicates an extremely poor and unstable rock mass,";
@@ -3199,6 +3203,10 @@ document.addEventListener("alpine:init", () => {
           });
       },
       refresh() {
+        this.NumQ="";
+        this.qAnalysMessage1="";
+        this.qAnalysMessage2="";
+        this.qAnalysMessage3="";
         this.ExcMessage = "";
         this.SuppMessage = "";
         this.ImpMessage = "";

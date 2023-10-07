@@ -115,12 +115,13 @@
 
                     <div x-show="homepage">
                         <br>
-                        <h3 id="home-text" class="text-center">ENHANCING SAFETY IN MINING USING 4IR TECHNOLOGY</h3><br><br>
+                        <h3 id="home-text" class="text-center">ENHANCING SAFETY IN MINING USING 4IR TECHNOLOGY</h3>
+                        <br><br>
                         <!-- <h1 id="home-text" class="text-center">IN MINING</h1><br><br>
                         <h1 id="home-text" class="text-center">USING 4IR TECHNOLOGY</h1> -->
                         <div style="text-align: justify;">
                             <p>VISUALIZATION OF THE UNDERGROUND EXCAVATION</p>
-                            <img src="./static/images/chamber.png" class="img-fluid" width="80%"/>
+                            <img src="./static/images/chamber.png" class="img-fluid" width="80%" />
                         </div>
 
                     </div>
@@ -132,10 +133,10 @@
                             <h4 style="text-align: center;">UNIAXIAL COMPRESSIVE STRENGTH / VIRGIN STRESS RATIO</h4>
 
 
-                            <hr><br>
+                            <hr>
 
                             <h5>PREDICTED VALUE: <span x-text="ucsvsr_value"></span></h5>
-                            <br>
+
                             <hr>
 
                             <label>Density (Kg/mm^3)</label><br>
@@ -151,8 +152,10 @@
                                 placeholder="Click to Enter the Uniaxial Compressive Stress value e.g 50"><br>
 
 
-                            <button @click="ucs_vsr()" class="btn btn-info">ucs/vsr predict</button>
-                            <button @click="refresh()" class="btn btn-info">refresh</button>
+                            <div style="text-align: center;">
+                                <button @click="ucs_vsr()" class="btn btn-info">ucs/vsr predict</button>
+                                <button @click="refresh()" class="btn btn-info">refresh</button>
+                            </div>
                             <!--  -->
 
                             <!-- UCS historical data -->
@@ -185,11 +188,11 @@
 
                             <h4 style="text-align: center;">STRESS REDUCTION RATIO</h4>
                             <hr>
-                            <br>
+
 
                             <h5>PREDICTED VALUE: <span x-text="srf_value"></span></h5>
 
-                            <br>
+
                             <hr>
 
                             <label>UCS/Virgin stress ratio</label><br>
@@ -197,8 +200,10 @@
                                 placeholder="Click to Enter the ucs/vsr from your previous prediction">
                             <br>
 
-                            <button @click="SRF()" class="btn btn-info">SRF PREDICT</button>
-                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            <div style="text-align: center;">
+                                <button @click="SRF()" class="btn btn-info">SRF PREDICT</button>
+                                <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            </div>
 
                             <!-- SRF historical data -->
                             <table class="table">
@@ -233,11 +238,11 @@
                             <h4 style="text-align: center;">JN DESCRIPTION</h4>
 
                             <hr>
-                            <br>
+
 
                             <h5>PREDICTED VALUE: <span x-text="JnVal"></span></h5>
 
-                            <br>
+
                             <hr>
 
 
@@ -250,8 +255,10 @@
                                 </template>
                             </datalist>
 
-                            <button class="btn btn-info" @click="JnDescription">Jn PREDICT</button>
-                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            <div style="text-align: center;">
+                                <button class="btn btn-info" @click="JnDescription">Jn PREDICT</button>
+                                <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            </div>
 
                         </div>
 
@@ -261,11 +268,10 @@
                             <h4 style="text-align: center;">Jr DESCRIPTION</h4>
 
                             <hr>
-                            <br>
+
 
                             <h5>PREDICTED VALUE: <span x-text="JrVal"></span></h5>
 
-                            <br>
                             <hr>
 
 
@@ -278,8 +284,10 @@
                                 </template>
                             </datalist>
 
-                            <button class="btn btn-info" @click="JrDescription">Jr PREDICT</button>
-                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            <div style="text-align: center;">
+                                <button class="btn btn-info" @click="JrDescription">Jr PREDICT</button>
+                                <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            </div>
 
 
                         </div>
@@ -289,11 +297,11 @@
                             <h4 style="text-align: center;">Ja DESCRIPTION</h4>
 
                             <hr>
-                            <br>
+
 
                             <h5>PREDICTED VALUE: <span x-text="JaVal"></span></h5>
 
-                            <br>
+
                             <hr>
 
                             <label>Ja Description</label>
@@ -304,9 +312,11 @@
                                     <option x-model="data.split(':')[0]"></option>
                                 </template>
                             </datalist>
+                            <div style="text-align: center;">
 
-                            <button class="btn btn-info" @click="JaDescription">Ja PREDICT</button>
-                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                                <button class="btn btn-info" @click="JaDescription">Ja PREDICT</button>
+                                <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            </div>
 
 
                         </div>
@@ -317,11 +327,11 @@
                             <h4 style="text-align: center;">Jw PREDICTION</h4>
 
                             <hr>
-                            <br>
+
 
                             <h5>PREDICTED VALUE: <span x-text="JwVal"></span></h5>
 
-                            <br>
+
                             <hr>
 
                             <label>Jw Description</label>
@@ -333,8 +343,10 @@
                                 </template>
                             </datalist>
 
-                            <button class="btn btn-info" @click="JwDescription">Jw PREDICT</button>
-                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            <div style="text-align: center;">
+                                <button class="btn btn-info" @click="JwDescription">Jw PREDICT</button>
+                                <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            </div>
 
                         </div>
 
@@ -373,10 +385,10 @@
                                     <button @click="closeRockMassQuality=!closeRockMassQuality"
                                         class="btn btn-info">Open/close</button>
                                 </div>
-<br>
+                                <br>
                                 <div x-show="closeRockMassQuality">
 
-                                    <table class="responsive-table" >
+                                    <table class="responsive-table">
                                         <thead style="background-color: rgba(0, 255, 149, 0.634)">
                                             <td><b> RQD(%)</b></td>
                                             <td><b>QUALITY</b></td>
@@ -437,9 +449,36 @@
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                                 <button @click="Q_value_analysis()" class="btn btn-info">SUPPORT REQUIREMENT</button>
                             </div>
-
-
                             <br>
+                            <div x-show="openQAanalysis">
+                                <div style="text-align: center;">
+                                    <button @click="closeQAanalysis=!closeQAanalysis"
+                                        class="btn btn-info">Open/close</button>
+                                </div>
+                                <br>
+                                <div x-show="closeQAanalysis" style="text-align: center;">
+
+                                    <table class="responsive-table">
+                                        <thead style="background-color: rgba(0, 255, 149, 0.634)">
+                                            <td><b> Q Value</b></td>
+                                            <td><b> Implication</b></td>
+                                        </thead>
+                                        <template x-for="i in rmq_value "></template>
+                                        <tbody>
+                                            <td x-text="NumQ"></td>
+                                            <td><span x-text="qAnalysMessage1"></span><br><span
+                                                    x-text="qAnalysMessage2"></span><br><span
+                                                    x-text="qAnalysMessage3"></span>
+                                            </td>
+                                        </tbody>
+                                        </template>
+                                    </table>
+                                </div>
+                            </div>
+
+
+
+
 
                         </div>
 
@@ -450,11 +489,11 @@
 
 
                             <hr>
-                            <br>
+
 
                             <h5>PREDICTED VALUE: <span x-text="rmr_val"></span></h5>
 
-                            <br>
+
                             <hr>
 
                             <label>Q Value (Q Predict)</label>
@@ -463,8 +502,10 @@
                             <!-- <input class="form-control" type="number" x-model="LNQ" placeholder="Click to Enter the LNQ"> LNQ value<br> -->
 
 
-                            <button class="btn btn-info" @click="RMR">rmr predict</button>
-                            <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            <div style="text-align: center;">
+                                <button class="btn btn-info" @click="RMR">rmr predict</button>
+                                <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            </div>
 
 
                         </div>
