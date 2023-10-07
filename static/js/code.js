@@ -3037,7 +3037,7 @@ document.addEventListener("alpine:init", () => {
             // val = val.split("]")[0];
             this.rmq_value = parseInt(val);
             this.RQDValue =
-              "Based on your input, the predicted Q value is " + val.toFixed(2) + "%";
+              "Based on your input, the predicted RQD value is " + val.toFixed(2) + "%";
             this.NumRQD = val.toFixed(2);
           });
       },
