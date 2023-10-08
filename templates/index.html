@@ -31,7 +31,8 @@
     </style>
 </head>
 
-<body class="" x-data="CAPSTONEWIDGET">
+<body class="" x-data="CAPSTONEWIDGET"
+    style="background-image: url(./static/images/bground.jpg); background-size: contain; background-attachment: fixed">
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-black">
         <div class="container">
@@ -121,11 +122,26 @@
                         <!-- <h1 id="home-text" class="text-center">IN MINING</h1><br><br>
                         <h1 id="home-text" class="text-center">USING 4IR TECHNOLOGY</h1> -->
                         <p id="home-text">VISUALIZATION OF THE UNDERGROUND EXCAVATION</p>
+                        <p style="text-align: justify;">A normal day in the mining industry where employees are expected
+                            to report to work and use the shaft to go at times 3-5km
+                            underground, upset the virgin stress nature of the Earth's crust to extract the mineral of
+                            economic interest which could be gold, coal,
+                            diamond etc at a planned excavation. At such depth, a slide miss-calculation can cause
+                            catastrophic events that would not only lead to
+                            loss of machinery and delay in production but also lost of lives that would leave children
+                            to become orphans. The Maximum Unsupported Span
+                            API will ensure that errors are drastically reduced, mining operations optimized, informed
+                            and intelligent decisions be made and above
+                            all lives being saved.
+                        </p>
                         <div style="text-align: center;">
                             <img src="static\images\visu.JPG" class="img-fluid" width="90%" />
                         </div>
                         <hr>
-
+                        <p id="home-text">APP UTILIZATION</p>
+                        <p>In order to use this application, make sure to visit the <a href="#"
+                                x-on:click="openHome('about')">ABOUT</a> page for a full list of the workflow and the
+                            capabilities </p>
                     </div>
 
                     <div class="row justify-content-center" x-cloak>
@@ -139,7 +155,8 @@
 
                             <hr>
 
-                            <h5>PREDICTED VALUE: <span x-text="ucsvsr_value"></span></h5>
+                            <h5>PREDICTED VALUE: <span x-text="ucsvsr_value"
+                                    style="color: rgba(238, 255, 0, 0.756)"></span></h5>
 
                             <hr>
 
@@ -159,6 +176,13 @@
                             <div style="text-align: center;">
                                 <button @click="ucs_vsr()" class="btn btn-info">ucs/vsr predict</button>
                                 <button @click="refresh()" class="btn btn-info">refresh</button>
+
+                            </div>
+                            <div>
+                                <p style="text-align: right;"><a href="#" x-on:click="openHome('Stress_Reduction_Ratio')"> NEXT > </a>
+                                        
+                                            </p>
+
                             </div>
                             <!--  -->
 
@@ -196,7 +220,8 @@
                             <hr>
 
 
-                            <h5>PREDICTED VALUE: <span x-text="srf_value"></span></h5>
+                            <h5>PREDICTED VALUE: <span x-text="srf_value"
+                                    style="color: rgba(238, 255, 0, 0.756)"></span></h5>
 
 
                             <hr>
@@ -209,6 +234,22 @@
                             <div style="text-align: center;">
                                 <button @click="SRF()" class="btn btn-info">SRF PREDICT</button>
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            </div>
+                            <div>
+                                <p style="text-align: left;"><a href="#" x-on:click="openHome('UCS_Virgin_Stress_Ratio')" > < PREVIOUS </a>
+                                        
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" x-on:click="openHome('Jn_Description')">NEXT ></a></p>
+
                             </div>
 
                             <!-- SRF historical data -->
@@ -248,7 +289,8 @@
                             <hr>
 
 
-                            <h5>PREDICTED VALUE: <span x-text="JnVal"></span></h5>
+                            <h5>PREDICTED VALUE: <span x-text="JnVal" style="color: rgba(238, 255, 0, 0.756)"></span>
+                            </h5>
 
 
                             <hr>
@@ -267,18 +309,37 @@
                                 <button class="btn btn-info" @click="JnDescription">Jn PREDICT</button>
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
+                            <div>
+                                <p style="text-align: left;"><a href="#" x-on:click="openHome('Stress_Reduction_Ratio')"> < PREVIOUS </a>
+                                        
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" x-on:click="openHome('Jr_Description')">NEXT ></a></p>
+
+                            </div>
 
                         </div>
 
                         <!--5 Jr Section -->
                         <div class="col-md-10" x-show="Jr_Description">
 
-                            <marquee behavior="alternate" direction="right" scrollmount="8"><h4>Joint Oreintation Description</h4></marquee>
+                            <marquee behavior="alternate" direction="right" scrollmount="8">
+                                <h4>Joint Oreintation Description</h4>
+                            </marquee>
 
                             <hr>
 
 
-                            <h5>PREDICTED VALUE: <span x-text="JrVal"></span></h5>
+                            <h5>PREDICTED VALUE: <span x-text="JrVal" style="color: rgba(238, 255, 0, 0.756)"></span>
+                            </h5>
 
                             <hr>
 
@@ -296,6 +357,22 @@
                                 <button class="btn btn-info" @click="JrDescription">Jr PREDICT</button>
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
+                            <div>
+                                <p style="text-align: left;"><a href="#" x-on:click="openHome('Jn_Description')"> < PREVIOUS </a>
+                                        
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" x-on:click="openHome('Ja_Description')">NEXT ></a></p>
+
+                            </div>
 
 
                         </div>
@@ -309,7 +386,8 @@
                             <hr>
 
 
-                            <h5>PREDICTED VALUE: <span x-text="JaVal"></span></h5>
+                            <h5>PREDICTED VALUE: <span x-text="JaVal" style="color: rgba(238, 255, 0, 0.756)"></span>
+                            </h5>
 
 
                             <hr>
@@ -327,6 +405,22 @@
                                 <button class="btn btn-info" @click="JaDescription">Ja PREDICT</button>
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
+                            <div>
+                                <p style="text-align: left;"><a href="#" x-on:click="openHome('Jr_Description')"> < PREVIOUS </a>
+                                        
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" x-on:click="openHome('Jw_Description')">NEXT ></a></p>
+
+                            </div>
 
 
                         </div>
@@ -341,7 +435,8 @@
                             <hr>
 
 
-                            <h5>PREDICTED VALUE: <span x-text="JwVal"></span></h5>
+                            <h5>PREDICTED VALUE: <span x-text="JwVal" style="color: rgba(238, 255, 0, 0.756)"></span>
+                            </h5>
 
 
                             <hr>
@@ -359,6 +454,22 @@
                                 <button class="btn btn-info" @click="JwDescription">Jw PREDICT</button>
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
+                            <div>
+                                <p style="text-align: left;"><a href="#" x-on:click="openHome('Ja_Description')"> < PREVIOUS </a>
+                                        
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" x-on:click="openHome('Rock_Quality_Designator')">NEXT ></a></p>
+
+                            </div>
 
                         </div>
 
@@ -370,7 +481,8 @@
                             </marquee>
 
                             <hr>
-                            <h5>PREDICTED VALUE: <span x-text="RQDValue"></span></h5>
+                            <h5>PREDICTED VALUE: <span x-text="RQDValue" style="color: rgba(238, 255, 0, 0.756)"></span>
+                            </h5>
                             <hr>
 
                             <label>Depth From (m) Surface</label>
@@ -392,7 +504,23 @@
                                 <button @click="rock_mass_quality" class="btn btn-info">ROCK MASS
                                     QUALITY</button>
                             </div>
-                            <br><br>
+                            <div>
+                                <p style="text-align: left;"><a href="#" x-on:click="openHome('Jw_Description')"> < PREVIOUS </a>
+                                        
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" x-on:click="openHome('Rock_Quality_Index_Q_Value')">NEXT ></a></p>
+
+                            </div>
+                            <br>
                             <!-- <p><span x-text="RQDMessage"></span></p> -->
                             <div x-show="openRockMassQuality">
                                 <div style="text-align: center;">
@@ -409,7 +537,8 @@
                                             <td style="background-color: rgba(221, 220, 245, 0.51);"><b>QUALITY</b></td>
                                             <td style="background-color: rgba(255, 240, 254, 0.432);"><b>MINING
                                                     METHODS</b></td>
-                                            <td colspan="2" style="background-color: rgba(102, 255, 0, 0.403);"><b> APPLICABLE
+                                            <td colspan="2" style="background-color: rgba(102, 255, 0, 0.403);"><b>
+                                                    APPLICABLE
                                                     SUPPORT</b></td>
                                             <td style="background-color: rgba(215, 221, 250, 0.319);"><b> APPLICABLE
                                                     EXCAVATION</b></td>
@@ -453,7 +582,8 @@
                             </marquee>
 
                             <hr>
-                            <h5>PREDICTED VALUE: <span x-text="QValue"></span></h5>
+                            <h5>PREDICTED VALUE: <span x-text="QValue" style="color: rgba(238, 255, 0, 0.756)"></span>
+                            </h5>
 
                             <div>
                                 <span x-text="QMessage"></span>
@@ -483,6 +613,22 @@
                                 <button @click="Q()" class="btn btn-info">Q PREDICT</button>
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                                 <button @click="Q_value_analysis()" class="btn btn-info">SUPPORT REQUIREMENT</button>
+                            </div>
+                            <div>
+                                <p style="text-align: left;"><a href="#" x-on:click="openHome('Rock_Quality_Designator')"> < PREVIOUS </a>
+                                        
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" x-on:click="openHome('Rock_Mass_Rating')">NEXT ></a></p>
+
                             </div>
                             <br>
                             <div x-show="openQAanalysis">
@@ -519,7 +665,8 @@
                                 <h4>ROCK MASS RATING</h4>
                             </marquee>
                             <hr>
-                            <h5>PREDICTED VALUE: <span x-text="rmr_val"></span></h5>
+                            <h5>PREDICTED VALUE: <span x-text="rmr_val" style="color: rgba(238, 255, 0, 0.756)"></span>
+                            </h5>
                             <hr>
 
                             <label>Q Value (Q Predict)</label>
@@ -529,6 +676,22 @@
                             <div style="text-align: center;">
                                 <button class="btn btn-info" @click="RMR">rmr predict</button>
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
+                            </div>
+                            <div>
+                                <p style="text-align: left;"><a href="#" x-on:click="openHome('Rock_Quality_Index_Q_Value')"> < PREVIOUS </a>
+                                        
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" x-on:click="openHome('Excavation_Category')">NEXT ></a></p>
+
                             </div>
                         </div>
 
@@ -541,7 +704,8 @@
 
                             <hr>
 
-                            <h5>PREDICTED VALUE: <span x-text="EsrVal"></span></h5>
+                            <h5>PREDICTED VALUE: <span x-text="EsrVal" style="color: rgba(238, 255, 0, 0.756)"></span>
+                            </h5>
                             <hr>
 
                             <label>Esr Description</label>
@@ -557,6 +721,22 @@
                                 <button class="btn btn-info" @click="ESR()">Esr PREDICT</button>
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
+                            <div>
+                                <p style="text-align: left;"><a href="#" x-on:click="openHome('Rock_Mass_Rating')"> < PREVIOUS </a>
+                                        
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="#" x-on:click="openHome('Maximum_Unsupported_Span')">NEXT ></a></p>
+
+                            </div>
                         </div>
 
                         <!-- 12 Unsupported Span Section -->
@@ -565,7 +745,8 @@
                                 <h4>MAXIMUM UNSUPPORTED SPAN</h4>
                             </marquee>
                             <hr>
-                            <h5>PREDICTED VALUE: <span x-text="MUSValue"></span></h5>
+                            <h5>PREDICTED VALUE: <span x-text="MUSValue" style="color: rgba(238, 255, 0, 0.756)"></span>
+                            </h5>
                             <hr>
                             <label>ESR Value</label>
                             <input class="form-control" x-model="Q_Value" type="number"
@@ -581,9 +762,13 @@
                                 <button @click="get_recommendtions_mus()" class="btn btn-info">GET
                                     RECOMMENDATION</button>
                             </div>
+                            <div>
+                                <p style="text-align: left;"><a href="#" x-on:click="openHome('Excavation_Category')"> < PREVIOUS </a></p>
+
+                            </div>
 
                             <!-- Logical function for MUS  -->
-                            <br>
+                            <hr>
                             <div x-show="openRec">
                                 <div style="text-align: center;">
                                     <button @click="closeRec=!closeRec" class="btn btn-info">Open/close</button>
@@ -640,12 +825,9 @@
                                             </tbody>
                                             </template>
                                         </table>
-
                                     </div>
-
-
-
                                 </div>
+                                <hr>
                             </div>
                         </div>
                     </div>
@@ -780,7 +962,9 @@
                                 collapse,&nbsp;stable or unstable,&nbsp;Factor of safety </td>
                         </tbody>
                     </table>
+                    <p><a x-on:click="openHome('UCS_Virgin_Stress_Ratio')" href="#">CLICK ME NOW</a> </p>
                 </div>
+
             </div>
 
             <!-- Contact us section -->

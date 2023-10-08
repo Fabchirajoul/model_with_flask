@@ -3110,7 +3110,7 @@ document.addEventListener("alpine:init", () => {
             // val = val.split("]")[0];
             console.log(res.data);
             this.QValue =
-              "Based on your input, the predicted Q value is " + val;
+              "Based on your input, the predicted ROck Quality Index(Q) value is " + val;
             this.NumQ = val;
           });
       },
@@ -3219,8 +3219,6 @@ document.addEventListener("alpine:init", () => {
         
 
       },
-
-
       refresh() {
         this.NumQ="";
         this.qAnalysMessage1="";
