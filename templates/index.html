@@ -273,9 +273,7 @@
                         <!--5 Jr Section -->
                         <div class="col-md-10" x-show="Jr_Description">
 
-                            <marquee behavior="alternate" direction="right" scrollmount="8">
-                                <h4>Joint Oreintation Description</h4>
-                            </marquee>
+                            <marquee behavior="alternate" direction="right" scrollmount="8"><h4>Joint Oreintation Description</h4></marquee>
 
                             <hr>
 
@@ -411,7 +409,7 @@
                                             <td style="background-color: rgba(221, 220, 245, 0.51);"><b>QUALITY</b></td>
                                             <td style="background-color: rgba(255, 240, 254, 0.432);"><b>MINING
                                                     METHODS</b></td>
-                                            <td style="background-color: rgba(102, 255, 0, 0.403);"><b> APPLICABLE
+                                            <td colspan="2" style="background-color: rgba(102, 255, 0, 0.403);"><b> APPLICABLE
                                                     SUPPORT</b></td>
                                             <td style="background-color: rgba(215, 221, 250, 0.319);"><b> APPLICABLE
                                                     EXCAVATION</b></td>
@@ -427,7 +425,7 @@
                                                     style="background-color: rgba(221, 220, 245, 0.51);"></td>
                                             </b>
                                             <b>
-                                                <td x-text="ImpMessage"
+                                                <td colspan="2" x-text="ImpMessage"
                                                     style="background-color: rgba(255, 240, 254, 0.432);"></td>
                                             </b>
                                             <b>
@@ -585,7 +583,7 @@
                             </div>
 
                             <!-- Logical function for MUS  -->
-                            <br><br>
+                            <br>
                             <div x-show="openRec">
                                 <div style="text-align: center;">
                                     <button @click="closeRec=!closeRec" class="btn btn-info">Open/close</button>

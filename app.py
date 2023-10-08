@@ -17,7 +17,7 @@ conn = sqlite3.connect('capstonedb.db')
 c = conn.cursor()
 
 # 1.  UCS
-with open('models/DTR_UCSVirgin.pkl', 'rb') as f:
+with open('models/KNR_UCSVirgin.pkl', 'rb') as f:
     ucsvsr_model = pickle.load(f)
 
 # connect models
@@ -83,7 +83,7 @@ def RQD_Pred():
 
 
 # 8. Q working both online and offline
-with open('models/q.pkl', 'rb') as f:
+with open('models/KNR_q.pkl', 'rb') as f:
     q_model = pickle.load(f)
 
 
