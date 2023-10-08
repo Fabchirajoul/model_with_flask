@@ -115,14 +115,16 @@
 
                     <div x-show="homepage">
                         <hr>
-                        <h5 id="home-text" class="text-center">ENHANCING SAFETY IN MINING USING 4IR TECHNOLOGY BY PREDICTING THE MAXIMUM UNSUPPORTED SPAN (PLANNED EXCAVATION)</h5>
+                        <h5 id="home-text" class="text-center">ENHANCING SAFETY IN MINING USING 4IR TECHNOLOGY BY
+                            PREDICTING THE MAXIMUM UNSUPPORTED SPAN (PLANNED EXCAVATION)</h5>
                         <hr>
                         <!-- <h1 id="home-text" class="text-center">IN MINING</h1><br><br>
                         <h1 id="home-text" class="text-center">USING 4IR TECHNOLOGY</h1> -->
                         <p id="home-text">VISUALIZATION OF THE UNDERGROUND EXCAVATION</p>
                         <div style="text-align: center;">
                             <img src="static\images\visu.JPG" class="img-fluid" width="90%" />
-                        </div><hr>
+                        </div>
+                        <hr>
 
                     </div>
 
@@ -130,7 +132,9 @@
                         <!-- 2 UCS/Virgin Stress Ratio -->
                         <div class="col-md-10" x-show="UCS_Virgin_Stress_Ratio">
                             <!--  -->
-                            <marquee direction="right" scrollmount="8"><h4>UNIAXIAL COMPRESSIVE STRENGTH / VIRGIN STRESS RATIO</h4></marquee>
+                            <marquee direction="right" scrollmount="8">
+                                <h4>UNIAXIAL COMPRESSIVE STRENGTH / VIRGIN STRESS RATIO</h4>
+                            </marquee>
 
 
                             <hr>
@@ -186,7 +190,9 @@
                         <!--3 SRF Section -->
                         <div class="col-md-10" x-show="Stress_Reduction_Ratio">
 
-                            <marquee behavior="alternate" direction="right" scrollmount="8"> <h4>STRESS REDUCTION RATIO</h4></marquee>
+                            <marquee behavior="alternate" direction="right" scrollmount="8">
+                                <h4>STRESS REDUCTION RATIO</h4>
+                            </marquee>
                             <hr>
 
 
@@ -235,7 +241,9 @@
 
                         <!--4 Jn Section -->
                         <div class="col-md-10" x-show="Jn_Description">
-                            <marquee behavior="alternate" direction="right" scrollmount="8"><h4>Joint Set Number Description</h4></marquee>
+                            <marquee behavior="alternate" direction="right" scrollmount="8">
+                                <h4>Joint Set Number Description</h4>
+                            </marquee>
 
                             <hr>
 
@@ -265,7 +273,9 @@
                         <!--5 Jr Section -->
                         <div class="col-md-10" x-show="Jr_Description">
 
-                            <marquee behavior="alternate" direction="right" scrollmount="8"><h4>Joint Oreintation Description</h4></marquee>
+                            <marquee behavior="alternate" direction="right" scrollmount="8">
+                                <h4>Joint Oreintation Description</h4>
+                            </marquee>
 
                             <hr>
 
@@ -294,7 +304,9 @@
 
                         <!--6 Ja Section -->
                         <div class="col-md-10" x-show="Ja_Description">
-                            <marquee behavior="alternate" direction="right" scrollmount="8"><h4>Joint Alteration Description</h4></marquee>
+                            <marquee behavior="alternate" direction="right" scrollmount="8">
+                                <h4>Joint Alteration Description</h4>
+                            </marquee>
 
                             <hr>
 
@@ -324,7 +336,9 @@
 
                         <!--7 Jw Section -->
                         <div class="col-md-10" x-show="Jw_Description">
-                            <marquee behavior="alternate" direction="right" scrollmount="8"><h4>Joint Water PREDICTION</h4></marquee>
+                            <marquee behavior="alternate" direction="right" scrollmount="8">
+                                <h4>Joint Water PREDICTION</h4>
+                            </marquee>
 
                             <hr>
 
@@ -353,7 +367,9 @@
 
                         <!--8  RQD Section -->
                         <div class="col-md-10" x-show="Rock_Quality_Designator">
-                            <marquee behavior="alternate" direction="right" scrollmount="8"><h4>ROCK QUALITY DESIGNATOR</h4></marquee>
+                            <marquee behavior="alternate" direction="right" scrollmount="8">
+                                <h4>ROCK QUALITY DESIGNATOR</h4>
+                            </marquee>
 
                             <hr>
                             <h5>PREDICTED VALUE: <span x-text="RQDValue"></span></h5>
@@ -390,19 +406,38 @@
 
                                     <table class="responsive-table" style="border: 2;">
                                         <thead>
-                                            <td style="background-color: rgba(205, 228, 255, 0.451);"><b> RQD(%)</b></td>
+                                            <td style="background-color: rgba(205, 228, 255, 0.451);"><b> RQD(%)</b>
+                                            </td>
                                             <td style="background-color: rgba(221, 220, 245, 0.51);"><b>QUALITY</b></td>
-                                            <td style="background-color: rgba(255, 240, 254, 0.432);"><b>MINING METHODS</b></td>
-                                            <td style="background-color: rgba(102, 255, 0, 0.403);"><b> APPLICABLE SUPPORT</b></td>
-                                            <td style="background-color: rgba(215, 221, 250, 0.319);"><b> APPLICABLE EXCAVATION</b></td>
+                                            <td style="background-color: rgba(255, 240, 254, 0.432);"><b>MINING
+                                                    METHODS</b></td>
+                                            <td style="background-color: rgba(102, 255, 0, 0.403);"><b> APPLICABLE
+                                                    SUPPORT</b></td>
+                                            <td style="background-color: rgba(215, 221, 250, 0.319);"><b> APPLICABLE
+                                                    EXCAVATION</b></td>
                                         </thead>
                                         <template x-for="i in rmq_value "></template>
                                         <tbody x-show="NumRQD >0">
-                                           <b><td x-text="NumRQD" style="background-color: rgba(205, 228, 255, 0.451);"></td></b> 
-                                           <b><td x-text="rmqMessage" style="background-color: rgba(221, 220, 245, 0.51);"></td></b> 
-                                           <b><td x-text="ImpMessage" style="background-color: rgba(255, 240, 254, 0.432);"></td></b> 
-                                           <b><td x-text="SuppMessage" style="background-color: rgba(102, 255, 0, 0.403);"></td></b> 
-                                           <b><td x-text="ExcMessage" style="background-color: rgba(215, 221, 250, 0.319);"></td></b> 
+                                            <b>
+                                                <td x-text="NumRQD"
+                                                    style="background-color: rgba(205, 228, 255, 0.451);"></td>
+                                            </b>
+                                            <b>
+                                                <td x-text="rmqMessage"
+                                                    style="background-color: rgba(221, 220, 245, 0.51);"></td>
+                                            </b>
+                                            <b>
+                                                <td x-text="ImpMessage"
+                                                    style="background-color: rgba(255, 240, 254, 0.432);"></td>
+                                            </b>
+                                            <b>
+                                                <td x-text="SuppMessage"
+                                                    style="background-color: rgba(102, 255, 0, 0.403);"></td>
+                                            </b>
+                                            <b>
+                                                <td x-text="ExcMessage"
+                                                    style="background-color: rgba(215, 221, 250, 0.319);"></td>
+                                            </b>
                                         </tbody>
                                         </template>
                                     </table>
@@ -415,7 +450,9 @@
 
                         <!--9 Q Section -->
                         <div class="col-md-10" x-show="Rock_Quality_Index_Q_Value">
-                            <marquee behavior="alternate" direction="right" scrollmount="8"><h4>Q-VALUE</h4></marquee>
+                            <marquee behavior="alternate" direction="right" scrollmount="8">
+                                <h4>Q-VALUE</h4>
+                            </marquee>
 
                             <hr>
                             <h5>PREDICTED VALUE: <span x-text="QValue"></span></h5>
@@ -475,45 +512,34 @@
                                     </table>
                                 </div>
                             </div>
-
-
-
-
-
                         </div>
 
 
                         <!--10  RMR Section -->
                         <div class="col-md-10" x-show="Rock_Mass_Rating">
-                            <marquee behavior="alternate" direction="right"> <h4>ROCK MASS RATING</h4></marquee>
-
-
+                            <marquee behavior="alternate" direction="right">
+                                <h4>ROCK MASS RATING</h4>
+                            </marquee>
                             <hr>
-
-
                             <h5>PREDICTED VALUE: <span x-text="rmr_val"></span></h5>
-
-
                             <hr>
 
                             <label>Q Value (Q Predict)</label>
                             <input class="form-control" type="number" x-model="Q_Value"
                                 placeholder="Click to Enter the Q value previously predicted (Q PREDICT)"><br>
                             <!-- <input class="form-control" type="number" x-model="LNQ" placeholder="Click to Enter the LNQ"> LNQ value<br> -->
-
-
                             <div style="text-align: center;">
                                 <button class="btn btn-info" @click="RMR">rmr predict</button>
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
-
-
                         </div>
 
 
                         <!--11 ESR Section -->
                         <div class="col-md-10" x-show="Excavation_Category">
-                            <marquee behavior="alternate" direction="right" scrollmount="8"> <h4>EXCAVATION CATEGORY`</h4></marquee>
+                            <marquee behavior="alternate" direction="right" scrollmount="8">
+                                <h4>EXCAVATION CATEGORY`</h4>
+                            </marquee>
 
                             <hr>
 
@@ -533,14 +559,13 @@
                                 <button class="btn btn-info" @click="ESR()">Esr PREDICT</button>
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
-
-
                         </div>
-
 
                         <!-- 12 Unsupported Span Section -->
                         <div class="col-md-10" x-show="Maximum_Unsupported_Span">
-                            <marquee behavior="alternate" direction="right" scrollmount="8"> <h4>MAXIMUM UNSUPPORTED SPAN</h4></marquee>
+                            <marquee behavior="alternate" direction="right" scrollmount="8">
+                                <h4>MAXIMUM UNSUPPORTED SPAN</h4>
+                            </marquee>
                             <hr>
                             <h5>PREDICTED VALUE: <span x-text="MUSValue"></span></h5>
                             <hr>
@@ -555,264 +580,339 @@
                                 <button @click="MUS()" class="btn btn-info">Unsupported span
                                     prediction</button>
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
-                                <button class="btn btn-info">GET
+                                <button @click="get_recommendtions_mus()" class="btn btn-info">GET
                                     RECOMMENDATION</button>
                             </div>
 
+                            <!-- Logical function for MUS  -->
+                            <br><br>
+                            <div x-show="openRec">
+                                <div style="text-align: center;">
+                                    <button @click="closeRec=!closeRec" class="btn btn-info">Open/close</button>
+                                </div>
+                                <br>
+                                <div x-show="closeRec" class="row">
+                                    <div class="col-md-6 card">
+                                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
 
+                                            <img src="./static/images/duration.jpg" class="img-fluid" />
+                                            <a href="#!">
+                                                <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 card">
+                                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+
+                                            <img src="./static/images/fos.jpg" class="img-fluid" />
+                                            <a href="#!">
+                                                <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 card" style="background-color: rgba(4, 0, 255, 0.581);">
+                                        <table class="responsive-table" style="border: 2;">
+                                            <thead>
+                                                <td style="background-color: rgba(205, 228, 255, 0.451);"><b>Unsupported
+                                                        Span</b>
+                                                </td>
+                                                <td style="background-color: rgba(221, 220, 245, 0.51);"><b>Q Value</b>
+                                                </td>
+                                                <td style="background-color: rgba(255, 240, 254, 0.432);"><b>Duration of
+                                                        Collapse</b></td>
+                                                <td style="background-color: rgba(102, 255, 0, 0.403);"><b> Stability
+                                                        Analysis</b></td>
+                                            </thead>
+                                            <tbody>
+                                                <b>
+                                                    <td style="background-color: rgba(205, 228, 255, 0.451);">2</td>
+                                                </b>
+                                                <b>
+                                                    <td style="background-color: rgba(221, 220, 245, 0.51);">5</td>
+                                                </b>
+                                                <b>
+                                                    <td style="background-color: rgba(255, 240, 254, 0.432);">Immediate
+                                                        collapse<br> No support required<br>or give a duration</td>
+                                                </b>
+                                                <b>
+                                                    <td style="background-color: rgba(102, 255, 0, 0.403);">Unstable<br>
+                                                        stable <br>give a factor of safety</td>
+                                                </b>
+
+                                            </tbody>
+                                            </template>
+                                        </table>
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- about page -->
-        <div class="row justify-content-center" x-show="about" x-cloak>
-            <div class="col-md-10 text-center ">
-                <h5>ABOUT</h5>
-                <hr>
-                <p>The Maximum Unsupported Span API is an application programming interface designed to
-                    enhance the safety
-                    within the mining Industry. This API makes use of multi-modal machine learning
-                    ensemble-algorithms
-                    (Classifiers and Regressors) to bring about an accurate prediction of the Maximum
-                    Unsupported Span (MUS)
-                    that will result in cost reduction, mining optimization and the overal improvement
-                    of safety thereby
-                    safe-gaurding the human lives. To be able to adequately use the system, users are
-                    expected to follow the
-                    sequential steps outlined in the workflow below
-                </p>
+            <!-- about page -->
+            <div class="row justify-content-center" x-show="about" x-cloak>
+                <div class="col-md-10 text-center ">
+                    <h5>ABOUT</h5>
+                    <hr>
+                    <p>The Maximum Unsupported Span API is an application programming interface designed to
+                        enhance the safety
+                        within the mining Industry. This API makes use of multi-modal machine learning
+                        ensemble-algorithms
+                        (Classifiers and Regressors) to bring about an accurate prediction of the Maximum
+                        Unsupported Span (MUS)
+                        that will result in cost reduction, mining optimization and the overal improvement
+                        of safety thereby
+                        safe-gaurding the human lives. To be able to adequately use the system, users are
+                        expected to follow the
+                        sequential steps outlined in the workflow below
+                    </p>
 
-                <h5>WORK FLOW</h5>
-                <hr>
-                <p>The action button have been aligned accordingly and every user is expected to follow the sequence
-                    inorder to
-                    get their predictions. A full list of the input and the corresponding output
-                    for the action buttons can be seen here: <a href="#" @click="workflow=!workflow"
-                        style="text-align: center;">click to (view/close) the workflow</a>
-                </p>
+                    <h5>WORK FLOW</h5>
+                    <hr>
+                    <p>The action button have been aligned accordingly and every user is expected to follow the sequence
+                        inorder to
+                        get their predictions. A full list of the input and the corresponding output
+                        for the action buttons can be seen here: <a href="#" @click="workflow=!workflow"
+                            style="text-align: center;">click to (view/close) the workflow</a>
+                    </p>
 
-                <table class="table responsive-table" style="color: blueviolet;" x-show="workflow">
-                    <thead>
-                        <td> Action Button</td>
-                        <td>Required Input</td>
-                        <td>Output @click Button Predict</td>
-                    </thead>
+                    <table class="table responsive-table" style="color: blueviolet;" x-show="workflow">
+                        <thead>
+                            <td> Action Button</td>
+                            <td>Required Input</td>
+                            <td>Output @click Button Predict</td>
+                        </thead>
 
-                    <tbody>
-                        <td>UCS/Virgin Stress Ratio</td>
-                        <td>Density(kg/mm^3)<br> Depth/Height(m)<br> UCS(MPA)</td>
-                        <td>UCS/VSR Predict</td>
-                    </tbody>
-                    <tbody>
-                        <td>Stress Reduction Ratio</td>
-                        <td>UCS/VSR Predict</td>
-                        <td>SRF Predict</td>
-                    </tbody>
-                    <tbody>
-                        <td>Jn Description</td>
-                        <td>Description of the Joint set number</td>
-                        <td>Jn number</td>
-                    </tbody>
-                    <tbody>
-                        <td>Jr Description</td>
-                        <td>Description of the orientation number</td>
-                        <td>Jr number</td>
-                    </tbody>
-                    <tbody>
-                        <td>Ja Description</td>
-                        <td>Description of the Joint alteration number</td>
-                        <td>Ja number</td>
-                    </tbody>
-                    <tbody>
-                        <td>Jw Description</td>
-                        <td>Description of the Joint water reduction number</td>
-                        <td>Jw number</td>
-                    </tbody>
-                    <tbody>
-                        <td>Rock Quality Designator</td>
-                        <td>Depth below surface<br> Depth below surface <br>True thickness<br> Hardness</td>
-                        <td>RQD Predict</td>
-                    </tbody>
-                    <tbody>
-                        <td>Rock Quality Index (Q Value)</td>
-                        <td>SRF Predict<br> Jn number <br>Jr number<br> Ja number <br>Jw number<br> RQD Predict</td>
-                        <td>Q Predict</td>
-                    </tbody>
-                    <tbody>
-                        <td>ROck Mass Rating (RMR)</td>
-                        <td>Q Predict</td>
-                        <td>RMR Predict</td>
-                    </tbody>
-                    <tbody>
-                        <td>Excavation Category (ESR)</td>
-                        <td>Excavation category description</td>
-                        <td>ESR Predict</td>
-                    </tbody>
-                    <tbody>
-                        <td>MUS</td>
-                        <td>Q Predict<br>ESR Predict</td>
-                        <td>Maximum Unsupproted span prediction</td>
-                    </tbody>
+                        <tbody>
+                            <td>UCS/Virgin Stress Ratio</td>
+                            <td>Density(kg/mm^3)<br> Depth/Height(m)<br> UCS(MPA)</td>
+                            <td>UCS/VSR Predict</td>
+                        </tbody>
+                        <tbody>
+                            <td>Stress Reduction Ratio</td>
+                            <td>UCS/VSR Predict</td>
+                            <td>SRF Predict</td>
+                        </tbody>
+                        <tbody>
+                            <td>Jn Description</td>
+                            <td>Description of the Joint set number</td>
+                            <td>Jn number</td>
+                        </tbody>
+                        <tbody>
+                            <td>Jr Description</td>
+                            <td>Description of the orientation number</td>
+                            <td>Jr number</td>
+                        </tbody>
+                        <tbody>
+                            <td>Ja Description</td>
+                            <td>Description of the Joint alteration number</td>
+                            <td>Ja number</td>
+                        </tbody>
+                        <tbody>
+                            <td>Jw Description</td>
+                            <td>Description of the Joint water reduction number</td>
+                            <td>Jw number</td>
+                        </tbody>
+                        <tbody>
+                            <td>Rock Quality Designator</td>
+                            <td>Depth below surface<br> Depth below surface <br>True thickness<br> Hardness</td>
+                            <td>RQD Predict</td>
+                        </tbody>
+                        <tbody>
+                            <td>Rock Quality Index (Q Value)</td>
+                            <td>SRF Predict<br> Jn number <br>Jr number<br> Ja number <br>Jw number<br> RQD Predict</td>
+                            <td>Q Predict</td>
+                        </tbody>
+                        <tbody>
+                            <td>ROck Mass Rating (RMR)</td>
+                            <td>Q Predict</td>
+                            <td>RMR Predict</td>
+                        </tbody>
+                        <tbody>
+                            <td>Excavation Category (ESR)</td>
+                            <td>Excavation category description</td>
+                            <td>ESR Predict</td>
+                        </tbody>
+                        <tbody>
+                            <td>MUS</td>
+                            <td>Q Predict<br>ESR Predict</td>
+                            <td>Maximum Unsupproted span prediction</td>
+                        </tbody>
 
-                </table>
-                <h5>CAPABILTIES</h5>
-                <hr>
-                <p> The maximum unsupported span API does not only predicts, its respective output based on its input.
-                    It
-                    also gives proposals based on its predictive results so that users can be aware of situations way
-                    before
-                    they happen and what they will have to do inorder to make a bad situation turn good.
-                </p>
+                    </table>
+                    <h5>CAPABILTIES</h5>
+                    <hr>
+                    <p> The maximum unsupported span API does not only predicts, its respective output based on its
+                        input.
+                        It
+                        also gives proposals based on its predictive results so that users can be aware of situations
+                        way
+                        before
+                        they happen and what they will have to do inorder to make a bad situation turn good.
+                    </p>
 
-                <table class="table responsive-table" style="color: blueviolet;">
-                    <thead>
-                        <td> CAPABILITIES</td>
-                        <td>ACTION BUTTON @CLICK</td>
-                        <td>RESULT UPON CLICKING THE ACTION BUTTON</td>
-                    </thead>
+                    <table class="table responsive-table" style="color: blueviolet;">
+                        <thead>
+                            <td> CAPABILITIES</td>
+                            <td>ACTION BUTTON @CLICK</td>
+                            <td>RESULT UPON CLICKING THE ACTION BUTTON</td>
+                        </thead>
 
-                    <tbody>
-                        <td>Soil Classification</td>
-                        <td>Rock Mass Quality</td>
-                        <td>Soil Quality,&nbsp;Applicable Mining Method,&nbsp;Applicable Support,&nbsp;Applicable
-                            Excavation</td>
-                    </tbody>
+                        <tbody>
+                            <td>Soil Classification</td>
+                            <td>Rock Mass Quality</td>
+                            <td>Soil Quality,&nbsp;Applicable Mining Method,&nbsp;Applicable Support,&nbsp;Applicable
+                                Excavation</td>
+                        </tbody>
 
-                    <!-- <tbody >
+                        <!-- <tbody >
                     <td >Support Requirements</td>
                     <td >Rock Mass Quality</td>
                     <td >Soil Quality,&nbsp;Applicable Mining Method,&nbsp;Applicable Support,&nbsp;Applicable Excavation</td>
                 </tbody> -->
-                    <tbody>
-                        <td>Unsupported Span</td>
-                        <td>Action button @Get recommendations</td>
-                        <td>Immediate collapse,&nbsp;No support required,&nbsp;Duration it will take before a
-                            collapse,&nbsp;stable or unstable,&nbsp;Factor of safety </td>
-                    </tbody>
-                </table>
+                        <tbody>
+                            <td>Unsupported Span</td>
+                            <td>Action button @Get recommendations</td>
+                            <td>Immediate collapse,&nbsp;No support required,&nbsp;Duration it will take before a
+                                collapse,&nbsp;stable or unstable,&nbsp;Factor of safety </td>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
 
-        <!-- Contact us section -->
+            <!-- Contact us section -->
 
-        <div x-show="contact_us" x-cloak>
-            <br>
-            <h5 class="text-center">GET IN TOUCH</h5>
-            <hr>
-            <div class="row">
-                <!-- Fabchi -->
-                <div class="col-md-3 card">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <div x-show="contact_us" x-cloak>
+                <br>
+                <h5 class="text-center">GET IN TOUCH</h5>
+                <hr>
+                <div class="row">
+                    <!-- Fabchi -->
+                    <div class="col-md-3 card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
 
-                        <img src="./static/images/RJ.jpeg" class="img-fluid" />
-                        <a href="#!">
-                            <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
-                        </a>
+                            <img src="./static/images/RJ.jpeg" class="img-fluid" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <b>
+                                <p>Surname: &nbsp;<span>Fabchi</span></p>
+                                <p>Initials: &nbsp;<span>RJ</span></p>
+                                <p>Email: &nbsp;<span>fabchirajoul@gmail.com</span></p>
+                                <p>Github: &nbsp;<a target="_blank" href="https://github.com/Fabchirajoul">Click here to
+                                        be
+                                        redirected</a></p>
+                                <p>Linkedin: &nbsp;<a target="_blank"
+                                        href="https://www.linkedin.com/in/rajour-jumfan-fabchi-97a584212">Click here</a>
+                                </p>
+                                <p>Phone Number: &nbsp;<span>+2763382663</span></p>
+                                <p>Discipline: &nbsp;<span>Mining Engineer | Machine learning Expert</span></p>
+                            </b>
+                        </div>
+
+
                     </div>
-                    <div class="card-body">
+
+                    <div class="col-md-3 card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+
+                            <img src="./static/images/KLR.jpeg" class="img-fluid" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                            </a>
+                        </div>
                         <b>
-                            <p>Surname: &nbsp;<span>Fabchi</span></p>
-                            <p>Initials: &nbsp;<span>RJ</span></p>
-                            <p>Email: &nbsp;<span>fabchirajoul@gmail.com</span></p>
-                            <p>Github: &nbsp;<a target="_blank" href="https://github.com/Fabchirajoul">Click here to be redirected</a></p>
-                            <p>Linkedin: &nbsp;<a target="_blank" href="https://www.linkedin.com/in/rajour-jumfan-fabchi-97a584212">Click here</a></p>
-                            <p>Phone Number: &nbsp;<span>+2763382663</span></p>
-                            <p>Discipline: &nbsp;<span>Mining Engineer | Machine learning Expert</span></p>
+                            <p>Surname: &nbsp;<span>LUKWAGO</span></p>
+                            <p>Initials: &nbsp;<span>RK</span></p>
+                            <p>Email: &nbsp;<span>lukwagorsaved@gmail.com</span></p>
+                            <p>Github: &nbsp;<a target="_blank" target="_blank"
+                                    href="https://github.com/Lukwago-LR">Click
+                                    here to be redirected</a></p>
+                            <p>Linkedin: &nbsp;<a target="_blank"
+                                    href="https://www.linkedin.com/in/rajour-jumfan-fabchi-97a584212">Click here</a></p>
+                            <p>Phone Number: &nbsp;<span>+27738976343</span></p>
+                            <p>Discipline: &nbsp;<span>INFORMATION TECH AND SYSTEMS | Machine learning Expert</span></p>
                         </b>
+
                     </div>
 
+                    <div class="col-md-3 card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
 
-                </div>
+                            <img src="./static/images/MTE.jpeg" class="img-fluid" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                            </a>
+                        </div>
 
-                <div class="col-md-3 card">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
 
-                        <img src="./static/images/KLR.jpeg" class="img-fluid" />
-                        <a href="#!">
-                            <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
-                        </a>
-                    </div>
-                    <b>
-                        <p>Surname: &nbsp;<span>LUKWAGO</span></p>
-                        <p>Initials: &nbsp;<span>RK</span></p>
-                        <p>Email: &nbsp;<span>lukwagorsaved@gmail.com</span></p>
-                        <p>Github: &nbsp;<a target="_blank" target="_blank" href="https://github.com/Lukwago-LR">Click here to be redirected</a></p>
-                        <p>Linkedin: &nbsp;<a target="_blank" href="https://www.linkedin.com/in/rajour-jumfan-fabchi-97a584212">Click here</a></p>
-                        <p>Phone Number: &nbsp;<span>+27738976343</span></p>
-                        <p>Discipline: &nbsp;<span>INFORMATION TECH AND SYSTEMS | Machine learning Expert</span></p>
-                    </b>
+                        <b>
+                            <p>Surname: &nbsp;<span>MOJEWA</span></p>
+                            <p>Initials: &nbsp;<span>T</span></p>
+                            <p>Email: &nbsp;<span>tswelopelemojewa@gmail.com</span></p>
+                            <p>Github: &nbsp;<a target="_blank" href="https://github.com/tswelopelemojewa">Click here to
+                                    be
+                                    redirected</a></p>
+                            <p>Linkedin: &nbsp;<a target="_blank"
+                                    href="https://www.linkedin.com/in/tswelopele-mojewa/">Click here</a></p>
+                            <p>Phone Number: &nbsp;<span>+27790985214</span></p>
+                            <p>Discipline: &nbsp;<span>ELECTRICAL ENGINEERING | Machine learning Expert</span></p>
+                        </b>
 
-                </div>
-
-                <div class="col-md-3 card">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-
-                        <img src="./static/images/MTE.jpeg" class="img-fluid" />
-                        <a href="#!">
-                            <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
-                        </a>
                     </div>
 
+                    <div class="col-md-3 card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
 
-                    <b>
-                        <p>Surname: &nbsp;<span>MOJEWA</span></p>
-                        <p>Initials: &nbsp;<span>T</span></p>
-                        <p>Email: &nbsp;<span>tswelopelemojewa@gmail.com</span></p>
-                        <p>Github: &nbsp;<a target="_blank" href="https://github.com/tswelopelemojewa">Click here to be redirected</a></p>
-                        <p>Linkedin: &nbsp;<a target="_blank" href="https://www.linkedin.com/in/tswelopele-mojewa/">Click here</a></p>
-                        <p>Phone Number: &nbsp;<span>+27790985214</span></p>
-                        <p>Discipline: &nbsp;<span>ELECTRICAL ENGINEERING | Machine learning Expert</span></p>
-                    </b>
+                            <img src="./static/images/OBY.jpeg" class="img-fluid" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                            </a>
+                        </div>
 
-                </div>
+                        <b>
+                            <p>Surname: &nbsp;<span>NWOSU</span></p>
+                            <p>Initials: &nbsp;<span>OCV</span></p>
+                            <p>Email: &nbsp;<span>kingemjay3355@gmail.com</span></p>
+                            <p>Github: &nbsp;<a target="_blank" href="https://github.com/KINGEMJAY">Click here to be
+                                    redirected</a></p>
+                            <p>Linkedin: &nbsp;<a target="_blank"
+                                    href="https://www.linkedin.com/in/rajour-jumfan-fabchi-97a584212">Click here</a></p>
+                            <p>Phone Number: &nbsp;<span>+27683443129</span></p>
+                            <p>Discipline: &nbsp;<span>GEOPHYSICS | Machine learning Expert</span></p>
+                        </b>
 
-                <div class="col-md-3 card">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-
-                        <img src="./static/images/OBY.jpeg" class="img-fluid" />
-                        <a href="#!">
-                            <div class="mask" style="background-color: rgba(0, 0, 0, 0.5);"></div>
-                        </a>
                     </div>
-
-                    <b>
-                        <p>Surname: &nbsp;<span>NWOSU</span></p>
-                        <p>Initials: &nbsp;<span>OCV</span></p>
-                        <p>Email: &nbsp;<span>kingemjay3355@gmail.com</span></p>
-                        <p>Github: &nbsp;<a target="_blank" href="https://github.com/KINGEMJAY">Click here to be redirected</a></p>
-                        <p>Linkedin: &nbsp;<a target="_blank" href="https://www.linkedin.com/in/rajour-jumfan-fabchi-97a584212">Click here</a></p>
-                        <p>Phone Number: &nbsp;<span>+27683443129</span></p>
-                        <p>Discipline: &nbsp;<span>GEOPHYSICS | Machine learning Expert</span></p>
-                    </b>
 
                 </div>
 
             </div>
 
-        </div>
+            <!-- History section -->
 
-        <!-- History section -->
+            <div x-cloak x-show="history">
+                <br>
+                <h5 class="text-center">HISTORICAL DATA</h5>
+                <hr>
+                <div class="row" x-show="history">
 
-        <div x-cloak x-show="history">
-            <br>
-            <h5 class="text-center">HISTORICAL DATA</h5>
-            <hr>
-            <div class="row" x-show="history">
+                    <div x-show="history">
 
-                <div x-show="history">
+                        <h6>Username: </h6>
+                        <h6>Employee ID: </h6>
 
-                    <h6>Username: </h6>
-                    <h6>Employee ID: </h6>
+                    </div>
+                    <!-- <p style="text-align: center;">FRONT-END INPUT DATA FOR ML API COMPUTATION</p> -->
 
-                </div>
-                <!-- <p style="text-align: center;">FRONT-END INPUT DATA FOR ML API COMPUTATION</p> -->
-
-                <!-- Historical inputs by the admins -->
-                <!-- <table x-show="history">
+                    <!-- Historical inputs by the admins -->
+                    <!-- <table x-show="history">
                         <tr>
                             <th>tghjk</th>
                             <th>ghgj</th>
@@ -820,52 +920,52 @@
 
                     </table> -->
 
-                <br>
-                <p style="text-align: center;">HISTORICAL COMPUTATION BY THE MULTI-MODAL ML MODEL</p>
-                <!-- Numerical computation value by the machine learning model -->
+                    <br>
+                    <p style="text-align: center;">HISTORICAL COMPUTATION BY THE MULTI-MODAL ML MODEL</p>
+                    <!-- Numerical computation value by the machine learning model -->
 
-                <table class="table" x-show="history">
-                    <thead>
+                    <table class="table" x-show="history">
+                        <thead>
 
-                        <th>Jn</th>
-                        <th>Ja</th>
-                        <th>Jr</th>
-                        <th>Jw</th>
-                        <th>UCS/VSR</th>
-                        <th>RQD</th>
-                        <th>Q</th>
-                        <th>SRF</th>
-                        <th>RMR</th>
-                        <th>ESR</th>
-                        <th>MUS</th>
+                            <th>Jn</th>
+                            <th>Ja</th>
+                            <th>Jr</th>
+                            <th>Jw</th>
+                            <th>UCS/VSR</th>
+                            <th>RQD</th>
+                            <th>Q</th>
+                            <th>SRF</th>
+                            <th>RMR</th>
+                            <th>ESR</th>
+                            <th>MUS</th>
 
-                    </thead>
+                        </thead>
 
-                    <tbody>
-                        <template x-for="i in history">
-                            <tr>
-                                <td x-text="i.Jn"></td>
-                                <td x-text="i.Ja"></td>
-                                <td x-text="i.Jr"></td>
-                                <td x-text="i.Jw"></td>
-                                <td x-text="i.UCS_Virgin_stress_ratio"></td>
-                                <td x-text="i.RQD_p"></td>
-                                <td x-text="i.Q_Value"></td>
-                                <td x-text="i.SRF"></td>
-                                <td x-text="i.RMR"></td>
-                                <td x-text="i.ESR_VALUE"></td>
-                                <td x-text="i.Maximum_unsupported_span"></td>
-                            </tr>
-                        </template>
+                        <tbody>
+                            <template x-for="i in history">
+                                <tr>
+                                    <td x-text="i.Jn"></td>
+                                    <td x-text="i.Ja"></td>
+                                    <td x-text="i.Jr"></td>
+                                    <td x-text="i.Jw"></td>
+                                    <td x-text="i.UCS_Virgin_stress_ratio"></td>
+                                    <td x-text="i.RQD_p"></td>
+                                    <td x-text="i.Q_Value"></td>
+                                    <td x-text="i.SRF"></td>
+                                    <td x-text="i.RMR"></td>
+                                    <td x-text="i.ESR_VALUE"></td>
+                                    <td x-text="i.Maximum_unsupported_span"></td>
+                                </tr>
+                            </template>
 
-                    </tbody>
+                        </tbody>
 
-                </table>
+                    </table>
 
+
+                </div>
 
             </div>
-
-        </div>
 
 
 

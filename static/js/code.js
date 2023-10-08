@@ -2628,6 +2628,9 @@ document.addEventListener("alpine:init", () => {
       Density: "",
       ucsvsr_value: "",
 
+      
+    
+
       openHome(currentSection) {
         this.homepage = true;
         this.UCS_Virgin_Stress_Ratio = false;
@@ -3202,6 +3205,22 @@ document.addEventListener("alpine:init", () => {
               "m";
           });
       },
+
+   // Recommednation function declaration for MUS 
+    get_recommdendation_message:"",
+    openRec:false,
+    closeRec:true,
+   
+
+      get_recommendtions_mus(){
+        this.openRec = true;
+        this.closeRec = false;
+
+        
+
+      },
+
+
       refresh() {
         this.NumQ="";
         this.qAnalysMessage1="";
