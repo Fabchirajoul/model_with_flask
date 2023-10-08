@@ -43,7 +43,7 @@
                 <i class="fas fa-bars"></i>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02" x-cloak>
 
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
@@ -51,7 +51,7 @@
                         <a class="link-secondary me-3" x-on:click="openHome('mainMenu')" href="#">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="link-secondary me-3" x-on:click="openHome('about')" x-cloak>ABOUT</a>
+                        <a href="#" class="link-secondary me-3" x-on:click="openHome('about')">ABOUT</a>
                     </li>
 
                     <li class="nav-item">
@@ -119,14 +119,14 @@
                         <hr>
                         <!-- <h1 id="home-text" class="text-center">IN MINING</h1><br><br>
                         <h1 id="home-text" class="text-center">USING 4IR TECHNOLOGY</h1> -->
+                        <p id="home-text">VISUALIZATION OF THE UNDERGROUND EXCAVATION</p>
                         <div style="text-align: center;">
-                            <p>VISUALIZATION OF THE UNDERGROUND EXCAVATION</p>
-                            <img src="static\images\visu.JPG" class="img-fluid" width="80%" />
+                            <img src="static\images\visu.JPG" class="img-fluid" width="90%" />
                         </div><hr>
 
                     </div>
 
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center" x-cloak>
                         <!-- 2 UCS/Virgin Stress Ratio -->
                         <div class="col-md-10" x-show="UCS_Virgin_Stress_Ratio">
                             <!--  -->
@@ -569,7 +569,7 @@
         </div>
 
         <!-- about page -->
-        <div class="row justify-content-center" x-show="about">
+        <div class="row justify-content-center" x-show="about" x-cloak>
             <div class="col-md-10 text-center ">
                 <h5>ABOUT</h5>
                 <hr>
