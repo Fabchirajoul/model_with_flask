@@ -141,7 +141,8 @@
                         <p id="home-text">APP UTILIZATION</p>
                         <p>In order to use this application, make sure to visit the <a href="#"
                                 x-on:click="openHome('about')">ABOUT</a> page for a full list of the workflow and the
-                            capabilities or <a href="#" x-on:click="openHome('UCS_Virgin_Stress_Ratio')">GET STARTED</a> </p>
+                            capabilities or <a href="#" x-on:click="openHome('UCS_Virgin_Stress_Ratio')">GET STARTED</a>
+                        </p>
                     </div>
 
                     <div class="row justify-content-center" x-cloak>
@@ -179,36 +180,12 @@
 
                             </div>
                             <div>
-                                <p style="float: right;"><a href="#" x-on:click="openHome('Stress_Reduction_Ratio')"> NEXT > </a>
-                                        
-                                            </p>
+                                <p style="float: right;"><a href="#" x-on:click="openHome('Stress_Reduction_Ratio')">
+                                        NEXT > </a>
+
+                                </p>
 
                             </div>
-                            <!--  -->
-
-                            <!-- UCS historical data -->
-                            <table class="table">
-                                <thead>
-                                    <th>DENSITY</th>
-                                    <th>DEPTH</th>
-                                    <th>UCS</th>
-                                    <th>UCS PREDICTED VALUE</th>
-                                </thead>
-
-                                <tbody>
-                                    <template x-for="i in UCS_Hist">
-                                        <tr>
-                                            <td x-text="i.Density"></td>
-                                            <td x-text="i.Depth"></td>
-                                            <td x-text="i.UCS"></td>
-                                            <td x-text="i.UCS_PredictedValue"></td>
-                                        </tr>
-                                    </template>
-
-                                </tbody>
-
-                            </table>
-
                         </div>
 
                         <!--3 SRF Section -->
@@ -236,36 +213,11 @@
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
                             <div>
-                                <span style="float: left;"><a href="#" x-on:click="openHome('UCS_Virgin_Stress_Ratio')"> < PREVIOUS </a></span>
-                                <span style="float: right;"><a href="#" x-on:click="openHome('Jn_Description')">NEXT ></a></span>
+                                <span style="float: left;"><a href="#" x-on:click="openHome('UCS_Virgin_Stress_Ratio')">
+                                        < PREVIOUS </a></span>
+                                <span style="float: right;"><a href="#" x-on:click="openHome('Jn_Description')">NEXT
+                                        ></a></span>
                             </div>
-
-                            <!-- SRF historical data -->
-                            <table class="table">
-                                <thead>
-                                    <th>DENSITY</th>
-                                    <th>DEPTH</th>
-                                    <th>UCS</th>
-                                    <th>UCS PREDICTED VALUE</th>
-                                    <th>SRF PREDICTED VALUE</th>
-
-                                </thead>
-
-                                <tbody>
-                                    <template x-for="i in SRF_Hist">
-                                        <tr>
-                                            <td x-text="i.Density"></td>
-                                            <td x-text="i.Depth"></td>
-                                            <td x-text="i.UCS"></td>
-                                            <td x-text="i.UCS_PredictedValue"></td>
-                                            <td x-text="i.SRF_PredictedValue"></td>
-                                        </tr>
-                                    </template>
-
-                                </tbody>
-
-                            </table>
-
                         </div>
 
                         <!--4 Jn Section -->
@@ -298,8 +250,10 @@
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
                             <div>
-                                <span style="float: left;"><a href="#" x-on:click="openHome('Stress_Reduction_Ratio')"> < PREVIOUS </a></span>
-                                <span style="float: right;"><a href="#" x-on:click="openHome('Jr_Description')">NEXT ></a></span>
+                                <span style="float: left;"><a href="#" x-on:click="openHome('Stress_Reduction_Ratio')">
+                                        < PREVIOUS </a></span>
+                                <span style="float: right;"><a href="#" x-on:click="openHome('Jr_Description')">NEXT
+                                        ></a></span>
                             </div>
 
                         </div>
@@ -334,8 +288,10 @@
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
                             <div>
-                                <span style="float: left;"><a href="#" x-on:click="openHome('Jn_Description')"> < PREVIOUS </a></span>
-                                <span style="float: right;"><a href="#" x-on:click="openHome('Ja_Description')">NEXT ></a></span>
+                                <span style="float: left;"><a href="#" x-on:click="openHome('Jn_Description')">
+                                        < PREVIOUS </a></span>
+                                <span style="float: right;"><a href="#" x-on:click="openHome('Ja_Description')">NEXT
+                                        ></a></span>
                             </div>
 
 
@@ -370,8 +326,10 @@
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
                             <div>
-                                <span style="float: left;"><a href="#" x-on:click="openHome('Jr_Description')"> < PREVIOUS </a></span>
-                                <span style="float: right;"><a href="#" x-on:click="openHome('Jw_Description')">NEXT ></a></span>
+                                <span style="float: left;"><a href="#" x-on:click="openHome('Jr_Description')">
+                                        < PREVIOUS </a></span>
+                                <span style="float: right;"><a href="#" x-on:click="openHome('Jw_Description')">NEXT
+                                        ></a></span>
                             </div>
 
 
@@ -407,8 +365,10 @@
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
                             <div>
-                                <span style="float: left;"><a href="#" x-on:click="openHome('Ja_Description')"> < PREVIOUS </a></span>
-                                <span style="float: right;"><a href="#" x-on:click="openHome('Rock_Quality_Designator')">NEXT ></a></span>
+                                <span style="float: left;"><a href="#" x-on:click="openHome('Ja_Description')">
+                                        < PREVIOUS </a></span>
+                                <span style="float: right;"><a href="#"
+                                        x-on:click="openHome('Rock_Quality_Designator')">NEXT ></a></span>
                             </div>
 
                         </div>
@@ -445,8 +405,10 @@
                                     QUALITY</button>
                             </div>
                             <div>
-                                <span style="float: left;"><a href="#" x-on:click="openHome('Jw_Description')"> < PREVIOUS </a></span>
-                                <span style="float: right;"><a href="#" x-on:click="openHome('Rock_Quality_Index_Q_Value')">NEXT ></a></span>
+                                <span style="float: left;"><a href="#" x-on:click="openHome('Jw_Description')">
+                                        < PREVIOUS </a></span>
+                                <span style="float: right;"><a href="#"
+                                        x-on:click="openHome('Rock_Quality_Index_Q_Value')">NEXT ></a></span>
                             </div>
 
 
@@ -545,8 +507,10 @@
                                 <button @click="Q_value_analysis()" class="btn btn-info">SUPPORT REQUIREMENT</button>
                             </div>
                             <div>
-                                <span style="float: left;"><a href="#" x-on:click="openHome('Rock_Quality_Designator')"> < PREVIOUS </a></span>
-                                <span style="float: right;"><a href="#" x-on:click="openHome('Rock_Mass_Rating')">NEXT ></a></span>
+                                <span style="float: left;"><a href="#" x-on:click="openHome('Rock_Quality_Designator')">
+                                        < PREVIOUS </a></span>
+                                <span style="float: right;"><a href="#" x-on:click="openHome('Rock_Mass_Rating')">NEXT
+                                        ></a></span>
                             </div>
 
                             <br>
@@ -596,11 +560,14 @@
                                 <button class="btn btn-info" @click="RMR">rmr predict</button>
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
-                            
+
 
                             <div>
-                                <span style="float: left;"><a href="#" x-on:click="openHome('Rock_Quality_Index_Q_Value')"> < PREVIOUS </a></span>
-                                <span style="float: right;"><a href="#" x-on:click="openHome('Excavation_Category')">NEXT ></a></span>
+                                <span style="float: left;"><a href="#"
+                                        x-on:click="openHome('Rock_Quality_Index_Q_Value')">
+                                        < PREVIOUS </a></span>
+                                <span style="float: right;"><a href="#"
+                                        x-on:click="openHome('Excavation_Category')">NEXT ></a></span>
                             </div>
                         </div>
 
@@ -630,10 +597,12 @@
                                 <button class="btn btn-info" @click="ESR()">Esr PREDICT</button>
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
-                           
+
                             <div>
-                                <span style="float: left;"><a href="#" x-on:click="openHome('Rock_Mass_Rating')"> < PREVIOUS </a></span>
-                                <span style="float: right;"><a href="#" x-on:click="openHome('Maximum_Unsupported_Span')">NEXT ></a></span>
+                                <span style="float: left;"><a href="#" x-on:click="openHome('Rock_Mass_Rating')">
+                                        < PREVIOUS </a></span>
+                                <span style="float: right;"><a href="#"
+                                        x-on:click="openHome('Maximum_Unsupported_Span')">NEXT ></a></span>
                             </div>
                         </div>
 
@@ -660,11 +629,13 @@
                                 <button @click="get_recommendtions_mus()" class="btn btn-info">GET
                                     RECOMMENDATION</button>
                             </div>
-                           
+
 
                             <div>
-                                <span style="float: left;"><a href="#" x-on:click="openHome('Excavation_Category')"> < PREVIOUS </a></span>
-                                    <span style="float: right;"><a href="#" x-on:click="openHome('history')" style="float: right;">VIEW RECORD</a></span>
+                                <span style="float: left;"><a href="#" x-on:click="openHome('Excavation_Category')">
+                                        < PREVIOUS </a></span>
+                                <span style="float: right;"><a href="#" x-on:click="openHome('history')"
+                                        style="float: right;">VIEW RECORD</a></span>
                             </div><br>
 
                             <!-- Logical function for MUS  -->
@@ -739,7 +710,8 @@
                 <div class="col-md-10 text-center ">
                     <h5>ABOUT</h5>
                     <hr>
-                    <p style="text-align: justify;">The Maximum Unsupported Span API is an application programming interface designed to
+                    <p style="text-align: justify;">The Maximum Unsupported Span API is an application programming
+                        interface designed to
                         enhance the safety
                         within the mining Industry. This API makes use of multi-modal machine learning
                         ensemble-algorithms
@@ -754,7 +726,8 @@
 
                     <h5>WORK FLOW</h5>
                     <hr>
-                    <p style="text-align: justify;">The action button have been aligned accordingly and every user is expected to follow the sequence
+                    <p style="text-align: justify;">The action button have been aligned accordingly and every user is
+                        expected to follow the sequence
                         inorder to
                         get their predictions. A full list of the input and the corresponding output
                         for the action buttons can be seen here: <a href="#" @click="workflow=!workflow"
@@ -827,7 +800,8 @@
                     </table>
                     <h5>CAPABILTIES</h5>
                     <hr>
-                    <p style="text-align: justify;"> The maximum unsupported span API does not only predicts, its respective output based on its
+                    <p style="text-align: justify;"> The maximum unsupported span API does not only predicts, its
+                        respective output based on its
                         input.
                         It
                         also gives proposals based on its predictive results so that users can be aware of situations
@@ -862,7 +836,8 @@
                                 collapse,&nbsp;stable or unstable,&nbsp;Factor of safety </td>
                         </tbody>
                     </table>
-                    <p><a x-on:click="openHome('UCS_Virgin_Stress_Ratio')" href="#">CLICK ME NOW TO START MAKING INFORMED DECISIONS</a> </p>
+                    <p><a x-on:click="openHome('UCS_Virgin_Stress_Ratio')" href="#">CLICK ME NOW TO START MAKING
+                            INFORMED DECISIONS</a> </p>
                 </div>
 
             </div>
@@ -984,23 +959,201 @@
                 <h5 class="text-center">HISTORICAL DATA</h5>
                 <hr>
                 <div class="row" x-show="history">
-
-                    <div x-show="history">
-
-                        <h6>Username: </h6>
-                        <h6>Employee ID: </h6>
-
+                    <!-- ucs/vsr history starts here  -->
+                    <div class="col-md-8">
+                        <!-- UCS historical data -->
+                        <p style="text-align: center;">UCS/VSR HISTORY</p>
+                        <table class="table">
+                            <thead>
+                                <th>DENSITY</th>
+                                <th>DEPTH</th>
+                                <th>UCS</th>
+                                <th>UCS PREDICTED VALUE</th>
+                                <!-- <th>ACTION</th> -->
+                            </thead>
+                            <tbody>
+                                <!-- <template x-for="i in UCS_Hist"> -->
+                                <tr>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Depth_To"></td>
+                                    <td x-text="i.UCS_Mpa"></td>
+                                    <td x-text="i.UCS_PredictedValue"></td>
+                                </tr>
+                                <!-- </template> -->
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- <p style="text-align: center;">FRONT-END INPUT DATA FOR ML API COMPUTATION</p> -->
+                    <!-- ends here  -->
 
-                    <!-- Historical inputs by the admins -->
-                    <!-- <table x-show="history">
-                        <tr>
-                            <th>tghjk</th>
-                            <th>ghgj</th>
-                        </tr>
 
-                    </table> -->
+
+
+                    <!-- SRF history starts here  -->
+                    <div class="col-md-4">
+                        <!-- UCS historical data -->
+                        <p style="text-align: center;">SRF HISTORY</p>
+                        <table class="table">
+                            <thead>
+                                <th>Predicted UCS/VSR</th>
+                                <th>Predicted SRF</th>
+                                <!-- <th>ACTION</th> -->
+                            </thead>
+                            <tbody>
+                                <!-- <template x-for="i in UCS_Hist"> -->
+                                <tr>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                </tr>
+                                <!-- </template> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- ends here  -->
+
+                    <!-- Jn History  -->
+
+                    <div class="col-md-3">
+                        <!-- UCS historical data -->
+                        <p style="text-align: center;">Jn HISTORY</p>
+                        <table class="table">
+                            <thead>
+                                <th>Jn Description</th>
+                                <th>Predicted Jn</th>
+                                <!-- <th>ACTION</th> -->
+                            </thead>
+                            <tbody>
+                                <!-- <template x-for="i in UCS_Hist"> -->
+                                <tr>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                </tr>
+                                <!-- </template> -->
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <!-- Jr History  -->
+
+                    <div class="col-md-3">
+                        <!-- UCS historical data -->
+                        <p style="text-align: center;">Jr HISTORY</p>
+                        <table class="table">
+                            <thead>
+                                <th>Jr Description</th>
+                                <th>Predicted Jr</th>
+                                <!-- <th>ACTION</th> -->
+                            </thead>
+                            <tbody>
+                                <!-- <template x-for="i in UCS_Hist"> -->
+                                <tr>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                </tr>
+                                <!-- </template> -->
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+                    <!-- Ja History  -->
+
+                    <div class="col-md-3">
+                        <!-- UCS historical data -->
+                        <p style="text-align: center;">Ja HISTORY</p>
+                        <table class="table">
+                            <thead>
+                                <th>Ja Description</th>
+                                <th>Predicted Ja</th>
+                                <!-- <th>ACTION</th> -->
+                            </thead>
+                            <tbody>
+                                <!-- <template x-for="i in UCS_Hist"> -->
+                                <tr>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                </tr>
+                                <!-- </template> -->
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <!-- Jw History  -->
+
+                    <div class="col-md-3">
+                        <!-- UCS historical data -->
+                        <p style="text-align: center;">Jw HISTORY</p>
+                        <table class="table">
+                            <thead>
+                                <th>Jw Description</th>
+                                <th>Predicted Jw</th>
+                                <!-- <th>ACTION</th> -->
+                            </thead>
+                            <tbody>
+                                <!-- <template x-for="i in UCS_Hist"> -->
+                                <tr>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                </tr>
+                                <!-- </template> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- RQD HISTORY COMES HERE  -->
+                    <div class="col-md-8">
+                        <!-- UCS historical data -->
+                        <p style="text-align: center;">ROCK QUALITY DESIGNATOR</p>
+                        <table class="table">
+                            <thead>
+                                <th>Depth From Surface(m)</th>
+                                <th>Depth to Surface(m)</th>
+                                <th>True Thickness</th>
+                                <th>Hardness</th>
+                              
+                            </thead>
+                            <tbody>
+                                <!-- <template x-for="i in UCS_Hist"> -->
+                                <tr>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                </tr>
+                                <!-- </template> -->
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+                    <!-- ESR History  -->
+
+                    <div class="col-md-4">
+                        <!-- UCS historical data -->
+                        <p style="text-align: center;">ESR HISTORY</p>
+                        <table class="table">
+                            <thead>
+                                <th>ESR Description</th>
+                                <th>Predicted ESR</th>
+                                <!-- <th>ACTION</th> -->
+                            </thead>
+                            <tbody>
+                                <!-- <template x-for="i in UCS_Hist"> -->
+                                <tr>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                </tr>
+                                <!-- </template> -->
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+
 
                     <br>
                     <p style="text-align: center;">HISTORICAL COMPUTATION BY THE MULTI-MODAL ML MODEL</p>
@@ -1024,13 +1177,13 @@
                         </thead>
 
                         <tbody>
-                            <template x-for="i in history">
+                            <template x-for="i in history_list">
                                 <tr>
                                     <td x-text="i.Jn"></td>
                                     <td x-text="i.Ja"></td>
                                     <td x-text="i.Jr"></td>
                                     <td x-text="i.Jw"></td>
-                                    <td x-text="i.UCS_Virgin_stress_ratio"></td>
+                                    <td x-text="i.UCS_Mpa"></td>
                                     <td x-text="i.RQD_p"></td>
                                     <td x-text="i.Q_Value"></td>
                                     <td x-text="i.SRF"></td>
