@@ -960,10 +960,13 @@
                 <hr>
                 <div class="row" x-show="history">
                     <!-- ucs/vsr history starts here  -->
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <!-- UCS historical data -->
                         <p style="text-align: center;">UCS/VSR HISTORY</p>
-                        <table class="table">
+                        <div style="text-align: center;">
+                            <button class="btn btn-info" @click="UCS_VSR_HISTORY=!UCS_VSR_HISTORY" >Open/close</button>
+                        </div>
+                        <table class="table" x-show="UCS_VSR_HISTORY">
                             <thead>
                                 <th>DENSITY</th>
                                 <th>DEPTH</th>
@@ -982,17 +985,17 @@
                                 <!-- </template> -->
                             </tbody>
                         </table>
+                      
                     </div>
                     <!-- ends here  -->
-
-
-
-
                     <!-- SRF history starts here  -->
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <!-- UCS historical data -->
                         <p style="text-align: center;">SRF HISTORY</p>
-                        <table class="table">
+                        <div style="text-align: center;">
+                            <button class="btn btn-info" @click="SRF_HISTORY=!SRF_HISTORY" >Open/close</button>
+                        </div>
+                        <table class="table" x-show="SRF_HISTORY">
                             <thead>
                                 <th>Predicted UCS/VSR</th>
                                 <th>Predicted SRF</th>
@@ -1012,10 +1015,13 @@
 
                     <!-- Jn History  -->
 
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <!-- UCS historical data -->
                         <p style="text-align: center;">Jn HISTORY</p>
-                        <table class="table">
+                        <div style="text-align: center;">
+                            <button class="btn btn-info" @click="Jn_HISTORY=!Jn_HISTORY" >Open/close</button>
+                        </div>
+                        <table class="table" x-show="Jn_HISTORY">
                             <thead>
                                 <th>Jn Description</th>
                                 <th>Predicted Jn</th>
@@ -1035,10 +1041,13 @@
 
                     <!-- Jr History  -->
 
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <!-- UCS historical data -->
                         <p style="text-align: center;">Jr HISTORY</p>
-                        <table class="table">
+                        <div style="text-align: center;">
+                            <button class="btn btn-info" @click="Jr_HISTORY=!Jr_HISTORY" >Open/close</button>
+                        </div>
+                        <table class="table" x-show="Jr_HISTORY">
                             <thead>
                                 <th>Jr Description</th>
                                 <th>Predicted Jr</th>
@@ -1059,10 +1068,13 @@
 
                     <!-- Ja History  -->
 
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <!-- UCS historical data -->
                         <p style="text-align: center;">Ja HISTORY</p>
-                        <table class="table">
+                        <div style="text-align: center;">
+                            <button class="btn btn-info" @click="Ja_HISTORY=!Ja_HISTORY" >Open/close</button>
+                        </div>
+                        <table class="table" x-show="Ja_HISTORY">
                             <thead>
                                 <th>Ja Description</th>
                                 <th>Predicted Ja</th>
@@ -1082,10 +1094,13 @@
 
                     <!-- Jw History  -->
 
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <!-- UCS historical data -->
                         <p style="text-align: center;">Jw HISTORY</p>
-                        <table class="table">
+                        <div style="text-align: center;">
+                            <button class="btn btn-info" @click="Jw_HISTORY=!Jw_HISTORY" >Open/close</button>
+                        </div>
+                        <table class="table" x-show="Jw_HISTORY">
                             <thead>
                                 <th>Jw Description</th>
                                 <th>Predicted Jw</th>
@@ -1102,10 +1117,13 @@
                         </table>
                     </div>
                     <!-- RQD HISTORY COMES HERE  -->
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <!-- UCS historical data -->
                         <p style="text-align: center;">ROCK QUALITY DESIGNATOR</p>
-                        <table class="table">
+                        <div style="text-align: center;">
+                            <button class="btn btn-info" @click="ROCK_QUALITY_DESIGNATOR=!ROCK_QUALITY_DESIGNATOR" >Open/close</button>
+                        </div>
+                        <table class="table" x-show="ROCK_QUALITY_DESIGNATOR">
                             <thead>
                                 <th>Depth From Surface(m)</th>
                                 <th>Depth to Surface(m)</th>
@@ -1130,10 +1148,13 @@
 
                     <!-- ESR History  -->
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <!-- UCS historical data -->
                         <p style="text-align: center;">ESR HISTORY</p>
-                        <table class="table">
+                        <div style="text-align: center;">
+                            <button class="btn btn-info" @click="ESR_HISTORY=!ESR_HISTORY" >Open/close</button>
+                        </div>
+                        <table class="table" x-show="ESR_HISTORY">
                             <thead>
                                 <th>ESR Description</th>
                                 <th>Predicted ESR</th>
@@ -1150,13 +1171,101 @@
                         </table>
                     </div>
 
+                    <!-- Q History  -->
+                    <div class="col-md-6">
+                        <!-- UCS historical data -->
+                        <p style="text-align: center;">ROCK QUALITY INDEX</p>
+                        <div style="text-align: center;">
+                            <button class="btn btn-info" @click="ROCK_QUALITY_INDEX=!ROCK_QUALITY_INDEX" >Open/close</button>
+                        </div>
+                        <table class="table" x-show="ROCK_QUALITY_INDEX">
+                            <thead>
+                                <th>Predicted Jn</th>
+                                <th>Predicted Jr</th>
+                                <th>Predicted Ja</th>
+                                <th>Predicted Jw</th>
+                                <th>Predicted SRF</th>
+                                <th>Predicted RQD</th>
+                                <!-- <th>ACTION</th> -->
+                            </thead>
+                            <tbody>
+                                <!-- <template x-for="i in UCS_Hist"> -->
+                                <tr>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                </tr>
+                                <!-- </template> -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                     <!-- RMR History  -->
+                     <div class="col-md-6">
+                        <!-- UCS historical data -->
+                        <p style="text-align: center;">ROCK MASS RATING</p>
+                        <div style="text-align: center;">
+                            <button class="btn btn-info" @click="ROCK_MASS_RATING=!ROCK_MASS_RATING" >Open/close</button>
+                        </div>
+                        <table class="table" x-show="ROCK_MASS_RATING">
+                            <thead>
+                                <th>Predicted Q</th>
+                                <th>Predicted RMR</th>
+                                
+                                <!-- <th>ACTION</th> -->
+                            </thead>
+                            <tbody>
+                                <!-- <template x-for="i in UCS_Hist"> -->
+                                <tr>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                    
+                                </tr>
+                                <!-- </template> -->
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                     <!-- MUS History  -->
+                     <div class="col-md-12">
+                        <!-- UCS historical data -->
+                        <p style="text-align: center;">MAXIMUM STABLE UNSUPPORTED SPAN HISTORY</p>
+                        <div style="text-align: center;">
+                            <button class="btn btn-info" @click="MAXIMUM_STABLE_UNSUPPORTED_SPAN_HISTORY=!MAXIMUM_STABLE_UNSUPPORTED_SPAN_HISTORY" >Open/close</button>
+                        </div>
+                        <table class="table" x-show="MAXIMUM_STABLE_UNSUPPORTED_SPAN_HISTORY">
+                            <thead>
+                                <th>Predicted Q</th>
+                                <th>Predicted ESR</th>
+                                <th>Predicted MUS</th>
+                                
+                                <!-- <th>ACTION</th> -->
+                            </thead>
+                            <tbody>
+                                <!-- <template x-for="i in UCS_Hist"> -->
+                                <tr>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                    <td x-text="i.Density"></td>
+                                    
+                                </tr>
+                                <!-- </template> -->
+                            </tbody>
+                        </table>
+                    </div>
+
+
 
 
 
 
 
                     <br>
-                    <p style="text-align: center;">HISTORICAL COMPUTATION BY THE MULTI-MODAL ML MODEL</p>
+                    <p style="text-align: center;">COMBINED PREDICTED RECORD PER ROCK MASS QUALITY</p>
                     <!-- Numerical computation value by the machine learning model -->
 
                     <table class="table" x-show="history">
@@ -1177,7 +1286,7 @@
                         </thead>
 
                         <tbody>
-                            <template x-for="i in history_list">
+                            <!-- <template x-for="i in history_list"> -->
                                 <tr>
                                     <td x-text="i.Jn"></td>
                                     <td x-text="i.Ja"></td>
@@ -1191,7 +1300,7 @@
                                     <td x-text="i.ESR_VALUE"></td>
                                     <td x-text="i.Maximum_unsupported_span"></td>
                                 </tr>
-                            </template>
+                            <!-- </template> -->
 
                         </tbody>
 

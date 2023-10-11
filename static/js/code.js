@@ -3213,6 +3213,26 @@ document.addEventListener("alpine:init", () => {
           (this.Density = ""),
           (this.ucsvsr_value = "");
       },
+
+
+      // Toggling between the historical table logic 
+      UCS_VSR_HISTORY:false,
+      SRF_HISTORY:false,
+      Jn_HISTORY:false,
+      Ja_HISTORY:false,
+      Jr_HISTORY:false,
+      Jw_HISTORY:false,
+      ROCK_QUALITY_DESIGNATOR:false,
+      ESR_HISTORY:false,
+      ROCK_QUALITY_INDEX:false,
+      ROCK_MASS_RATING:false,
+      MAXIMUM_STABLE_UNSUPPORTED_SPAN_HISTORY:false,
+
+
+
+
+
+
       init() {
         this.historicalData();
         this.getUCS();
