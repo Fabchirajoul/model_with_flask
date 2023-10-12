@@ -1130,7 +1130,7 @@ def Jr_Pred():
 
 
 # 5. Ja Model
-with open('models/gradient_boosting_Ja.pkl', 'rb') as f:
+with open('models/extra_Ja.pkl', 'rb') as f:
     Ja_model = pickle.load(f)
 
 
@@ -2261,6 +2261,7 @@ def RMR_Pred():
         prediction = rmr_model.predict(features)[0]
 
         return jsonify({'prediction': prediction.tolist()})
+
 
 
 # 10. ESR
