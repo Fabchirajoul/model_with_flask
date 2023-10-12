@@ -3171,6 +3171,7 @@ document.addEventListener("alpine:init", () => {
         this.closeRec = false;
       },
       refresh() {
+        this.EsrVal="";
         this.JaVal = "";
         this.JwVal = "";
         this.JrVal = "";
