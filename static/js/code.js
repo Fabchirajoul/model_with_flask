@@ -1889,7 +1889,7 @@ document.addEventListener("alpine:init", () => {
             // val = val.split("]")[0];
             this.ucsvsr_value =
               "Based on your input, the ratio of the Uniaxial compressive strength to the virgin stress is " +
-              val;
+              val.toFixed(2);
           });
       },
 

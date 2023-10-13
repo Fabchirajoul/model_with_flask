@@ -17,7 +17,7 @@ conn = sqlite3.connect('capstonedb.db')
 c = conn.cursor()
 
 # 1.  UCS
-with open('models/KNR_UCSVirgin.pkl', 'rb') as f:
+with open('models/EL_UCS_VSR.pkl', 'rb') as f:
     ucsvsr_model = pickle.load(f)
 
 # connect models
