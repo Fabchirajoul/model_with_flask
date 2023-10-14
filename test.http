@@ -243,8 +243,9 @@ Content-Type: application/json
 }
 ###
 
-get http://127.0.0.1:5000/api/get_MUS_model
+get http://127.0.0.1:5000/api/get_ucs_model
 
 
 ###
 get http://127.0.0.1:5000/api/historical_data/
+

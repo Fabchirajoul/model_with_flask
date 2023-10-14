@@ -148,43 +148,27 @@
                     <div class="row justify-content-center" x-cloak>
                         <!-- 2 UCS/Virgin Stress Ratio -->
                         <div class="col-md-10" x-show="UCS_Virgin_Stress_Ratio">
-                            <!--  -->
-                            <marquee direction="right" scrollmount="8">
-                                <h4>UNIAXIAL COMPRESSIVE STRENGTH / VIRGIN STRESS RATIO</h4>
-                            </marquee>
-
-
+                            <marquee direction="right" scrollmount="8"><h4>UNIAXIAL COMPRESSIVE STRENGTH / VIRGIN STRESS RATIO</h4></marquee>
                             <hr>
-
-                            <h5>PREDICTED VALUE: <span x-text="ucsvsr_value"
-                                    style="color: rgba(238, 255, 0, 0.756)"></span></h5>
-
+                            <h5>PREDICTED VALUE: <span x-text="ucsvsr_value" style="color: rgba(238, 255, 0, 0.756)"></span></h5>
                             <hr>
-
                             <label>Density (Kg/mm^3)</label><br>
                             <input class="form-control" x-model="Density" type="number"
                                 placeholder="Click to Enter the value of the density e.g 27000"><br>
-
                             <label>Depth/Height (m)</label><br>
                             <input class="form-control" x-model="Depth" type="number"
                                 placeholder="Click to Enter the value of the Depth below surface in meters e.g 10"><br>
-
                             <label>UCS (MPa)</label><br>
                             <input class="form-control" x-model="UCS" type="number"
                                 placeholder="Click to Enter the Uniaxial Compressive Stress value e.g 50"><br>
-
-
                             <div style="text-align: center;">
                                 <button @click="ucs_vsr()" class="btn btn-info">ucs/vsr predict</button>
                                 <button @click="refresh()" class="btn btn-info">refresh</button>
-
                             </div>
                             <div>
                                 <p style="float: right;"><a href="#" x-on:click="openHome('Stress_Reduction_Ratio')">
                                         NEXT > </a>
-
                                 </p>
-
                             </div>
                         </div>
 
@@ -736,62 +720,74 @@
 
                     <table class="table responsive-table" style="color: blueviolet;" x-show="workflow">
                         <thead>
+                            <td> STEPS</td>
                             <td> Action Button</td>
                             <td>Required Input</td>
                             <td>Output @click Button Predict</td>
                         </thead>
 
                         <tbody>
+                            <td>1.</td>
                             <td>UCS/Virgin Stress Ratio</td>
                             <td>Density(kg/mm^3)<br> Depth/Height(m)<br> UCS(MPA)</td>
                             <td>UCS/VSR Predict</td>
                         </tbody>
                         <tbody>
+                            <td>2.</td>
                             <td>Stress Reduction Ratio</td>
                             <td>UCS/VSR Predict</td>
                             <td>SRF Predict</td>
                         </tbody>
                         <tbody>
+                            <td>3.</td>
                             <td>Jn Description</td>
                             <td>Description of the Joint set number</td>
                             <td>Jn number</td>
                         </tbody>
                         <tbody>
+                            <td>4.</td>
                             <td>Jr Description</td>
                             <td>Description of the orientation number</td>
                             <td>Jr number</td>
                         </tbody>
                         <tbody>
+                            <td>5.</td>
                             <td>Ja Description</td>
                             <td>Description of the Joint alteration number</td>
                             <td>Ja number</td>
                         </tbody>
                         <tbody>
+                            <td>6.</td>
                             <td>Jw Description</td>
                             <td>Description of the Joint water reduction number</td>
                             <td>Jw number</td>
                         </tbody>
                         <tbody>
+                            <td>7.</td>
                             <td>Rock Quality Designator</td>
                             <td>Depth below surface<br> Depth below surface <br>True thickness<br> Hardness</td>
                             <td>RQD Predict</td>
                         </tbody>
                         <tbody>
+                            <td>8.</td>
                             <td>Rock Quality Index (Q Value)</td>
                             <td>SRF Predict<br> Jn number <br>Jr number<br> Ja number <br>Jw number<br> RQD Predict</td>
                             <td>Q Predict</td>
                         </tbody>
                         <tbody>
+                            <td>9.</td>
                             <td>ROck Mass Rating (RMR)</td>
                             <td>Q Predict</td>
                             <td>RMR Predict</td>
                         </tbody>
                         <tbody>
+                            <td>10.</td>
                             <td>Excavation Category (ESR)</td>
                             <td>Excavation category description</td>
                             <td>ESR Predict</td>
                         </tbody>
                         <tbody>
+                            <td>11.</td>
                             <td>MUS</td>
                             <td>Q Predict<br>ESR Predict</td>
                             <td>Maximum Unsupproted span prediction</td>

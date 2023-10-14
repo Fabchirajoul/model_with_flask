@@ -1,42 +1,183 @@
 
-Drop table users
+
+
+-- create main table for all the predictions
+-- create sub tables and join them with the main table for display purposes
+CREATE TABLE MainTable (
+    Id integer primary key AUTOINCREMENT,
+    Jn,
+	Ja,
+    Jr,
+    Jw,
+    Density,
+    UCS_Mpa,
+    RQD_p,
+    Q_Value,
+    SRF,
+    RMR,
+    ESR_VALUE,
+    Maximum_unsupported_span
+)
+
+
+INSERT INTO MainDataTabe (
+    Jn,
+	Ja,
+    Jr,
+    Jw,
+    UCS_Mpa,
+    Density,
+    RQD_p,
+    Q_Value,
+    SRF,
+    RMR,
+    ESR_VALUE,
+    Maximum_unsupported_span) VALUES (2,3,5,212,27000,2,3232,1,23,5,23,4)
+
+SELECT * FROM dataset
+
+
+SELECT DISTINCT ESR_Conditions
+FROM dataset
+
+-- Drop table users
+
+
+CREATE TABLE MainDataTable (
+    MainID integer primary key AUTOINCREMENT,
+    Borehole_ID,
+    Depth_From,
+    Depth_To,
+    Run_Length,
+    True_Thickness,
+    Weathering,
+    Hardness,
+    Geotech_Domain,
+    Jn_Description,
+    Jr_Description,
+    Ja_Description,
+    Jw_Description,
+    ESR_Conditions,
+    Depth_underground,
+    RQD_m,
+    RQD_p,
+    Jn,
+    Jr,
+    Ja,
+    Jw,
+    Density,
+    Virgin_Stress,
+    UCS_Mpa,
+    UCS_Virgin_stress_ratio,
+    SRF,
+    Q_Value,
+    LNQ,
+    RMR,
+    ESR_VALUE,
+    UCS_PredictedValue, 
+    SRF_PredictedValue,
+    Ja_PredictedValue,
+    Jr_PredictedValue,
+    Jw_PredictedValue,
+    Jn_PredictedValue,
+    RMR_PredictedValue,
+    RQD_PredictedValue,
+    Q_Value_PredictedValue,
+    ESR_PredictedValue,
+    Maximum_unsupported_span)
+
+DROP TABLE MainDataTable
+
+SELECT * FROM MainDataTable
+
+
+SELECT Density, Depth_To, UCS_Mpa, PredictedValue 
+FROM MainDataTable
+JOIN ucs_virgin_stress ON MainDataTable.MainID = ucs_virgin_stress.MainID
+
 
 
 
 CREATE TABLE ucs_virgin_stress(
-    Id integer primary key AUTOINCREMENT,
-    Density REAL,
-    Depth REAL,
-    UCS REAL,
-    PredictedValue REAL
+    UCS_Id integer primary key AUTOINCREMENT,
+    PredictedValue REAL,
+    MainID interger,
+    FOREIGN KEY (MainID) REFERENCES MainDataTable(MainID)
 );
 
--- DROP TABLE ucs_virgin_stress;
-
-SELECT * FROM ucs_virgin_stress;
 
 
-insert into ucs_virgin_stress (Density, Depth, UCS, PredictedValue) values (27000, 32.35, 177.37, 3);
-insert into ucs_virgin_stress (Density, Depth, UCS) values (27000, 17.75, 53.65);
+SELECT Density, Depth_To, UCS_Mpa, UCS_PredictedValue FROM MainDataTable;
+
+-- DROP TABLE ucs_virgin_stress
+
+-- with prediction
+insert into ucs_virgin_stress (MainID, PredictedValue) values (3, 3);
+
+--main table
+insert into MainDataTable (Density, Depth_To, UCS_Mpa, UCS_PredictedValue) values (27000, 17.75, 53.65, 5);
+
+
+UPDATE MainDataTable SET SRF_PredictedValue = 90 WHERE MainID = 1
+
+UPDATE MainDataTable SET Jn_PredictedValue= 90 WHERE MainID IN (
+    SELECT
+        MAX(MAINID)
+    FROM MainDataTable
+);
+
+
+UPDATE MainDataTable SET Depth_From= 90, Depth_To=80, True_Thickness=70, Hardness=60 WHERE 
+MainID IN (
+    SELECT
+        MAX(MAINID)
+    FROM MainDataTable
+);
+
+
+UPDATE MainDataTable SET ESR_PredictedValue=77 WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)
+
+
+
+INSERT INTO MainDataTable (Depth_From, Depth_To, True_Thickness, Hardness) VALUES (?, ?,?, ?)
+
+
+SELECT MainID, UCS_PredictedValue, SRF_PredictedValue, Jn_PredictedValue, Depth_From, Depth_To, True_Thickness, Hardness, RQD_PredictedValue 
+FROM MainDataTable
+WHERE MainID IN (
+    SELECT
+        MAX(MAINID)
+    FROM MainDataTable
+);
+
+SELECT SRF_PredictedValue, Jn_PredictedValue, Jr_PredictedValue, Ja_PredictedValue, Jw_PredictedValue, RQD_PredictedValue FROM MainDataTable
 
 -- SRF
 CREATE TABLE SRF(
-    Id integer primary key AUTOINCREMENT,
+    SRF_Id integer primary key AUTOINCREMENT,
     SRF_PredictedValue REAL,
     UCS_Id integer,
     FOREIGN KEY (UCS_Id)
-        REFERENCES UCS_virginStress(Id)
+        REFERENCES ucs_virgin_stress(UCS_Id)
     
 );
 
-insert into SRF (SRF_PredictedValue, UCS_Id) values (32.35, 2);
+insert into SRF (SRF_PredictedValue) values (32.35);
 insert into SRF (SRF_PredictedValue, UCS_Id) values (17.75, 1);
 
 
+-- DROP TABLE SRF
+
 SELECT * 
 FROM SRF
-INNER JOIN UCS_virginStress
-    ON SRF.UCS_Id = UCS_virginStress.Id;
+INNER JOIN ucs_virgin_stress
+    ON SRF.UCS_Id = ucs_virgin_stress.UCS_Id;
+
+
+
+
+
+
 
 
 --Jn
@@ -54,8 +195,10 @@ SELECT *
 FROM Jn
 INNER JOIN SRF
     ON Jn.SRF_Id = SRF.Id
-INNER JOIN UCS_virginStress
-    ON SRF.UCS_Id = UCS_virginStress.Id;
+INNER JOIN ucs_virgin_stress
+    ON SRF.UCS_Id = ucs_virgin_stress.Id;
+
+
 
 
 
@@ -76,8 +219,8 @@ INNER JOIN Jn
     ON Jr.Jn_Id = Jn.Id
 INNER JOIN SRF
     ON Jn.SRF_Id = SRF.Id
-INNER JOIN UCS_virginStress
-    ON SRF.UCS_Id = UCS_virginStress.Id;
+INNER JOIN ucs_virgin_stress
+    ON SRF.UCS_Id = ucs_virgin_stress.Id;
 
 
 
@@ -100,8 +243,8 @@ INNER JOIN Jn
     ON Jr.Jn_Id = Jn.Id
 INNER JOIN SRF
     ON Jn.SRF_Id = SRF.Id
-INNER JOIN UCS_virginStress
-    ON SRF.UCS_Id = UCS_virginStress.Id;
+INNER JOIN ucs_virgin_stress
+    ON SRF.UCS_Id = ucs_virgin_stress.Id;
 
 
 
@@ -127,8 +270,8 @@ INNER JOIN Jn
     ON Jr.Jn_Id = Jn.Id
 INNER JOIN SRF
     ON Jn.SRF_Id = SRF.Id
-INNER JOIN UCS_virginStress
-    ON SRF.UCS_Id = UCS_virginStress.Id;
+INNER JOIN ucs_virgin_stress
+    ON SRF.UCS_Id = ucs_virgin_stress.Id;
 
 
 
@@ -160,8 +303,8 @@ INNER JOIN Jn
     ON Jr.Jn_Id = Jn.Id
 INNER JOIN SRF
     ON Jn.SRF_Id = SRF.Id
-INNER JOIN UCS_virginStress
-    ON SRF.UCS_Id = UCS_virginStress.Id;
+INNER JOIN ucs_virgin_stress
+    ON SRF.UCS_Id = ucs_virgin_stress.Id;
 
 
 
@@ -204,8 +347,8 @@ INNER JOIN Jn
     ON Jr.Jn_Id = Jn.Id
 INNER JOIN SRF
     ON Jn.SRF_Id = SRF.Id
-INNER JOIN UCS_virginStress
-    ON SRF.UCS_Id = UCS_virginStress.Id;
+INNER JOIN ucs_virgin_stress
+    ON SRF.UCS_Id = ucs_virgin_stress.Id;
 
 
 insert into Q_Value (Jn, Jr, Ja, Jw, SRF, RDQ_p) values (15, 1.5, 6, 0.2, 1.25, 58);
@@ -240,8 +383,8 @@ INNER JOIN Jn
     ON Jr.Jn_Id = Jn.Id
 INNER JOIN SRF
     ON Jn.SRF_Id = SRF.Id
-INNER JOIN UCS_virginStress
-    ON SRF.UCS_Id = UCS_virginStress.Id;
+INNER JOIN ucs_virgin_stress
+    ON SRF.UCS_Id = ucs_virgin_stress.Id;
 
 
 
@@ -275,8 +418,8 @@ INNER JOIN Jn
     ON Jr.Jn_Id = Jn.Id
 INNER JOIN SRF
     ON Jn.SRF_Id = SRF.Id
-INNER JOIN UCS_virginStress
-    ON SRF.UCS_Id = UCS_virginStress.Id;
+INNER JOIN ucs_virgin_stress
+    ON SRF.UCS_Id = ucs_virgin_stress.Id;
 
 
 --MUS
@@ -309,8 +452,8 @@ INNER JOIN Jn
     ON Jr.Jn_Id = Jn.Id
 INNER JOIN SRF
     ON Jn.SRF_Id = SRF.Id
-INNER JOIN UCS_virginStress
-    ON SRF.UCS_Id = UCS_virginStress.Id;
+INNER JOIN ucs_virgin_stress
+    ON SRF.UCS_Id = ucs_virgin_stress.Id;
 
 
 
