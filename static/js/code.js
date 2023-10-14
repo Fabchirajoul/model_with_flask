@@ -1420,7 +1420,7 @@ document.addEventListener("alpine:init", () => {
         "Storage rooms water treatment plants minor road and railway tunnels surge chambers access tunnels",
         "Power stations major road and railway tunnels civil defence chambers portal intersections",
         "Underground nuclear power stations railway stations sports and public facilities factories",
-        "Storage rooms water treatment plants minor road and railway tunnels surge chambers  access tunnels",
+        "Storage rooms water treatment plants minor road and railway tunnels surge chambers  access tunnels"
         ],
 
       ESR() {

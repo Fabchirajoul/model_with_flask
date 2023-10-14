@@ -146,7 +146,7 @@ def Jn_Pred():
     # Fit and transform the categorical value using LabelEncoder
     encoded_Jn = labelEncoder.fit_transform(Jn_Description)
 
-    for i in range(0, len(Jn_Description)-1):
+    for i in range(0, len(Jn_Description)):
         if str(data['Jn_Description']) in str(Jn_Description[i]):
             encoded_val = encoded_Jn[i]
             # Reshape features and make prediction using the loaded model
@@ -234,7 +234,7 @@ def Jr_Pred():
     # Fit and transform the categorical value using LabelEncoder
     encoded_Jr = labelEncoder.fit_transform(Jr_Description)
 
-    for i in range(0, len(Jr_Description)-1):
+    for i in range(0, len(Jr_Description)):
         if str(data['Jr_Description']) in str(Jr_Description[i]):
             encoded_val = encoded_Jr[i]
             # Reshape features and make prediction using the loaded model
@@ -595,7 +595,7 @@ def Ja_Pred():
     # Fit and transform the categorical value using LabelEncoder
     encoded_Ja = labelEncoder.fit_transform(Ja_Description)
 
-    for i in range(0, len(Ja_Description)-1):
+    for i in range(0, len(Ja_Description)):
         if str(data['Ja_Description']) in str(Ja_Description[i]):
             encoded_val = encoded_Ja[i]
             # Reshape features and make prediction using the loaded model
@@ -1095,7 +1095,7 @@ def ESR_Pred():
     # Fit and transform the categorical value using LabelEncoder
     encoded_esr = labelEncoder.fit_transform(ESR_Conditions)
 
-    for i in range(0, len(ESR_Conditions)-1):
+    for i in range(0, len(ESR_Conditions)):
         if str(data['ESR_Conditions']) in str(ESR_Conditions[i]):
             encoded_val = encoded_esr[i]
             # Reshape features and make prediction using the loaded model
