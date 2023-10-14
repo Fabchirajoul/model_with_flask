@@ -146,7 +146,7 @@ def Jn_Pred():
     # Fit and transform the categorical value using LabelEncoder
     encoded_Jn = labelEncoder.fit_transform(Jn_Description)
 
-    for i in range(0, len(Jn_Description)):
+    for i in range(0,len(Jn_Description)):
         if str(data['Jn_Description']) in str(Jn_Description[i]):
             encoded_val = encoded_Jn[i]
             # Reshape features and make prediction using the loaded model
@@ -161,7 +161,7 @@ def Jn_Pred():
 
 
 # 4. Jr Model
-with open('models/ababoost_Jn.pkl', 'rb') as f:
+with open('models/Decision_tree_regressor_Jr.pkl', 'rb') as f:
     Jr_model = pickle.load(f)
 
 
@@ -610,7 +610,7 @@ def Ja_Pred():
 
 
 # 6. Jw Model
-with open('models/ababoost_Jn.pkl', 'rb') as f:
+with open('models/gradient_boosting_Jw.pkl','rb') as f:
     Jw_model = pickle.load(f)
 
 
