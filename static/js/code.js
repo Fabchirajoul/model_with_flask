@@ -1222,7 +1222,7 @@ document.addEventListener("alpine:init", () => {
           .then((res) => {
             this.JnVal =
               "Based on your input, the predicted Jn value is " +
-              res.data.prediction[0];
+              res.data.prediction[0].toFixed(2);
           });
       },
 
@@ -1235,7 +1235,7 @@ document.addEventListener("alpine:init", () => {
           .then((res) => {
             this.JrVal =
               "Based on your input, the predicted Joint Orientation (Jr value) is " +
-              res.data.prediction[0];
+              res.data.prediction[0].toFixed(2);
           });
       },
 
@@ -1249,7 +1249,7 @@ document.addEventListener("alpine:init", () => {
           .then((res) => {
             this.JaVal =
               "Based on your input, the predicted Joint Alteration (Ja value) is " +
-              res.data.prediction[0];
+              res.data.prediction[0].toFixed(2);
           });
       },
 
@@ -1263,7 +1263,7 @@ document.addEventListener("alpine:init", () => {
           .then((res) => {
             this.JwVal =
               "Based on your input, the predicted Joint Water Reduction (Jw value) is " +
-              res.data.prediction[0];
+              res.data.prediction[0].toFixed(2);
           });
       },
 
@@ -1354,7 +1354,7 @@ document.addEventListener("alpine:init", () => {
             console.log(res.data);
             this.QValue =
               "Based on your input, the predicted ROck Quality Index(Q) value is " +
-              val;
+              val.toFixed(2);
             this.NumQ = val;
           });
       },
@@ -1406,7 +1406,7 @@ document.addEventListener("alpine:init", () => {
             // val = val.split("]")[0];
             console.log(res.data);
             this.rmr_val =
-              "Based on your input, the rock mass rating value is " + val;
+              "Based on your input, the rock mass rating value is " + val.toFixed(2);
           });
       },
 
@@ -1432,7 +1432,7 @@ document.addEventListener("alpine:init", () => {
             // console.log(res.data);
             this.EsrVal =
               "Based on your input, the predicted Excavation Category value is " +
-              res.data.prediction[0];
+              res.data.prediction[0].toFixed(2);
           });
       },
 
@@ -1450,7 +1450,7 @@ document.addEventListener("alpine:init", () => {
             console.log(res.data);
             this.MUSValue =
               "Based on your input, the predicted Maximum Unsupported span value is " +
-              val / 2 +
+              val.toFixed(2) / 2 +
               "m";
           });
       },
