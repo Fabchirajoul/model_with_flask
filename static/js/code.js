@@ -1348,6 +1348,7 @@ document.addEventListener("alpine:init", () => {
             SRF: this.SRFValue,
           })
           .then((res) => {
+            // this.q_value = parseInt(val);
             let val = res.data.prediction;
             // val = val.split("[")[1];
             // val = val.split("]")[0];
@@ -1355,12 +1356,12 @@ document.addEventListener("alpine:init", () => {
             this.QValue =
               "Based on your input, the predicted ROck Quality Index(Q) value is " +
               val.toFixed(2);
-            this.NumQ = val;
+            this.NumQ = val.toFixed(2);
           });
       },
 
       Q_value_analysis() {
-        val = this.Q_value;
+        val = this.NumQ;
         this.openQAanalysis = true;
         this.closeQAanalysis = false;
         if (val <= 0 && val < 10) {
@@ -1450,7 +1451,7 @@ document.addEventListener("alpine:init", () => {
             console.log(res.data);
             this.MUSValue =
               "Based on your input, the predicted Maximum Unsupported span value is " +
-              val.toFixed(2) / 2 +
+              val.toFixed(2) +
               "m";
           });
       },

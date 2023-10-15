@@ -610,7 +610,7 @@ def Ja_Pred():
 
 
 # 6. Jw Model
-with open('models/GBR_Jw.pkl','rb') as f:
+with open('models/update/RFC_Jw.pkl','rb') as f:
     Jw_model = pickle.load(f)
 
 
@@ -1009,7 +1009,7 @@ def Jw_Pred():
 
 
 # 7. RQD
-with open('models/mlp_rqd.pkl', 'rb') as f:
+with open('models/update/RFC_RQD.pkl', 'rb') as f:
     rqd_model = pickle.load(f)
 
 
@@ -1031,7 +1031,7 @@ def RQD_Pred():
 
 
 # 8. Q working both online and offline
-with open('models/KNR_q.pkl', 'rb') as f:
+with open('models/update/RFC_Q.pkl', 'rb') as f:
     q_model = pickle.load(f)
 
 
@@ -1055,7 +1055,7 @@ def Q_Pred():
 
 
 # 9. RMR
-with open('models/rmr.pkl', 'rb') as f:
+with open('models/update/RFC_RMR.pkl', 'rb') as f:
     rmr_model = pickle.load(f)
 
 
@@ -1074,7 +1074,7 @@ def RMR_Pred():
 
 
 # 10. ESR
-with open('models/RFR_ESR.pkl', 'rb') as f:
+with open('models/update/RFC_ESR.pkl', 'rb') as f:
     model_esr = pickle.load(f)
 
 
@@ -1111,7 +1111,7 @@ def ESR_Pred():
     # 11. MUS
 
 
-with open('models/ababoost_us.pkl', 'rb') as f:
+with open('models/update/RFC_MUS.pkl', 'rb') as f:
     mus_model = pickle.load(f)
 
 
