@@ -81,7 +81,7 @@ def SRF_Pred():
 
 
 # 3. Jn Model
-with open('models/ababoost_Jn.pkl', 'rb') as f:
+with open('models/update/RFC_Jn.pkl', 'rb') as f:
     Jn_model = pickle.load(f)
 
 
@@ -161,7 +161,7 @@ def Jn_Pred():
 
 
 # 4. Jr Model
-with open('models/Decision_tree_regressor_Jr.pkl', 'rb') as f:
+with open('models/update/RFR_Jr.pkl', 'rb') as f:
     Jr_model = pickle.load(f)
 
 
@@ -610,7 +610,7 @@ def Ja_Pred():
 
 
 # 6. Jw Model
-with open('models/gradient_boosting_Jw.pkl','rb') as f:
+with open('models/GBR_Jw.pkl','rb') as f:
     Jw_model = pickle.load(f)
 
 
@@ -994,7 +994,7 @@ def Jw_Pred():
     # Fit and transform the categorical value using LabelEncoder
     encoded_Jw = labelEncoder.fit_transform(Jw_Description)
 
-    for i in range(0, len(Jw_Description)-1):
+    for i in range(0, len(Jw_Description)):
         if str(data['Jw_Description']) in str(Jw_Description[i]):
             encoded_val = encoded_Jw[i]
             # Reshape features and make prediction using the loaded model
