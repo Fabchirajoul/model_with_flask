@@ -856,7 +856,7 @@
                         </div>
                         <div class="card-body">
                             <b>
-                                <p>Surname: &nbsp;<span>FABCHI</span></p>
+                                <p>Surname: &nbsp;<span>Fabchi</span></p>
                                 <p>Initials: &nbsp;<span>RJ</span></p>
                                 <p>Email: &nbsp;<span>fabchirajoul@gmail.com</span></p>
                                 <p>Github: &nbsp;<a target="_blank" href="https://github.com/Fabchirajoul">Click here to
@@ -971,14 +971,15 @@
                                 <!-- <th>ACTION</th> -->
                             </thead>
                             <tbody>
-                                <!-- <template x-for="i in UCS_Hist"> -->
-                                <tr>
-                                    <td >1</td>
-                                    <td >2</td>
-                                    <td >3</td>
-                                    <td >4</td>
-                                </tr>
-                                <!-- </template> -->
+                                <template x-for="i in UCS_Hist">
+                                    <tr>
+                                        <td x-text="i.Density"></td>
+                                        <td x-text="i.Depth_To"></td>
+                                        <td x-text="i.UCS_Mpa"></td>
+                                        <td x-text="i.UCS_PredictedValue"></td>
+
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                       
@@ -998,12 +999,13 @@
                                 <!-- <th>ACTION</th> -->
                             </thead>
                             <tbody>
-                                <!-- <template x-for="i in UCS_Hist"> -->
-                                <tr>
-                                    <td >1</td>
-                                    <td >2</td>
-                                </tr>
-                                <!-- </template> -->
+                                <template x-for="i in SRF_Hist">
+                                    <tr>
+                                        <td x-text="i.UCS_PredictedValue"></td>
+                                        <td x-text="i.SRF_PredictedValue"></td>
+
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                     </div>
@@ -1024,12 +1026,13 @@
                                 <!-- <th>ACTION</th> -->
                             </thead>
                             <tbody>
-                                <!-- <template x-for="i in UCS_Hist"> -->
-                                <tr>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                </tr>
-                                <!-- </template> -->
+                                <template x-for="i in JnHist">
+                                    <tr>
+                                        <td x-text="i.SRF_PredictedValue"></td>
+                                        <td x-text="i.Jn_PredictedValue"></td>
+
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                     </div>
@@ -1050,12 +1053,13 @@
                                 <!-- <th>ACTION</th> -->
                             </thead>
                             <tbody>
-                                <!-- <template x-for="i in UCS_Hist"> -->
-                                <tr>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                </tr>
-                                <!-- </template> -->
+                                <template x-for="i in JnHist">
+                                    <tr>
+                                        <td x-text="i.Jn_PredictedValue"></td>
+                                        <td x-text="i.Jr_PredictedValue"></td>
+
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                     </div>
@@ -1077,12 +1081,13 @@
                                 <!-- <th>ACTION</th> -->
                             </thead>
                             <tbody>
-                                <!-- <template x-for="i in UCS_Hist"> -->
-                                <tr>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                </tr>
-                                <!-- </template> -->
+                                <template x-for="i in JnHist">
+                                    <tr>
+                                        <td x-text="i.Jr_PredictedValue"></td>
+                                        <td x-text="i.Ja_PredictedValue"></td>
+
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                     </div>
@@ -1103,12 +1108,13 @@
                                 <!-- <th>ACTION</th> -->
                             </thead>
                             <tbody>
-                                <!-- <template x-for="i in UCS_Hist"> -->
-                                <tr>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                </tr>
-                                <!-- </template> -->
+                                <template x-for="i in JnHist">
+                                    <tr>
+                                        <td x-text="i.Ja_PredictedValue"></td>
+                                        <td x-text="i.Jw_PredictedValue"></td>
+
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                     </div>
@@ -1125,17 +1131,20 @@
                                 <th>Depth to Surface(m)</th>
                                 <th>True Thickness</th>
                                 <th>Hardness</th>
-                              
+                                <th>RQD PREDICTED (%)</th>
                             </thead>
                             <tbody>
-                                <!-- <template x-for="i in UCS_Hist"> -->
-                                <tr>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                </tr>
-                                <!-- </template> -->
+                                <template x-for="i in RQD_Hist">
+                                    <tr>
+
+                                        <td x-text="i.Depth_From"></td>
+                                        <td x-text="i.Depth_To"></td>
+                                        <td x-text="i.True_Thickness"></td>
+                                        <td x-text="i.Hardness"></td>
+                                        <td x-text="i.RQD_PredictedValue"></td>
+
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                     </div>
@@ -1157,12 +1166,13 @@
                                 <!-- <th>ACTION</th> -->
                             </thead>
                             <tbody>
-                                <!-- <template x-for="i in UCS_Hist"> -->
-                                <tr>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                </tr>
-                                <!-- </template> -->
+                                <template x-for="i in ESR_Hist">
+                                    <tr>                                                                                                                                                                                                                            <td x-text="i.SRF_PredictedValue"></td>
+                                        <td x-text="i.RQD_PredictedValue"></td>
+                                        <td x-text="i.ESR_PredictedValue"></td>
+
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                     </div>
@@ -1185,16 +1195,19 @@
                                 <!-- <th>ACTION</th> -->
                             </thead>
                             <tbody>
-                                <!-- <template x-for="i in UCS_Hist"> -->
-                                <tr>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                </tr>
-                                <!-- </template> -->
+                                <template x-for="i in Q_Hist">
+                                    <tr>
+
+                                        <td x-text="i.Jn_PredictedValue"></td>
+                                        <td x-text="i.Jr_PredictedValue"></td>
+                                        <td x-text="i.Ja_PredictedValue"></td>
+                                        <td x-text="i.Jw_PredictedValue"></td>
+                                        <td x-text="i.SRF_PredictedValue"></td>
+                                        <td x-text="i.RQD_PredictedValue"></td>
+                                        <td x-text="i.Q_Value_PredictedValue"></td>
+
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                     </div>
@@ -1214,13 +1227,13 @@
                                 <!-- <th>ACTION</th> -->
                             </thead>
                             <tbody>
-                                <!-- <template x-for="i in UCS_Hist"> -->
-                                <tr>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                    
-                                </tr>
-                                <!-- </template> -->
+                                <template x-for="i in RMR_Hist">
+                                    <tr>
+                                        <td x-text="i.Q_Value_PredictedValue"></td>
+                                        <td x-text="i.RMR_PredictedValue"></td>
+
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                     </div>
@@ -1242,14 +1255,14 @@
                                 <!-- <th>ACTION</th> -->
                             </thead>
                             <tbody>
-                                <!-- <template x-for="i in UCS_Hist"> -->
-                                <tr>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                    <td x-text="i.Density"></td>
-                                    
-                                </tr>
-                                <!-- </template> -->
+                                <template x-for="i in MUS_Hist">
+                                    <tr>                                        
+                                        <td x-text="i.Q_Value_PredictedValue"></td>
+                                        <td x-text="i.ESR_PredictedValue"></td>
+                                        <td x-text="i.Maximum_unsupported_span"></td>
+
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                     </div>
@@ -1282,7 +1295,7 @@
                         </thead>
 
                         <tbody>
-                            <!-- <template x-for="i in history_list"> -->
+                            <template x-for="i in history_list">
                                 <tr>
                                     <td x-text="i.Jn"></td>
                                     <td x-text="i.Ja"></td>
@@ -1296,7 +1309,7 @@
                                     <td x-text="i.ESR_VALUE"></td>
                                     <td x-text="i.Maximum_unsupported_span"></td>
                                 </tr>
-                            <!-- </template> -->
+                            </template>
 
                         </tbody>
 

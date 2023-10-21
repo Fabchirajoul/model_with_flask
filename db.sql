@@ -34,11 +34,13 @@ INSERT INTO MainDataTabe (
     ESR_VALUE,
     Maximum_unsupported_span) VALUES (2,3,5,212,27000,2,3232,1,23,5,23,4)
 
-SELECT * FROM dataset
+SELECT DISTINCT Jn_Description, Jn FROM dataset
+
+SELECT DISTINCT Jn_Description, Jn FROM dataset GROUP BY Jn_Description
 
 
-SELECT DISTINCT ESR_Conditions
-FROM dataset
+
+
 
 -- Drop table users
 
@@ -88,7 +90,9 @@ CREATE TABLE MainDataTable (
 
 DROP TABLE MainDataTable
 
-SELECT * FROM MainDataTable
+SELECT  RMR_PredictedValue,SRF_PredictedValue,
+    RQD_PredictedValue,
+    Q_Value_PredictedValue FROM MainDataTable
 
 
 SELECT Density, Depth_To, UCS_Mpa, PredictedValue 

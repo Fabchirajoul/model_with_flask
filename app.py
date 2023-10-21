@@ -38,25 +38,56 @@ def UCS_Pred():
 
         return jsonify({'prediction': prediction.tolist()})
 
+@app.route('/api/ucs_model_save', methods=['POST'])
+def UCS_Pred_save():
+    if request.method == 'POST':
+        data = request.get_json()
+
+        # Extract data from the JSON
+        Density = data['Density']
+        Depth_To = data['Depth_To']
+        UCS_Mpa = data['UCS_Mpa']
+        UCS_PredictedValue = data['UCS_PredictedValue']
+       
+
+        # Connect to the SQLite database
+        conn = sqlite3.connect('capstonedb.db')
+        cursor = conn.cursor()
+
+        # Insert data into the database
+        cursor.execute("INSERT INTO MainDataTable (Density, Depth_To, UCS_Mpa, UCS_PredictedValue) VALUES (?, ?,?, ?)",
+                       (Density, Depth_To, UCS_Mpa, UCS_PredictedValue))
+        
+        # cursor.execute("INSERT INTO ucs_virgin_stress (MainID, UCS_PredictedValue) VALUES (?, ?)",
+                    #    (MainID, UCS_PredictedValue))
+
+        # Commit the transaction and close the connection
+        conn.commit()
+        conn.close()
+
+        return 'Data successfully added to the database'
+    
 
 @app.route('/api/get_ucs_model', methods=['GET'])
 def Get_UCS():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT DISTINCT ESR_Conditions FROM dataset')
+    cursor.execute('SELECT  Density, Depth_To, UCS_Mpa, UCS_PredictedValue FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
 
     # Define the column names
-    column_names = ['ESR_Conditions']
+    column_names = ['Density', 'Depth_To', 'UCS_Mpa', 'UCS_PredictedValue']
 
     # Convert the fetched rows to a list of dictionaries
     data = [dict(zip(column_names, row)) for row in rows]
 
     # Return the data as JSON
     return jsonify({'historical_data': data})
+
+
 
 
 # 2. SRF
@@ -78,6 +109,49 @@ def SRF_Pred():
         prediction = srf_model.predict(features)[0]
 
         return jsonify({'prediction': prediction.tolist()})
+
+
+@app.route('/api/srf_model_save', methods=['POST'])
+def SRF_Pred_save():
+    if request.method == 'POST':
+        data = request.get_json() 
+
+        # Extract data from the JSON
+        SRF_PredictedValue = data['SRF_PredictedValue']
+        # MainID = data['MainID']
+
+        # Connect to the SQLite database
+        conn = sqlite3.connect('capstonedb.db')
+        cursor = conn.cursor()
+
+        # Insert data into the database
+        cursor.execute("UPDATE MainDataTable SET SRF_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (SRF_PredictedValue,))
+
+        # Commit the transaction and close the connection
+        conn.commit()
+        conn.close()
+
+        return 'Data updated successfully'
+    
+
+@app.route('/api/get_srf_model', methods=['GET'])
+def Get_srf():
+    conn = sqlite3.connect('capstonedb.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT MainID, Density, Depth_To, UCS_Mpa, UCS_PredictedValue, SRF_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    # Define the column names
+    column_names = ['MainID', 'Density', 'Depth_To', 'UCS_Mpa', 'UCS_PredictedValue', 'SRF_PredictedValue']
+
+    # Convert the fetched rows to a list of dictionaries
+    data = [dict(zip(column_names, row)) for row in rows]
+
+    # Return the data as JSON
+    return jsonify({'historical_data': data})
 
 
 # 3. Jn Model
@@ -158,6 +232,45 @@ def Jn_Pred():
     return jsonify({'prediction': ["Error"]})
 
     # ends here
+
+@app.route('/api/Jn_model_save', methods=['POST'])
+def Jn_Pred_save():
+    if request.method == 'POST':
+        data = request.get_json()
+        Jn_PredictedValue = data['Jn_PredictedValue']
+
+        # Connect to the SQLite database
+        conn = sqlite3.connect('capstonedb.db')
+        cursor = conn.cursor()
+
+        # Update data in the database for the row with the maximum MainID
+        cursor.execute("UPDATE MainDataTable SET Jn_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Jn_PredictedValue,))
+
+        # Commit the transaction and close the connection
+        conn.commit()
+        conn.close()
+
+        return 'Data updated successfully'
+
+
+@app.route('/api/get_Jn_model', methods=['GET'])
+def Get_Jn():
+    conn = sqlite3.connect('capstonedb.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT MainID, UCS_PredictedValue, SRF_PredictedValue, Jn_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    # Define the column names
+    column_names = ['MainID', 'UCS_PredictedValue', 'SRF_PredictedValue', 'Jn_PredictedValue']
+
+    # Convert the fetched rows to a list of dictionaries
+    data = [dict(zip(column_names, row)) for row in rows]
+
+    # Return the data as JSON
+    return jsonify({'Jn_historical_data': data})
 
 
 # 4. Jr Model
@@ -246,6 +359,46 @@ def Jr_Pred():
     return jsonify({'prediction': ["Error"]})
 
     # ends here
+
+@app.route('/api/Jr_model_save', methods=['POST'])
+def Jr_Pred_save():
+    if request.method == 'POST':
+        data = request.get_json()
+        Jr_PredictedValue = data['Jr_PredictedValue']
+
+        # Connect to the SQLite database
+        conn = sqlite3.connect('capstonedb.db')
+        cursor = conn.cursor()
+
+        # Update data in the database for the row with the maximum MainID
+        cursor.execute("UPDATE MainDataTable SET Jr_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Jr_PredictedValue,))
+
+        # Commit the transaction and close the connection
+        conn.commit()
+        conn.close()
+
+        return 'Data updated successfully'
+
+
+@app.route('/api/get_Jr_model', methods=['GET'])
+def Get_Jr():
+    conn = sqlite3.connect('capstonedb.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT MainID, UCS_PredictedValue, SRF_PredictedValue, Jn_PredictedValue, Jr_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    # Define the column names
+    column_names = ['MainID', 'UCS_PredictedValue', 'SRF_PredictedValue', 'Jn_PredictedValue', 'Jr_PredictedValue']
+
+    # Convert the fetched rows to a list of dictionaries
+    data = [dict(zip(column_names, row)) for row in rows]
+
+    # Return the data as JSON
+    return jsonify({'Jr_historical_data': data})
+
 
 
 # 5. Ja Model
@@ -607,6 +760,46 @@ def Ja_Pred():
     return jsonify({'prediction': ["Error"]})
 
     # ends here
+
+@app.route('/api/Ja_model_save', methods=['POST'])
+def Ja_Pred_save():
+    if request.method == 'POST':
+        data = request.get_json()
+        Ja_PredictedValue = data['Ja_PredictedValue']
+
+        # Connect to the SQLite database
+        conn = sqlite3.connect('capstonedb.db')
+        cursor = conn.cursor()
+
+        # Update data in the database for the row with the maximum MainID
+        cursor.execute("UPDATE MainDataTable SET Ja_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Ja_PredictedValue,))
+
+        # Commit the transaction and close the connection
+        conn.commit()
+        conn.close()
+
+        return 'Data updated successfully'
+
+
+@app.route('/api/get_Ja_model', methods=['GET'])
+def Get_Ja():
+    conn = sqlite3.connect('capstonedb.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT MainID, UCS_PredictedValue, SRF_PredictedValue, Jn_PredictedValue, Jr_PredictedValue, Ja_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    # Define the column names
+    column_names = ['MainID', 'UCS_PredictedValue', 'SRF_PredictedValue', 'Jn_PredictedValue', 'Jr_PredictedValue', 'Ja_PredictedValue']
+
+    # Convert the fetched rows to a list of dictionaries
+    data = [dict(zip(column_names, row)) for row in rows]
+
+    # Return the data as JSON
+    return jsonify({'Ja_historical_data': data})
+
 
 
 # 6. Jw Model
@@ -1007,9 +1200,49 @@ def Jw_Pred():
 
     # ends here
 
+@app.route('/api/Jw_model_save', methods=['POST'])
+def Jw_Pred_save():
+    if request.method == 'POST':
+        data = request.get_json()
+        Jw_PredictedValue = data['Jw_PredictedValue']
+
+        # Connect to the SQLite database
+        conn = sqlite3.connect('capstonedb.db')
+        cursor = conn.cursor()
+
+        # Update data in the database for the row with the maximum MainID
+        cursor.execute("UPDATE MainDataTable SET Jw_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Jw_PredictedValue,))
+
+        # Commit the transaction and close the connection
+        conn.commit()
+        conn.close()
+
+        return 'Data updated successfully'
+
+
+@app.route('/api/get_Jw_model', methods=['GET'])
+def Get_Jw():
+    conn = sqlite3.connect('capstonedb.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT MainID, UCS_PredictedValue, SRF_PredictedValue, Jn_PredictedValue, Jr_PredictedValue, Ja_PredictedValue, Jw_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    # Define the column names
+    column_names = ['MainID', 'UCS_PredictedValue', 'SRF_PredictedValue', 'Jn_PredictedValue', 'Jr_PredictedValue', 'Ja_PredictedValue', 'Jw_PredictedValue']
+
+    # Convert the fetched rows to a list of dictionaries
+    data = [dict(zip(column_names, row)) for row in rows]
+
+    # Return the data as JSON
+    return jsonify({'Jw_historical_data': data})
+
+
 
 # 7. RQD
-with open('models/update/RFC_RQD.pkl', 'rb') as f:
+with open('models/update/RQD/Random_Forest_regresor_rqd.pkl', 'rb') as f:
     rqd_model = pickle.load(f)
 
 
@@ -1028,6 +1261,56 @@ def RQD_Pred():
         prediction = rqd_model.predict(features)[0]
 
         return jsonify({'prediction': prediction.tolist()})
+
+@app.route('/api/RQD_model_save', methods=['POST'])
+def RQD_Pred_save():
+    if request.method == 'POST':
+        data = request.get_json()
+
+        # Extract data from the JSON
+        Depth_From = float(data['Depth_From'])
+        Depth_To = float(data['Depth_To'])
+        True_Thickness = float(data['True_Thickness'])
+        Hardness = float(data['Hardness'])
+        RQD_PredictedValue = float(data['RQD_PredictedValue'])
+       
+
+        # Connect to the SQLite database
+        conn = sqlite3.connect('capstonedb.db')
+        cursor = conn.cursor()
+
+        # Insert data into the database
+        cursor.execute("UPDATE MainDataTable SET Depth_From=?, Depth_To=?, True_Thickness=?, Hardness=?, RQD_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)",
+                       (Depth_From, Depth_To, True_Thickness, Hardness, RQD_PredictedValue))
+        
+
+
+        # Commit the transaction and close the connection
+        conn.commit()
+        conn.close()
+
+        return 'Data successfully added to the database'
+    
+
+@app.route('/api/get_RQD_model', methods=['GET'])
+def Get_RQD():
+    conn = sqlite3.connect('capstonedb.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT MainID, Depth_From, Depth_To, True_Thickness, Hardness, RQD_PredictedValue FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    # Define the column names
+    column_names = ['MainID', 'Depth_From', 'Depth_To', 'True_Thickness', 'Hardness', 'RQD_PredictedValue']
+
+    # Convert the fetched rows to a list of dictionaries
+    data = [dict(zip(column_names, row)) for row in rows]
+
+    # Return the data as JSON
+    return jsonify({'rqd_historical_data': data})
+
 
 
 # 8. Q working both online and offline
@@ -1053,6 +1336,59 @@ def Q_Pred():
 
         return jsonify({'prediction': prediction.tolist()})
 
+@app.route('/api/Q_model_save', methods=['POST'])
+def Q_Pred_save():
+    if request.method == 'POST':
+        data = request.get_json()
+
+        # Extract data from the JSON
+        
+        Jn_PredictedValue = float(data['Jn_PredictedValue'])
+        Jr_PredictedValue = float(data['Jr_PredictedValue'])
+        Ja_PredictedValue = float(data['Ja_PredictedValue'])
+        Jw_PredictedValue = float(data['Jw_PredictedValue'])
+        SRF_PredictedValue = float(data['SRF_PredictedValue'])
+        RQD_PredictedValue = float(data['RQD_PredictedValue'])
+        Q_Value_PredictedValue = float(data['Q_Value_PredictedValue'])
+       
+
+        # Connect to the SQLite database
+        conn = sqlite3.connect('capstonedb.db')
+        cursor = conn.cursor()
+
+        # Insert data into the database
+        cursor.execute("UPDATE MainDataTable SET Jn_PredictedValue=?, Jr_PredictedValue=?, Ja_PredictedValue=?, Jw_PredictedValue=?, SRF_PredictedValue=?, RQD_PredictedValue=?, Q_Value_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)",
+                       (Jn_PredictedValue, Jr_PredictedValue, Ja_PredictedValue, Jw_PredictedValue, SRF_PredictedValue, RQD_PredictedValue, Q_Value_PredictedValue))
+        
+
+
+        # Commit the transaction and close the connection
+        conn.commit()
+        conn.close()
+
+        return 'Data successfully added to the database'
+    
+
+@app.route('/api/get_Q_model', methods=['GET'])
+def Get_Q():
+    conn = sqlite3.connect('capstonedb.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT MainID, SRF_PredictedValue, Jn_PredictedValue, Jr_PredictedValue, Ja_PredictedValue, Jw_PredictedValue, RQD_PredictedValue, Q_Value_PredictedValue FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    # Define the column names
+    column_names = ['MainID', 'SRF_PredictedValue', 'Jn_PredictedValue', 'Jr_PredictedValue', 'Ja_PredictedValue', 'Jw_PredictedValue', 'RQD_PredictedValue', 'Q_Value_PredictedValue']
+
+    # Convert the fetched rows to a list of dictionaries
+    data = [dict(zip(column_names, row)) for row in rows]
+
+    # Return the data as JSON
+    return jsonify({'Q_historical_data': data})
+
+
 
 # 9. RMR
 with open('models/update/RFC_RMR.pkl', 'rb') as f:
@@ -1071,6 +1407,55 @@ def RMR_Pred():
         prediction = rmr_model.predict(features)[0]
 
         return jsonify({'prediction': prediction.tolist()})
+
+@app.route('/api/RMR_model_save', methods=['POST'])
+def RMR_Pred_save():
+    if request.method == 'POST':
+        data = request.get_json()
+
+        # Extract data from the JSON
+        RMR_PredictedValue = float(data['RMR_PredictedValue'])
+       
+
+        # Connect to the SQLite database
+        conn = sqlite3.connect('capstonedb.db')
+        cursor = conn.cursor()
+
+        # Insert data into the database
+        cursor.execute("UPDATE MainDataTable SET RMR_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (RMR_PredictedValue,))
+        
+
+
+        # Commit the transaction and close the connection
+        conn.commit()
+        conn.close()
+
+        return 'Data successfully added to the database'
+    
+
+@app.route('/api/get_RMR_model', methods=['GET'])
+def Get_RMR():
+    conn = sqlite3.connect('capstonedb.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT MainID, SRF_PredictedValue, Jn_PredictedValue, Jr_PredictedValue, Ja_PredictedValue, Jw_PredictedValue, RQD_PredictedValue, Q_Value_PredictedValue, RMR_PredictedValue FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    # Define the column names
+    column_names = ['MainID', 'SRF_PredictedValue', 'Jn_PredictedValue', 'Jr_PredictedValue', 'Ja_PredictedValue', 'Jw_PredictedValue', 'RQD_PredictedValue', 'Q_Value_PredictedValue', 'RMR_PredictedValue']
+
+    # Convert the fetched rows to a list of dictionaries
+    data = [dict(zip(column_names, row)) for row in rows]
+
+    # Return the data as JSON
+    return jsonify({'RMR_historical_data': data})
+
+
+
+
+ # 11. MUS
 
 
 # 10. ESR
@@ -1110,7 +1495,57 @@ def ESR_Pred():
 
     # 11. MUS
 
+@app.route('/api/ESR_model_save', methods=['POST'])
+def ESR_Pred_save():
+    if request.method == 'POST':
+        data = request.get_json()
 
+        # Extract data from the JSON
+        ESR_PredictedValue = float(data['ESR_PredictedValue'])
+       
+
+        # Connect to the SQLite database
+        conn = sqlite3.connect('capstonedb.db')
+        cursor = conn.cursor()
+
+        # Insert data into the database
+        cursor.execute("UPDATE MainDataTable SET ESR_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (ESR_PredictedValue,))
+        
+
+
+        # Commit the transaction and close the connection
+        conn.commit()
+        conn.close()
+
+        return 'Data successfully added to the database'
+    
+
+@app.route('/api/get_ESR_model', methods=['GET'])
+def Get_ESR():
+    conn = sqlite3.connect('capstonedb.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT MainID, SRF_PredictedValue, RMR_PredictedValue, RQD_PredictedValue,  Q_Value_PredictedValue, ESR_PredictedValue FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    # Define the column names
+    column_names = ['MainID', 'SRF_PredictedValue', 'Q_Value_PredictedValue', 'RMR_PredictedValue', 'RQD_PredictedValue', 'ESR_PredictedValue']
+
+    # Convert the fetched rows to a list of dictionaries
+    data = [dict(zip(column_names, row)) for row in rows]
+
+    # Return the data as JSON
+    return jsonify({'ESR_historical_data': data})
+
+
+
+
+ # 11. MUS
+
+
+# 11 MUS
 with open('models/update/RFC_MUS.pkl', 'rb') as f:
     mus_model = pickle.load(f)
 
@@ -1128,6 +1563,56 @@ def MUS_Pred():
         prediction = mus_model.predict(features)[0]
 
         return jsonify({'prediction': prediction.tolist()})
+
+@app.route('/api/MUS_model_save', methods=['POST'])
+def MUS_Pred_save():
+    if request.method == 'POST':
+        data = request.get_json()
+
+        # Extract data from the JSON
+        Maximum_unsupported_span = float(data['Maximum_unsupported_span'])
+       
+
+        # Connect to the SQLite database
+        conn = sqlite3.connect('capstonedb.db')
+        cursor = conn.cursor()
+
+        # Insert data into the database
+        cursor.execute("UPDATE MainDataTable SET Maximum_unsupported_span=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Maximum_unsupported_span,))
+        
+
+
+        # Commit the transaction and close the connection
+        conn.commit()
+        conn.close()
+
+        return 'Data successfully added to the database'
+    
+
+@app.route('/api/get_MUS_model', methods=['GET'])
+def Get_MUS():
+    conn = sqlite3.connect('capstonedb.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT MainID, SRF_PredictedValue, RMR_PredictedValue, RQD_PredictedValue,  Q_Value_PredictedValue, ESR_PredictedValue, Maximum_unsupported_span FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    # Define the column names
+    column_names = ['MainID', 'SRF_PredictedValue', 'Q_Value_PredictedValue', 'RMR_PredictedValue', 'RQD_PredictedValue', 'ESR_PredictedValue', 'Maximum_unsupported_span']
+
+    # Convert the fetched rows to a list of dictionaries
+    data = [dict(zip(column_names, row)) for row in rows]
+
+    # Return the data as JSON
+    return jsonify({'MUS_historical_data': data})
+
+
+
+
+ # 11. MUS
+
 
 
 # Create SQLite capstone and table

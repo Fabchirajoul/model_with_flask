@@ -829,8 +829,17 @@ document.addEventListener("alpine:init", () => {
       QValue: "",
       SRFValue: "",
       QMessage: "",
-      Q_value: 0,
+      // Q_value: 0,
       NumQ: "",
+
+      Jn_predictedValue: '',
+      Jr_predictedValue: '',
+      Ja_predictedValue: '',
+      Jw_predictedValue: '',
+      RQD_PredictedValue: '',
+      Q_Value_PredictedValue: '',
+      RMR_PredictedValue: '',
+      Maximum_unsupported_span: '',
 
       // Analysys function based on the Q value declarations
       qAnalysMessage1: "",
@@ -841,12 +850,10 @@ document.addEventListener("alpine:init", () => {
 
       // SRF value declarations
       Virgin_stress_ratio: "",
+      srf_predicted: '',
       srf_value: "",
 
-      // MUS value declarations
-      MUSValue: "",
-      Q_Value: "",
-      ESR_VALUE: "",
+     
 
       // UCS/VSR value declaration
       Depth: "",
@@ -962,6 +969,7 @@ document.addEventListener("alpine:init", () => {
           this.UCS_Virgin_Stress_Ratio = false;
           this.homepage = false;
           this.about = false;
+          this.depth_to_surface = this.use_Depth_To;
           this.Jn_Description = false;
           this.Jr_Description = false;
           this.Ja_Description = false;
@@ -979,6 +987,14 @@ document.addEventListener("alpine:init", () => {
           this.UCS_Virgin_Stress_Ratio = false;
           this.homepage = false;
           this.about = false;
+
+          this.JnValue = this.use_Jn;
+          this.JrValue = this.use_Jr;
+          this.JaValue = this.use_Ja;
+          this.JwValue = this.use_Jw;
+          this.SRFValue = this.use_SRF;
+          this.RQDValue = this.use_RQD;
+
           this.Jn_Description = false;
           this.Jr_Description = false;
           this.Ja_Description = false;
@@ -996,6 +1012,7 @@ document.addEventListener("alpine:init", () => {
           this.UCS_Virgin_Stress_Ratio = false;
           this.homepage = false;
           this.about = false;
+          this.Virgin_stress_ratio = this.use_UCS;
           this.Jn_Description = false;
           this.Jr_Description = false;
           this.Ja_Description = false;
@@ -1013,6 +1030,7 @@ document.addEventListener("alpine:init", () => {
           this.UCS_Virgin_Stress_Ratio = false;
           this.homepage = false;
           this.about = false;
+          this.Q_Value = this.use_Q_Value;
           this.Jn_Description = false;
           this.Jr_Description = false;
           this.Ja_Description = false;
@@ -1047,6 +1065,8 @@ document.addEventListener("alpine:init", () => {
           this.UCS_Virgin_Stress_Ratio = false;
           this.homepage = false;
           this.about = false;
+          this.ESR_VALUE = this.use_ESR_Value;
+          this.Q_Value = this.use_Q_Value;
           this.Jn_Description = false;
           this.Jr_Description = false;
           this.Ja_Description = false;
@@ -1128,14 +1148,15 @@ document.addEventListener("alpine:init", () => {
             UCS: this.UCS,
           })
           .then((res) => {
-            this.getUCS();
             console.log(res.data);
-            let val = res.data.prediction;
-            // val = val.split("[")[1];
-            // val = val.split("]")[0];
+            this.UCS_Predicted = res.data.prediction;
+            console.log('111 predicted value: ' + this.UCS_Predicted);
+
+            this.Post_UCS()
+
             this.ucsvsr_value =
               "Based on your input, the ratio of the Uniaxial compressive strength to the virgin stress is " +
-              val.toFixed(2);
+              this.UCS_Predicted;
           });
       },
 
@@ -1146,12 +1167,12 @@ document.addEventListener("alpine:init", () => {
           })
           .then((res) => {
             console.log(res.data);
-            let val = res.data.prediction;
-            // val = val.split("[")[1];
-            // val = val.split("]")[0];
+            this.srf_predicted = res.data.prediction;
+
+            this.Post_SRF()
             this.srf_value =
               "Based on your input, the predicted Stress Reduction value is " +
-              val;
+              this.srf_predicted;
           });
       },
 
@@ -1276,23 +1297,21 @@ document.addEventListener("alpine:init", () => {
             Hardness: this.hardness_property,
           })
           .then((res) => {
-            let val = res.data.prediction;
-            // val = val.split("[")[1];
-            // val = val.split("]")[0];
-            this.rmq_value = parseInt(val);
+            this.RQD_PredictedValue = res.data.prediction;
+            console.log(this.RQD_PredictedValue);
+            this.Post_rqd()
+
             this.RQDValue =
-              "Based on your input, the predicted RQD value is " +
-              val.toFixed(2) +
-              "%";
-            this.NumRQD = val.toFixed(2);
+              "Based on your input, the predicted RQD value is " + this.RQD_PredictedValue.toFixed(2) + "%";
+            this.NumRQD = this.RQD_PredictedValue.toFixed(2);
           });
       },
       rock_mass_quality() {
         this.RQDValue = "";
         this.openRockMassQuality = true;
         this.closeRockMassQuality = false;
-        val = this.rmq_value;
-        if (val < 25 && val > 0) {
+        // this.true_thickness.RQD_PredictedValue = this.rmq_value;
+        if (this.RQD_PredictedValue < 25 && this.RQD_PredictedValue > 0) {
           this.rmqMessage =
             "The rock mass quality based on your input is very poor.";
           this.ImpMessage =
@@ -1300,7 +1319,7 @@ document.addEventListener("alpine:init", () => {
           this.SuppMessage = "bolting, shotcrete, or mesh";
           this.ExcMessage =
             "Temporal mine openings,Storage rooms, water treatment plants, minor road and railway tunnels, surge chambers and access tunnels";
-        } else if (val > 25 && val <= 50) {
+        } else if (this.RQD_PredictedValue > 25 && this.RQD_PredictedValue <= 50) {
           this.rmqMessage = "The rock mass quality based on your input is poor";
           this.ImpMessage =
             "Open-Pit Mining,Room and Pillar Mining,Cut and Fill Mining,Sublevel Stoping,Block Caving,Room and Bench Mining,Drift Mining,Hydraulic Fracturing and Grouting";
@@ -1308,7 +1327,7 @@ document.addEventListener("alpine:init", () => {
             "Rock Bolting,Mesh and Shotcrete,Cable Bolting,Ground Monitoring,Rock Reinforcement,Rib and Roof Bolting,Rockfall Protection Systems,Shotcrete Lining,Grouting,Rockfall Drapery";
           this.ExcMessage =
             "Temporal mine openings,Storage rooms, water treatment plants, minor road and railway tunnels, surge chambers and access tunnels,Power stations, major road and railway tunnels, civil defence chambers, portal intersections";
-        } else if (val > 50 && val <= 75) {
+        } else if (this.RQD_PredictedValue > 50 && this.RQD_PredictedValue <= 75) {
           this.rmqMessage =
             "The rock mass quality based on your input is fair.";
           this.ImpMessage =
@@ -1317,7 +1336,7 @@ document.addEventListener("alpine:init", () => {
             "Rock Bolting,Shotcrete (Sprayed Concrete),Mesh and Wire Mesh,Cable Bolting,Grouting,Arch and Beam Supports,Rock Reinforcement Mesh,Rock Grillage or Rock Bolster,Ground Monitoring and Instrumentation";
           this.ExcMessage =
             "Storage rooms, water treatment plants, minor road and railway tunnels, surge chambers and access tunnels,Power stations, major road and railway tunnels, civil defence chambers, portal intersections";
-        } else if (val > 75 && val <= 90) {
+        } else if (this.RQD_PredictedValue > 75 && this.RQD_PredictedValue <= 90) {
           this.rmqMessage = "The rock mass quality based on your input is Good";
           this.ImpMessage =
             "Open-Pit Mining,Underground Room and Pillar Mining,Block Caving,Sublevel Stoping,Cut and Fill Mining,Shaft Sinking,Room and Bench Mining,Drift Mining,Quarrying";
@@ -1325,7 +1344,7 @@ document.addEventListener("alpine:init", () => {
             "Rock Bolting,Shotcrete,Mesh and Meshing Systems,Cable Bolting,Grouting,Reinforced Shotcrete,Rib and Lagging Support,Rockfall Protection Systems,Anchor Systems,Grout Curtain";
           this.ExcMessage =
             "Power stations, major road and railway tunnels, civil defence chambers, portal intersections,Underground nuclear power station, railway stations, sports and public facilities,Permanent mine openings, water tunnels for hydro(power high pressure penstocks),pilot tunnels, drifts and headings for large excavation";
-        } else if (val > 90 && val <= 100) {
+        } else if (this.RQD_PredictedValue > 90 && this.RQD_PredictedValue <= 100) {
           this.rmqMessage =
             "The rock mass quality based on your input is Excellent";
           this.ImpMessage =
@@ -1348,47 +1367,45 @@ document.addEventListener("alpine:init", () => {
             SRF: this.SRFValue,
           })
           .then((res) => {
-            // this.q_value = parseInt(val);
-            let val = res.data.prediction;
-            // val = val.split("[")[1];
-            // val = val.split("]")[0];
+            this.Q_Value_PredictedValue = res.data.prediction;
+            console.log('predicted value: ' + this.Q_Value_PredictedValue)
+            this.Post_Q();
             console.log(res.data);
             this.QValue =
-              "Based on your input, the predicted ROck Quality Index(Q) value is " +
-              val.toFixed(2);
-            this.NumQ = val.toFixed(2);
+              "Based on your input, the predicted Q value is " + this.Q_Value_PredictedValue.toFixed(2);
+            this.NumQ = this.Q_Value_PredictedValue.toFixed(2);
           });
       },
 
       Q_value_analysis() {
-        val = this.NumQ;
+        this.Q_Value_PredictedValue = this.NumQ;
         this.openQAanalysis = true;
         this.closeQAanalysis = false;
-        if (val <= 0 && val < 10) {
+        if (this.Q_Value_PredictedValue <= 0 && this.Q_Value_PredictedValue < 10) {
           this.qAnalysMessage1 =
             "Indicates an extremely poor and unstable rock mass,";
           this.qAnalysMessage2 =
             "Severe support requirements are necessary to ensure safety during mining or tunneling,";
           this.qAnalysMessage3 = "High risk of rockfalls and ground collapses";
-        } else if (val > 10 && val <= 20) {
+        } else if (this.Q_Value_PredictedValue > 10 && this.Q_Value_PredictedValue <= 20) {
           this.qAnalysMessage1 =
             "Suggests a weak rock mass with significant stability concerns,";
           this.qAnalysMessage2 =
             "Substantial support measures are needed for safe mining or tunneling";
           this.qAnalysMessage3 =
             "Increased risk of rockfalls and ground instability";
-        } else if (val > 20 && val <= 40) {
+        } else if (this.Q_Value_PredictedValue > 20 && this.Q_Value_PredictedValue <= 40) {
           this.qAnalysMessage1 = "Signifies a moderately stable rock mass, .";
           this.qAnalysMessage2 =
             "Support requirements are moderate but should still be considered,";
           this.qAnalysMessage3 =
             "Reasonable conditions for mining or tunneling, with proper engineering measures";
-        } else if (val > 40 && val <= 60) {
+        } else if (this.Q_Value_PredictedValue > 40 && this.Q_Value_PredictedValue <= 60) {
           this.qAnalysMessage = "Indicates a strong and stable rock mass,";
           this.qAnalysMessage2 = "Support requirements are generally low,";
           this.qAnalysMessage3 =
             "Favorable conditions for mining or tunneling with minimal support";
-        } else if (val <= 60) {
+        } else if (this.Q_Value_PredictedValue <= 60) {
           this.qAnalysMessage1 =
             "Represents an exceptionally stable and strong rock mass,";
           this.qAnalysMessage2 = "Minimal to no support is typically required,";
@@ -1402,12 +1419,12 @@ document.addEventListener("alpine:init", () => {
             Q_Value: this.Q_Value,
           })
           .then((res) => {
-            let val = res.data.prediction;
-            // val = val.split("[")[1];
-            // val = val.split("]")[0];
+            this.RMR_PredictedValue = res.data.prediction;
+
+            this.Post_RMR()
             console.log(res.data);
             this.rmr_val =
-              "Based on your input, the rock mass rating value is " + val.toFixed(2);
+              "Based on your input, the rock mass rating value is " + this.RMR_PredictedValue.toFixed(2);
           });
       },
 
@@ -1437,6 +1454,11 @@ document.addEventListener("alpine:init", () => {
           });
       },
 
+       // MUS value declarations
+       MUSValue: "",
+       Q_Value: "",
+       ESR_VALUE: "",
+
       MUS() {
         axios
           .post("/api/mus_model", {
@@ -1444,15 +1466,14 @@ document.addEventListener("alpine:init", () => {
             ESR_VALUE: this.ESR_VALUE,
           })
           .then((res) => {
-            let val = res.data.prediction;
-            // val = val.split("[")[1];
-            // val = val.split("]")[0];
-            this.MUS_value = parseInt(val);
+            this.Maximum_unsupported_span = res.data.prediction;
+      
+            this.Post_MUS()
+            
+            this.MUSValue = parseInt(Maximum_unsupported_span);
             console.log(res.data);
-            this.MUSValue =
-              "Based on your input, the predicted Maximum Unsupported span value is " +
-              val.toFixed(2) +
-              "m";
+            this.MUSValue = "Based on your input, the predicted Maximum Unsupported span value is " + this.Maximum_unsupported_span + "m";
+            console.log('I am working: ' + this.MUSValue)
           });
       },
 
@@ -1536,34 +1557,318 @@ document.addEventListener("alpine:init", () => {
         this.historicalData();
         this.getUCS();
         this.getSRF();
+        this.getJN();
+        this.getJr();
+        this.getJa();
+        this.getJw();
+        this.getrqd();
+        this.get_Q();
+        this.get_RMR();
+        this.get_ESR();
+        this.get_MUS();
       },
       // WORK WITH HISSTORICAL DATA
       history_list: [],
+      MainID: '',
+      EditID: '',
       UCS_Hist: [],
+      use_UCS: '',
       SRF_Hist: [],
+      JnHist: [],
+      JrHist: [],
+      JaHist: [],
+      JwHist: [],
+      use_Depth_To: '',
+      RQD_Hist: [],
+      Q_Hist: [],
+      use_Jn: '',
+      use_Jr: '',
+      use_Ja: '',
+      use_Jw: '',
+      use_SRF: '',
+      use_RQD: '',
+      use_Q_Value: '',
+      RMR_Hist: [],
+      ESR_Hist: [],
+      MUS_Hist: [],
+      use_ESR_Value: '',
 
       historicalData() {
-        axios.get("/api/historical_data/").then((res) => {
-          console.log(res.data);
-          this.history_list = res.data.historical_data;
-          console.log(this.history_list);
-        });
+        axios.get("/api/historical_data/")
+          .then((res) => {
+            console.log(res.data.historical_data);
+            this.history_list = res.data.historical_data;
+            console.log(this.history_list);
+          });
       },
       // GetUCS_virginStress
       getUCS() {
-        axios.get("/api/UCS_virginstress/").then((res) => {
-          this.UCS_Hist = res.data.UCS_virginstress;
-          console.log(this.UCS_Hist);
-          console.log(res.data.UCS_virginstress[1].Density);
-        });
+        axios.get("/api/get_ucs_model")
+          .then((res) => {
+            this.UCS_Hist = res.data.historical_data;
+            console.log(this.UCS_Hist);
+          });
       },
 
-      getSRF() {
-        axios.get("api/SRF_hist/").then((res) => {
-          this.SRF_Hist = res.data.SRF_hist;
-          console.log(res.data);
-        });
+      Post_UCS() {
+        axios.post('/api/ucs_model_save',
+          {
+            Depth_To: this.Depth,
+            Density: this.Density,
+            UCS_Mpa: this.UCS,
+            UCS_PredictedValue: this.UCS_Predicted,
+
+          })
+          .then((res) => {
+            console.log(res.data);
+            console.log('predicted value: ' + this.UCS_Predicted)
+            this.getUCS();
+          })
       },
+
+      // WORK with SRF [get and post data to database]
+      getSRF() {
+        axios.get("/api/get_srf_model")
+          .then((res) => {
+            this.SRF_Hist = res.data.historical_data;
+            this.use_UCS = res.data.historical_data[0].UCS_PredictedValue;
+            this.use_Depth_To = res.data.historical_data[0].Depth_To;
+            console.log(res.data.historical_data[0].Depth_To);
+          });
+      },
+      Post_SRF() {
+        axios.post('/api/srf_model_save',
+          {
+
+            MainID: this.EditID,
+            SRF_PredictedValue: this.srf_predicted
+
+          })
+          .then((res) => {
+            console.log(res.data);
+            console.log('predicted value: ' + this.srf_predicted)
+            this.getSRF();
+          })
+      },
+
+      //JN MODEL
+      getJN() {
+        axios.get('/api/get_Jn_model')
+          .then((res) => {
+            console.log(res.data)
+            this.JnHist = res.data.Jn_historical_data
+          })
+      },
+
+      Post_Jn() {
+        axios.post('/api/Jn_model_save', {
+          Jn_predictedValue: this.Jn_predictedValue,
+        })
+          .then((res) => {
+            console.log(res.data);
+            this.getJN()
+          })
+      },
+      //Jr MODEL
+      getJr() {
+        axios.get('/api/get_Jr_model')
+          .then((res) => {
+            console.log(res.data)
+            this.JrHist = res.data.Jr_historical_data
+          })
+      },
+
+      Post_Jr() {
+        axios.post('/api/Jr_model_save', {
+          Jr_predictedValue: this.Jr_predictedValue,
+        })
+          .then((res) => {
+            console.log(res.data);
+            this.getJr()
+          })
+      },
+      //Ja MODEL
+      getJa() {
+        axios.get('/api/get_Ja_model')
+          .then((res) => {
+            console.log(res.data)
+            this.JaHist = res.data.Ja_historical_data
+          })
+      },
+
+      Post_Ja() {
+        axios.post('/api/Ja_model_save', {
+          Ja_predictedValue: this.Ja_predictedValue,
+        })
+          .then((res) => {
+            console.log(res.data);
+            this.getJa()
+          })
+      },
+      //Jw MODEL
+      getJw() {
+        axios.get('/api/get_Jw_model')
+          .then((res) => {
+            console.log(res.data)
+            this.JwHist = res.data.Jw_historical_data
+          })
+      },
+
+      Post_Jw() {
+        axios.post('/api/Jw_model_save', {
+          Jw_predictedValue: this.Jw_predictedValue,
+        })
+          .then((res) => {
+            console.log(res.data);
+            this.getJw()
+          })
+      },
+      //rqd MODEL
+      getrqd() {
+        axios.get('/api/get_RQD_model')
+          .then((res) => {
+            console.log(res.data)
+            this.RQD_Hist = res.data.rqd_historical_data
+          })
+      },
+
+      Post_rqd() {
+        axios.post('/api/RQD_model_save', {
+          Depth_From: this.Depth_from_surface,
+          Depth_To: this.depth_to_surface,
+          True_Thickness: this.true_thickness,
+          Hardness: this.hardness_property,
+          RQD_PredictedValue: this.RQD_PredictedValue
+        })
+          .then((res) => {
+            console.log(res.data);
+            console.log('RQD VALUE IS: ' + this.RQD_PredictedValue);
+            this.getrqd();
+          })
+      },
+      //Q Value MODEL
+      get_Q() {
+        axios.get('/api/get_Q_model')
+          .then((res) => {
+            console.log(res.data)
+            console.log('JN VAL: ' + res.data.Q_historical_data[0].Jn_PredictedValue);
+
+            this.use_Jn = res.data.Q_historical_data[0].Jn_PredictedValue;
+            this.use_Jr = res.data.Q_historical_data[0].Jr_PredictedValue;
+            this.use_Ja = res.data.Q_historical_data[0].Ja_PredictedValue;
+            this.use_Jw = res.data.Q_historical_data[0].Jw_PredictedValue;
+            this.use_SRF = res.data.Q_historical_data[0].SRF_PredictedValue;
+            this.use_RQD = res.data.Q_historical_data[0].RQD_PredictedValue;
+            
+            this.Q_Hist = res.data.Q_historical_data;
+
+          })
+      },
+
+      Post_Q() {
+        axios.post('/api/Q_model_save', {
+          RQD_PredictedValue: this.RQDValue,
+          Jn_PredictedValue: this.JnValue,
+          Jr_PredictedValue: this.JrValue,
+          Ja_PredictedValue: this.JaValue,
+          Jw_PredictedValue: this.JwValue,
+          SRF_PredictedValue: this.SRFValue,
+          
+          Q_Value_PredictedValue: this.Q_Value_PredictedValue
+
+        })
+          .then((res) => {
+            console.log(res.data);
+            console.log('Q VALUE IS: ' + this.Q_Value_PredictedValue);
+            this.get_Q();
+          })
+      },
+
+      //RMR Value MODEL
+      get_RMR() {
+        axios.get('/api/get_RMR_model')
+          .then((res) => {
+            console.log(res.data)
+
+
+            this.use_Q_Value = res.data.RMR_historical_data[0].Q_Value_PredictedValue;
+            
+            this.RMR_Hist = res.data.RMR_historical_data;
+
+          })
+      },
+
+      Post_RMR() {
+        axios.post('/api/RMR_model_save', {          
+          RMR_PredictedValue: this.RMR_PredictedValue
+
+        })
+          .then((res) => {
+            console.log(res.data);
+            console.log('RMR VALUE IS: ' + this.RMR_PredictedValue);
+            this.get_RMR();
+          })
+      },
+        //ESR Value MODEL
+        get_ESR() {
+          axios.get('/api/get_ESR_model')
+            .then((res) => {
+              console.log(res.data)
+  
+  
+              this.use_Q_Value = res.data.ESR_historical_data[0].Q_Value_PredictedValue;
+              
+              this.ESR_Hist = res.data.ESR_historical_data;
+  
+            })
+        },
+  
+        Post_ESR() {
+          axios.post('/api/ESR_model_save', {          
+            ESR_PredictedValue: this.ESR_PredictedValue
+  
+          })
+            .then((res) => {
+              console.log(res.data);
+              console.log('ESR VALUE IS: ' + this.ESR_PredictedValue);
+              this.get_ESR();
+            })
+        },
+         //ESR Value MODEL
+         get_MUS() {
+          axios.get('/api/get_MUS_model')
+            .then((res) => {
+              console.log(res.data)
+  
+  
+              this.use_Q_Value = res.data.MUS_historical_data[0].Q_Value_PredictedValue;
+              this.use_ESR_Value = res.data.MUS_historical_data[0].ESR_PredictedValue;
+              
+              this.MUS_Hist = res.data.MUS_historical_data;
+              // this.MUSValue = "Based on your input, the predicted Maximum Unsupported span value is " + this.Maximum_unsupported_span / 2 + "m";
+              // console.log('I am working: ' + this.MUSValue)
+
+  
+            })
+        },
+  
+        Post_MUS() {
+          axios.post('/api/MUS_model_save', {          
+            Maximum_unsupported_span: this.Maximum_unsupported_span
+  
+          })
+            .then((res) => {
+              console.log(res.data);
+              this.MUSValue = "Based on your input, the predicted Maximum Unsupported span value is " + this.Maximum_unsupported_span / 2 + "m";
+              console.log('I am working: ' + this.MUSValue)
+
+              console.log('MUS VALUE IS: ' + this.Maximum_unsupported_span);
+              this.get_MUS();
+
+            })
+        }
+
+
     };
   });
 });
