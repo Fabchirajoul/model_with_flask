@@ -367,7 +367,7 @@ def Jr_Pred_save():
         data = request.get_json()
         
         Jr_description = data['Jr_description']
-        Jr_PredictedValue = data['Jr_PredictedValue']
+        Jr_PredictedValue = float(data['Jr_PredictedValue'])
 
         # Connect to the SQLite database
         conn = sqlite3.connect('capstonedb.db')
@@ -1537,7 +1537,7 @@ def Get_ESR():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT ESR_Conditions, ESR_PredictedValue FROM MainDataTable WHERE ESR_Conditions IS NOT NULL and ESR_PredictedValue IS NOT NULL ORDER BY MainDataTable.MainID DESC LIMIT 5')
+    cursor.execute('SELECT ESR_Conditions, ESR_PredictedValue FROM MainDataTable WHERE ESR_Conditions IS NOT NULL and ESR_PredictedValue IS NOT NULL ORDER BY MainDataTable.MainID DESC LIMIT 10')
     rows = cursor.fetchall()
 
     conn.close()
