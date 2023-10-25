@@ -20,6 +20,10 @@ CREATE TABLE MainTable (
 )
 
 
+SELECT Jn_PredictedValue,Ja_PredictedValue,Jr_PredictedValue,Jw_PredictedValue,UCS_PredictedValue,RQD_PredictedValue,RMR_PredictedValue,SRF_PredictedValue,Q_Value_PredictedValue,ESR_PredictedValue,Maximum_unsupported_span FROM MainDataTable ORDER BY MainID DESC LIMIT 7
+
+
+
 INSERT INTO MainDataTabe (
     Jn,
 	Ja,

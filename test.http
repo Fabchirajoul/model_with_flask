@@ -41,6 +41,14 @@ Content-Type: application/json
 GET http://127.0.0.1:5000/api/get_Jn_model
 
 
+###
+post http://127.0.0.1:5000/api/Jn_model_save
+Content-Type: application/json
+
+{   
+    "Jn_description": "Two joint sets",
+    "Jn_PredictedValue": 2.3
+}
 
 ###
 post http://127.0.0.1:5000/api/Ja_model
@@ -49,6 +57,34 @@ Content-Type: application/json
 {
     "description": 23
 }
+
+###
+post http://127.0.0.1:5000/api/Ja_model_save
+Content-Type: application/json
+
+{   
+    "Ja_description": "tightly healed|hard|non softening|impermeable rock mineral filing between 10mm to 50mm joint seperation",
+    "Ja_PredictedValue": 2.4
+}
+
+
+####
+GET http://127.0.0.1:5000/api/get_Ja_model
+
+###
+post http://127.0.0.1:5000/api/Jr_model_save
+Content-Type: application/json
+
+{   
+    "Jr_description": "rough and planar",
+    "Jr_PredictedValue": 2.6
+}
+
+
+####
+GET http://127.0.0.1:5000/api/get_Jr_model
+
+
 
 ###
 post http://127.0.0.1:5000/api/Jr_model
@@ -66,6 +102,22 @@ Content-Type: application/json
 {
     "description": 200
 }
+###
+post http://127.0.0.1:5000/api/Jw_model_save
+Content-Type: application/json
+
+{   
+    "Jw_description": "Medium inflow occasionally outwash of joints or fissues filings with head water between 10 to 25m",
+    "Jw_PredictedValue": 0.66
+}
+
+
+####
+GET http://127.0.0.1:5000/api/get_Jw_model
+
+
+
+
 ### 
 post http://127.0.0.1:5000/api/rmr_model
 Content-Type: application/json
@@ -137,6 +189,22 @@ Content-Type: application/json
 {
     "ESR_Conditions": 5
 }
+
+
+####
+GET http://127.0.0.1:5000/api/get_ESR_model
+
+
+###
+post http://127.0.0.1:5000/api/ESR_model_save
+Content-Type: application/json
+
+{   
+    "ESR_Conditions": "Temporary mine openings",
+    "ESR_PredictedValue": 2.3
+}
+
+
 
 ###
 post http://127.0.0.1:5000/api/ucs_model

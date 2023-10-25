@@ -237,6 +237,7 @@ def Jn_Pred():
 def Jn_Pred_save():
     if request.method == 'POST':
         data = request.get_json()
+        Jn_description = data['Jn_description']
         Jn_PredictedValue = data['Jn_PredictedValue']
 
         # Connect to the SQLite database
@@ -244,7 +245,7 @@ def Jn_Pred_save():
         cursor = conn.cursor()
 
         # Update data in the database for the row with the maximum MainID
-        cursor.execute("UPDATE MainDataTable SET Jn_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Jn_PredictedValue,))
+        cursor.execute("UPDATE MainDataTable SET Jn_description=?, Jn_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Jn_description, Jn_PredictedValue,))
 
         # Commit the transaction and close the connection
         conn.commit()
@@ -258,13 +259,13 @@ def Get_Jn():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT MainID, UCS_PredictedValue, SRF_PredictedValue, Jn_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    cursor.execute('SELECT Jn_description, Jn_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
 
     # Define the column names
-    column_names = ['MainID', 'UCS_PredictedValue', 'SRF_PredictedValue', 'Jn_PredictedValue']
+    column_names = ['Jn_description', 'Jn_PredictedValue']
 
     # Convert the fetched rows to a list of dictionaries
     data = [dict(zip(column_names, row)) for row in rows]
@@ -364,6 +365,8 @@ def Jr_Pred():
 def Jr_Pred_save():
     if request.method == 'POST':
         data = request.get_json()
+        
+        Jr_description = data['Jr_description']
         Jr_PredictedValue = data['Jr_PredictedValue']
 
         # Connect to the SQLite database
@@ -371,7 +374,7 @@ def Jr_Pred_save():
         cursor = conn.cursor()
 
         # Update data in the database for the row with the maximum MainID
-        cursor.execute("UPDATE MainDataTable SET Jr_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Jr_PredictedValue,))
+        cursor.execute("UPDATE MainDataTable SET Jr_description=?, Jr_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Jr_description, Jr_PredictedValue,))
 
         # Commit the transaction and close the connection
         conn.commit()
@@ -385,13 +388,13 @@ def Get_Jr():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT MainID, UCS_PredictedValue, SRF_PredictedValue, Jn_PredictedValue, Jr_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    cursor.execute('SELECT Jr_description, Jr_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
 
     # Define the column names
-    column_names = ['MainID', 'UCS_PredictedValue', 'SRF_PredictedValue', 'Jn_PredictedValue', 'Jr_PredictedValue']
+    column_names = ['Jr_description', 'Jr_PredictedValue']
 
     # Convert the fetched rows to a list of dictionaries
     data = [dict(zip(column_names, row)) for row in rows]
@@ -764,15 +767,18 @@ def Ja_Pred():
 @app.route('/api/Ja_model_save', methods=['POST'])
 def Ja_Pred_save():
     if request.method == 'POST':
-        data = request.get_json()
+        data = request.get_json() 
+        
+
         Ja_PredictedValue = data['Ja_PredictedValue']
+        Ja_description = data['Ja_description']
 
         # Connect to the SQLite database
         conn = sqlite3.connect('capstonedb.db')
         cursor = conn.cursor()
 
         # Update data in the database for the row with the maximum MainID
-        cursor.execute("UPDATE MainDataTable SET Ja_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Ja_PredictedValue,))
+        cursor.execute("UPDATE MainDataTable SET Ja_description=?, Ja_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Ja_description, Ja_PredictedValue,))
 
         # Commit the transaction and close the connection
         conn.commit()
@@ -786,13 +792,13 @@ def Get_Ja():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT MainID, UCS_PredictedValue, SRF_PredictedValue, Jn_PredictedValue, Jr_PredictedValue, Ja_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    cursor.execute('SELECT Ja_description, Ja_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
 
     # Define the column names
-    column_names = ['MainID', 'UCS_PredictedValue', 'SRF_PredictedValue', 'Jn_PredictedValue', 'Jr_PredictedValue', 'Ja_PredictedValue']
+    column_names = ['Ja_description', 'Ja_PredictedValue']
 
     # Convert the fetched rows to a list of dictionaries
     data = [dict(zip(column_names, row)) for row in rows]
@@ -1204,6 +1210,7 @@ def Jw_Pred():
 def Jw_Pred_save():
     if request.method == 'POST':
         data = request.get_json()
+        Jw_description = data['Jw_description']
         Jw_PredictedValue = data['Jw_PredictedValue']
 
         # Connect to the SQLite database
@@ -1211,7 +1218,7 @@ def Jw_Pred_save():
         cursor = conn.cursor()
 
         # Update data in the database for the row with the maximum MainID
-        cursor.execute("UPDATE MainDataTable SET Jw_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Jw_PredictedValue,))
+        cursor.execute("UPDATE MainDataTable SET Jw_description=?, Jw_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Jw_description, Jw_PredictedValue,))
 
         # Commit the transaction and close the connection
         conn.commit()
@@ -1225,13 +1232,13 @@ def Get_Jw():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT MainID, UCS_PredictedValue, SRF_PredictedValue, Jn_PredictedValue, Jr_PredictedValue, Ja_PredictedValue, Jw_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    cursor.execute('SELECT Jw_description, Jw_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
 
     # Define the column names
-    column_names = ['MainID', 'UCS_PredictedValue', 'SRF_PredictedValue', 'Jn_PredictedValue', 'Jr_PredictedValue', 'Ja_PredictedValue', 'Jw_PredictedValue']
+    column_names = ['Jw_description', 'Jw_PredictedValue']
 
     # Convert the fetched rows to a list of dictionaries
     data = [dict(zip(column_names, row)) for row in rows]
@@ -1501,6 +1508,8 @@ def ESR_Pred_save():
         data = request.get_json()
 
         # Extract data from the JSON
+        
+        ESR_Conditions = data['ESR_Conditions']
         ESR_PredictedValue = float(data['ESR_PredictedValue'])
        
 
@@ -1509,7 +1518,7 @@ def ESR_Pred_save():
         cursor = conn.cursor()
 
         # Insert data into the database
-        cursor.execute("UPDATE MainDataTable SET ESR_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (ESR_PredictedValue,))
+        cursor.execute("UPDATE MainDataTable SET ESR_Conditions=?, ESR_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (ESR_Conditions, ESR_PredictedValue,))
         
 
 
@@ -1525,13 +1534,13 @@ def Get_ESR():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT MainID, SRF_PredictedValue, RMR_PredictedValue, RQD_PredictedValue,  Q_Value_PredictedValue, ESR_PredictedValue FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
+    cursor.execute('SELECT ESR_Conditions, ESR_PredictedValue FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
 
     # Define the column names
-    column_names = ['MainID', 'SRF_PredictedValue', 'Q_Value_PredictedValue', 'RMR_PredictedValue', 'RQD_PredictedValue', 'ESR_PredictedValue']
+    column_names = ['ESR_Conditions', 'ESR_PredictedValue']
 
     # Convert the fetched rows to a list of dictionaries
     data = [dict(zip(column_names, row)) for row in rows]
@@ -1703,15 +1712,20 @@ def logout():
 def historical_data():
     conn = sqlite3.connect('capstonedb.db')
     c = conn.cursor()
-    c.execute("SELECT Jn,Ja,Jr,Jw,UCS_Mpa,RQD_p,Q_Value,SRF,RMR,ESR_VALUE,Maximum_unsupported_span FROM dataset ORDER BY id DESC LIMIT 7")
-    data = c.fetchall()  # Fetch all rows from the cursor
+    c.execute("SELECT Jn_PredictedValue,Ja_PredictedValue,Jr_PredictedValue,Jw_PredictedValue,UCS_PredictedValue,RQD_PredictedValue,SRF_PredictedValue,Q_Value_PredictedValue, RMR_PredictedValue,ESR_PredictedValue,Maximum_unsupported_span FROM MainDataTable ORDER BY MainID DESC LIMIT 7")
+    rows = c.fetchall()  # Fetch all rows from the cursor
     conn.close()
 
-    # Convert the data to a list of dictionaries for JSON serialization
-    results = [{"id": row[0], "column1": row[1], "column2": row[2],
-                "column2": row[2], "column2": row[2]} for row in data]
+    
+    # Define the column names
+    column_names = ['Jn_PredictedValue','Ja_PredictedValue','Jr_PredictedValue','Jw_PredictedValue','UCS_PredictedValue', 'RQD_PredictedValue', 'SRF_PredictedValue', 'Q_Value_PredictedValue', 'RMR_PredictedValue', 'ESR_PredictedValue', 'Maximum_unsupported_span']
 
-    return jsonify({"RESULTS": results})
+    # Convert the fetched rows to a list of dictionaries
+    data = [dict(zip(column_names, row)) for row in rows]
+
+    # Return the data as JSON
+    return jsonify({'historical_data': data})
+
 
 # historical_data()
 

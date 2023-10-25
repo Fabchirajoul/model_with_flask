@@ -832,10 +832,10 @@ document.addEventListener("alpine:init", () => {
       // Q_value: 0,
       NumQ: "",
 
-      Jn_predictedValue: '',
-      Jr_predictedValue: '',
-      Ja_predictedValue: '',
-      Jw_predictedValue: '',
+      Jn_PredictedValue: '',
+      Jw_PredictedValue: '',
+      Ja_PredictedValue: '',
+      Jw_PredictedValue: '',
       RQD_PredictedValue: '',
       Q_Value_PredictedValue: '',
       RMR_PredictedValue: '',
@@ -1241,9 +1241,11 @@ document.addEventListener("alpine:init", () => {
             Jn_Description: String(this.JnDesc),
           })
           .then((res) => {
+            this.Jn_PredictedValue = res.data.prediction[0];
             this.JnVal =
               "Based on your input, the predicted Jn value is " +
               res.data.prediction[0].toFixed(2);
+              this.Post_Jn()
           });
       },
 
@@ -1254,9 +1256,12 @@ document.addEventListener("alpine:init", () => {
             Jr_Description: String(this.JrDesc),
           })
           .then((res) => {
+            this.Jw_PredictedValue = res.data.prediction[0];
+
             this.JrVal =
               "Based on your input, the predicted Joint Orientation (Jr value) is " +
               res.data.prediction[0].toFixed(2);
+              this.Post_Jr()
           });
       },
 
@@ -1268,9 +1273,12 @@ document.addEventListener("alpine:init", () => {
             Ja_Description: String(this.JaDesc),
           })
           .then((res) => {
+            this.Ja_PredictedValue = res.data.prediction[0];
+
             this.JaVal =
               "Based on your input, the predicted Joint Alteration (Ja value) is " +
               res.data.prediction[0].toFixed(2);
+              this.Post_Ja()
           });
       },
 
@@ -1282,9 +1290,11 @@ document.addEventListener("alpine:init", () => {
             Jw_Description: String(this.JwDesc),
           })
           .then((res) => {
+            this.Jw_PredictedValue = res.data.prediction[0];
             this.JwVal =
               "Based on your input, the predicted Joint Water Reduction (Jw value) is " +
               res.data.prediction[0].toFixed(2);
+              this.Post_Jw()
           });
       },
 
@@ -1447,10 +1457,12 @@ document.addEventListener("alpine:init", () => {
             ESR_Conditions: String(this.EsrDesc),
           })
           .then((res) => {
-            // console.log(res.data);
+            console.log(res.data);
+            this.ESR_PredictedValue = res.data.prediction[0];
             this.EsrVal =
               "Based on your input, the predicted Excavation Category value is " +
               res.data.prediction[0].toFixed(2);
+              this.Post_ESR();
           });
       },
 
@@ -1662,10 +1674,13 @@ document.addEventListener("alpine:init", () => {
 
       Post_Jn() {
         axios.post('/api/Jn_model_save', {
-          Jn_predictedValue: this.Jn_predictedValue,
+          Jn_description: this.JnDesc,
+          Jn_PredictedValue: this.Jn_PredictedValue,
         })
           .then((res) => {
+            console.log("went through...")
             console.log(res.data);
+            
             this.getJN()
           })
       },
@@ -1680,7 +1695,9 @@ document.addEventListener("alpine:init", () => {
 
       Post_Jr() {
         axios.post('/api/Jr_model_save', {
-          Jr_predictedValue: this.Jr_predictedValue,
+          
+          Jr_description: this.JrDesc,
+          Jw_PredictedValue: this.Jw_PredictedValue,
         })
           .then((res) => {
             console.log(res.data);
@@ -1698,7 +1715,8 @@ document.addEventListener("alpine:init", () => {
 
       Post_Ja() {
         axios.post('/api/Ja_model_save', {
-          Ja_predictedValue: this.Ja_predictedValue,
+          Ja_description: this.JaDesc,
+          Ja_PredictedValue: this.Ja_PredictedValue,
         })
           .then((res) => {
             console.log(res.data);
@@ -1716,7 +1734,8 @@ document.addEventListener("alpine:init", () => {
 
       Post_Jw() {
         axios.post('/api/Jw_model_save', {
-          Jw_predictedValue: this.Jw_predictedValue,
+          Jw_description: this.JwDesc,
+          Jw_PredictedValue: this.Jw_PredictedValue,
         })
           .then((res) => {
             console.log(res.data);
@@ -1754,7 +1773,7 @@ document.addEventListener("alpine:init", () => {
             console.log('JN VAL: ' + res.data.Q_historical_data[0].Jn_PredictedValue);
 
             this.use_Jn = res.data.Q_historical_data[0].Jn_PredictedValue;
-            this.use_Jr = res.data.Q_historical_data[0].Jr_PredictedValue;
+            this.use_Jr = res.data.Q_historical_data[0].Jw_PredictedValue;
             this.use_Ja = res.data.Q_historical_data[0].Ja_PredictedValue;
             this.use_Jw = res.data.Q_historical_data[0].Jw_PredictedValue;
             this.use_SRF = res.data.Q_historical_data[0].SRF_PredictedValue;
@@ -1769,7 +1788,7 @@ document.addEventListener("alpine:init", () => {
         axios.post('/api/Q_model_save', {
           RQD_PredictedValue: this.RQDValue,
           Jn_PredictedValue: this.JnValue,
-          Jr_PredictedValue: this.JrValue,
+          Jw_PredictedValue: this.JrValue,
           Ja_PredictedValue: this.JaValue,
           Jw_PredictedValue: this.JwValue,
           SRF_PredictedValue: this.SRFValue,
@@ -1824,9 +1843,9 @@ document.addEventListener("alpine:init", () => {
         },
   
         Post_ESR() {
-          axios.post('/api/ESR_model_save', {          
+          axios.post('/api/ESR_model_save', {    
+            ESR_Conditions: this.EsrDesc,
             ESR_PredictedValue: this.ESR_PredictedValue
-  
           })
             .then((res) => {
               console.log(res.data);
@@ -1840,7 +1859,7 @@ document.addEventListener("alpine:init", () => {
             .then((res) => {
               console.log(res.data)
   
-  
+              
               this.use_Q_Value = res.data.MUS_historical_data[0].Q_Value_PredictedValue;
               this.use_ESR_Value = res.data.MUS_historical_data[0].ESR_PredictedValue;
               
