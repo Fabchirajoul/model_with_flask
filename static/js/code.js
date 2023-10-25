@@ -1757,7 +1757,7 @@ document.addEventListener("alpine:init", () => {
           Depth_To: this.depth_to_surface,
           True_Thickness: this.true_thickness,
           Hardness: this.hardness_property,
-          RQD_PredictedValue: this.RQD_PredictedValue
+          RQD_PredictedValue: this.RQD_PredictedValue.toFixed(2)
         })
           .then((res) => {
             console.log(res.data);
@@ -1777,7 +1777,7 @@ document.addEventListener("alpine:init", () => {
             this.use_Ja = res.data.Q_historical_data[0].Ja_PredictedValue;
             this.use_Jw = res.data.Q_historical_data[0].Jw_PredictedValue;
             this.use_SRF = res.data.Q_historical_data[0].SRF_PredictedValue;
-            this.use_RQD = res.data.Q_historical_data[0].RQD_PredictedValue;
+            this.use_RQD = res.data.Q_historical_data[0].RQD_PredictedValue.toFixed(2);
             
             this.Q_Hist = res.data.Q_historical_data;
 

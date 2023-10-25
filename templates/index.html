@@ -1001,7 +1001,7 @@
                             <tbody>
                                 <template x-for="i in SRF_Hist">
                                     <tr>
-                                        <td x-text="i.UCS_PredictedValue"></td>
+                                        <td x-text="i.UCS_PredictedValue.toFixed(2)"></td>
                                         <td x-text="i.SRF_PredictedValue.toFixed(2)"></td>
 
                                     </tr>
@@ -1141,7 +1141,7 @@
                                         <td x-text="i.Depth_To"></td>
                                         <td x-text="i.True_Thickness"></td>
                                         <td x-text="i.Hardness"></td>
-                                        <td x-text="i.RQD_PredictedValue.toFixed(2)"></td>
+                                        <td x-text="i.RQD_PredictedValue"></td>
 
                                     </tr>
                                 </template>
