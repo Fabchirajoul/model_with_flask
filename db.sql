@@ -22,7 +22,15 @@ CREATE TABLE MainTable (
 
 SELECT Jn_PredictedValue,Ja_PredictedValue,Jr_PredictedValue,Jw_PredictedValue,UCS_PredictedValue,RQD_PredictedValue,RMR_PredictedValue,SRF_PredictedValue,Q_Value_PredictedValue,ESR_PredictedValue,Maximum_unsupported_span FROM MainDataTable ORDER BY MainID DESC LIMIT 7
 
+SELECT * FROM MainDataTable 
 
+
+
+Borehole_ID,Depth_From,Depth_To,Run_Length,True_Thickness,Weathering,Hardness,Geotech_Domain,Jn_Description,Jr_Description,Ja_Description,Jw_Description,ESR_Conditions,Depth_underground,RQD_m	RQD_p,Jn,Jr,Ja,Jw,Density,Virgin_Stress,UCS_Mpa,UCS_Virgin_stress_ratio,SRF,Q_Value,LNQ,RMR,ESR_VALUE,UCS_PredictedValue,SRF_PredictedValue,Ja_PredictedValue,Jr_PredictedValue,Jw_PredictedValue,Jn_PredictedValue,RMR_PredictedValue,RQD_PredictedValue,Q_Value_PredictedValue	ESR_PredictedValue	Maximum_unsupported_span
+
+
+DELETE FROM MainDataTable 
+WHERE COALESCE (Borehole_ID,Depth_From,Depth_To,Run_Length,True_Thickness ) IS NULL;
 
 INSERT INTO MainDataTabe (
     Jn,

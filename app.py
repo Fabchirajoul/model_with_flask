@@ -73,7 +73,7 @@ def Get_UCS():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT  Density, Depth_To, UCS_Mpa, UCS_PredictedValue FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
+    cursor.execute('SELECT  Density, Depth_To, UCS_Mpa, UCS_PredictedValue FROM MainDataTable WHERE UCS_PredictedValue IS NOT NULL ORDER BY MainDataTable.MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
@@ -139,7 +139,7 @@ def Get_srf():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT MainID, Density, Depth_To, UCS_Mpa, UCS_PredictedValue, SRF_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    cursor.execute('SELECT MainID, Density, Depth_To, UCS_Mpa, UCS_PredictedValue, SRF_PredictedValue FROM MainDataTable WHERE UCS_PredictedValue IS NOT NULL and SRF_PredictedValue IS NOT NULL ORDER BY MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
@@ -259,7 +259,7 @@ def Get_Jn():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT Jn_description, Jn_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    cursor.execute('SELECT Jn_description, Jn_PredictedValue FROM MainDataTable WHERE Jn_description IS NOT NULL and Jn_PredictedValue IS NOT NULL ORDER BY MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
@@ -388,7 +388,7 @@ def Get_Jr():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT Jr_description, Jr_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    cursor.execute('SELECT Jr_description, Jr_PredictedValue FROM MainDataTable WHERE Jr_description IS NOT NULL and Jr_PredictedValue IS NOT NULL ORDER BY MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
@@ -792,7 +792,7 @@ def Get_Ja():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT Ja_description, Ja_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    cursor.execute('SELECT Ja_description, Ja_PredictedValue FROM MainDataTable WHERE Ja_description IS NOT NULL and Ja_PredictedValue IS NOT NULL ORDER BY MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
@@ -1232,7 +1232,7 @@ def Get_Jw():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT Jw_description, Jw_PredictedValue FROM MainDataTable ORDER BY MainID DESC LIMIT 5')
+    cursor.execute('SELECT Jw_description, Jw_PredictedValue FROM MainDataTable WHERE Jw_description IS NOT NULL and Jw_PredictedValue IS NOT NULL ORDER BY MainID DESC LIMIT 10')
     rows = cursor.fetchall()
 
     conn.close()
@@ -1304,7 +1304,7 @@ def Get_RQD():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT MainID, Depth_From, Depth_To, True_Thickness, Hardness, RQD_PredictedValue FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
+    cursor.execute('SELECT MainID, Depth_From, Depth_To, True_Thickness, Hardness, RQD_PredictedValue FROM MainDataTable WHERE RQD_PredictedValue IS NOT NULL ORDER BY MainDataTable.MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
@@ -1381,7 +1381,10 @@ def Get_Q():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT MainID, SRF_PredictedValue, Jn_PredictedValue, Jr_PredictedValue, Ja_PredictedValue, Jw_PredictedValue, RQD_PredictedValue, Q_Value_PredictedValue FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
+    cursor.execute('SELECT MainID, SRF_PredictedValue, Jn_PredictedValue, Jr_PredictedValue, Ja_PredictedValue, Jw_PredictedValue, RQD_PredictedValue, Q_Value_PredictedValue FROM MainDataTable WHERE SRF_PredictedValue IS NOT NULL and Jn_PredictedValue IS NOT NULL and Jr_PredictedValue IS NOT NULL and Ja_PredictedValue IS NOT NULL and Jw_PredictedValue IS NOT NULL and RQD_PredictedValue IS NOT NULL and Q_Value_PredictedValue IS NOT NULL ORDER BY MainDataTable.MainID DESC LIMIT 5') 
+                   
+                       
+                   
     rows = cursor.fetchall()
 
     conn.close()
@@ -1534,7 +1537,7 @@ def Get_ESR():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT ESR_Conditions, ESR_PredictedValue FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
+    cursor.execute('SELECT ESR_Conditions, ESR_PredictedValue FROM MainDataTable WHERE ESR_Conditions IS NOT NULL and ESR_PredictedValue IS NOT NULL ORDER BY MainDataTable.MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()

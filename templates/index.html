@@ -1157,7 +1157,7 @@
                         <!-- UCS historical data -->
                         <p style="text-align: center;">ESR HISTORY</p>
                         <div style="text-align: center;">
-                            <button class="btn btn-info" @click="ESR_HISTORY=!ESR_HISTORY" >Open/close</button>
+                            <button class="btn btn-info" @click="ESR_HISTORY=!ESR_HISTORY">Open/close</button>
                         </div>
                         <table class="table" x-show="ESR_HISTORY" style="text-align: center;">
                             <thead>
@@ -1166,10 +1166,11 @@
                             </thead>
                             <tbody>
                                 <template x-for="i in ESR_Hist">
-                                    <tr>                                                                                                                                                                                                                            <td x-text="i.SRF_PredictedValue"></td>
+                                    <tr>
+                                        <td x-text="i.SRF_PredictedValue"></td>
                                         <td x-text="i.ESR_Conditions"></td>
                                         <td x-text="i.ESR_PredictedValue"></td>
-                                        
+                    
                                     </tr>
                                 </template>
                             </tbody>
@@ -1191,6 +1192,7 @@
                                 <th>Jw</th>
                                 <th>SRF</th>
                                 <th>RQD</th>
+                                <th>Predicted Q</th>
                                 <!-- <th>ACTION</th> -->
                             </thead>
                             <tbody>
