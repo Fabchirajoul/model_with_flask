@@ -359,7 +359,7 @@
 
 
                         <!--8  RQD Section -->
-                        <div class="col-md-10" x-show="Rock_Quality_Designator">
+                        <div class="col-md-10" x-show="Rock_Quality_Designator" x-cloak>
                             <marquee behavior="alternate" direction="right" scrollmount="8">
                                 <h4>ROCK QUALITY DESIGNATOR</h4>
                             </marquee>
@@ -976,7 +976,7 @@
                                         <td x-text="i.Density"></td>
                                         <td x-text="i.Depth_To"></td>
                                         <td x-text="i.UCS_Mpa"></td>
-                                        <td x-text="i.UCS_PredictedValue"></td>
+                                        <td x-text="i.UCS_PredictedValue.toFixed(2)"></td>
 
                                     </tr>
                                 </template>
@@ -1002,7 +1002,7 @@
                                 <template x-for="i in SRF_Hist">
                                     <tr>
                                         <td x-text="i.UCS_PredictedValue"></td>
-                                        <td x-text="i.SRF_PredictedValue"></td>
+                                        <td x-text="i.SRF_PredictedValue.toFixed(2)"></td>
 
                                     </tr>
                                 </template>
@@ -1056,7 +1056,7 @@
                                 <template x-for="i in JrHist">
                                     <tr>
                                         <td x-text="i.Jr_description"></td>
-                                        <td x-text="i.Jr_PredictedValue"></td>
+                                        <td x-text="i.Jr_PredictedValue.toFixed(2)"></td>
 
                                     </tr>
                                 </template>
@@ -1084,7 +1084,7 @@
                                 <template x-for="i in JaHist">
                                     <tr>
                                         <td x-text="i.Ja_description"></td>
-                                        <td x-text="i.Ja_PredictedValue"></td>
+                                        <td x-text="i.Ja_PredictedValue.toFixed(2)"></td>
 
                                     </tr>
                                 </template>
@@ -1111,7 +1111,7 @@
                                 <template x-for="i in JwHist">
                                     <tr>
                                         <td x-text="i.Jw_description"></td>
-                                        <td x-text="i.Jw_PredictedValue"></td>
+                                        <td x-text="i.Jw_PredictedValue.toFixed(2)"></td>
 
                                     </tr>
                                 </template>
@@ -1127,11 +1127,11 @@
                         </div>
                         <table class="table" x-show="ROCK_QUALITY_DESIGNATOR" style="text-align: center;">
                             <thead>
-                                <th>Depth From Surface(m)</th>
-                                <th>Depth to Surface(m)</th>
-                                <th>True Thickness</th>
+                                <th>Depth From </th>
+                                <th>Depth to </th>
+                                <th>T. Thickness</th>
                                 <th>Hardness</th>
-                                <th>RQD PREDICTED (%)</th>
+                                <th>RQD (%)</th>
                             </thead>
                             <tbody>
                                 <template x-for="i in RQD_Hist">
@@ -1141,7 +1141,7 @@
                                         <td x-text="i.Depth_To"></td>
                                         <td x-text="i.True_Thickness"></td>
                                         <td x-text="i.Hardness"></td>
-                                        <td x-text="i.RQD_PredictedValue"></td>
+                                        <td x-text="i.RQD_PredictedValue.toFixed(2)"></td>
 
                                     </tr>
                                 </template>
@@ -1169,7 +1169,7 @@
                                     <tr>
                                         
                                         <td x-text="i.ESR_Conditions"></td>
-                                        <td x-text="i.ESR_PredictedValue"></td>
+                                        <td x-text="i.ESR_PredictedValue.toFixed(2)"></td>
                     
                                     </tr>
                                 </template>
@@ -1205,7 +1205,7 @@
                                         <td x-text="i.Jw_PredictedValue"></td>
                                         <td x-text="i.SRF_PredictedValue"></td>
                                         <td x-text="i.RQD_PredictedValue"></td>
-                                        <td x-text="i.Q_Value_PredictedValue"></td>
+                                        <td x-text="i.Q_Value_PredictedValue.toFixed(2)"></td>
 
                                     </tr>
                                 </template>
@@ -1231,7 +1231,7 @@
                                 <template x-for="i in RMR_Hist">
                                     <tr>
                                         <td x-text="i.Q_Value_PredictedValue"></td>
-                                        <td x-text="i.RMR_PredictedValue"></td>
+                                        <td x-text="i.RMR_PredictedValue.toFixed(2)"></td>
 
                                     </tr>
                                 </template>
@@ -1260,7 +1260,7 @@
                                     <tr>                                        
                                         <td x-text="i.Q_Value_PredictedValue"></td>
                                         <td x-text="i.ESR_PredictedValue"></td>
-                                        <td x-text="i.Maximum_unsupported_span"></td>
+                                        <td x-text="i.Maximum_unsupported_span.toFixed(2)"></td>
 
                                     </tr>
                                 </template>

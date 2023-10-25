@@ -1381,7 +1381,7 @@ def Get_Q():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT MainID, SRF_PredictedValue, Jn_PredictedValue, Jr_PredictedValue, Ja_PredictedValue, Jw_PredictedValue, RQD_PredictedValue, Q_Value_PredictedValue FROM MainDataTable WHERE SRF_PredictedValue IS NOT NULL and Jn_PredictedValue IS NOT NULL and Jr_PredictedValue IS NOT NULL and Ja_PredictedValue IS NOT NULL and Jw_PredictedValue IS NOT NULL and RQD_PredictedValue IS NOT NULL and Q_Value_PredictedValue IS NOT NULL ORDER BY MainDataTable.MainID DESC LIMIT 5') 
+    cursor.execute('SELECT MainID, Jn_PredictedValue, Jr_PredictedValue, Ja_PredictedValue, Jw_PredictedValue, SRF_PredictedValue, RQD_PredictedValue, Q_Value_PredictedValue FROM MainDataTable WHERE SRF_PredictedValue IS NOT NULL and Jn_PredictedValue IS NOT NULL and Jr_PredictedValue IS NOT NULL and Ja_PredictedValue IS NOT NULL and Jw_PredictedValue IS NOT NULL and RQD_PredictedValue IS NOT NULL and Q_Value_PredictedValue IS NOT NULL ORDER BY MainDataTable.MainID DESC LIMIT 10') 
                    
                        
                    

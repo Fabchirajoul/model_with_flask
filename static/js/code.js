@@ -835,7 +835,7 @@ document.addEventListener("alpine:init", () => {
       Jn_PredictedValue: '',
       Jw_PredictedValue: '',
       Ja_PredictedValue: '',
-      Jw_PredictedValue: '',
+      Jr_PredictedValue: '',
       RQD_PredictedValue: '',
       Q_Value_PredictedValue: '',
       RMR_PredictedValue: '',
@@ -1256,7 +1256,7 @@ document.addEventListener("alpine:init", () => {
             Jr_Description: String(this.JrDesc),
           })
           .then((res) => {
-            this.Jw_PredictedValue = res.data.prediction[0];
+            this.Jr_PredictedValue = res.data.prediction[0];
 
             this.JrVal =
               "Based on your input, the predicted Joint Orientation (Jr value) is " +
@@ -1697,7 +1697,7 @@ document.addEventListener("alpine:init", () => {
         axios.post('/api/Jr_model_save', {
           
           Jr_description: this.JrDesc,
-          Jw_PredictedValue: this.Jw_PredictedValue,
+          Jr_PredictedValue: this.Jr_PredictedValue,
         })
           .then((res) => {
             console.log(res.data);
@@ -1773,7 +1773,7 @@ document.addEventListener("alpine:init", () => {
             console.log('JN VAL: ' + res.data.Q_historical_data[0].Jn_PredictedValue);
 
             this.use_Jn = res.data.Q_historical_data[0].Jn_PredictedValue;
-            this.use_Jr = res.data.Q_historical_data[0].Jw_PredictedValue;
+            this.use_Jr = res.data.Q_historical_data[0].Jr_PredictedValue;
             this.use_Ja = res.data.Q_historical_data[0].Ja_PredictedValue;
             this.use_Jw = res.data.Q_historical_data[0].Jw_PredictedValue;
             this.use_SRF = res.data.Q_historical_data[0].SRF_PredictedValue;
@@ -1788,7 +1788,7 @@ document.addEventListener("alpine:init", () => {
         axios.post('/api/Q_model_save', {
           RQD_PredictedValue: this.RQDValue,
           Jn_PredictedValue: this.JnValue,
-          Jw_PredictedValue: this.JrValue,
+          Jr_PredictedValue: this.JrValue,
           Ja_PredictedValue: this.JaValue,
           Jw_PredictedValue: this.JwValue,
           SRF_PredictedValue: this.SRFValue,
