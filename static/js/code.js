@@ -1563,6 +1563,7 @@ document.addEventListener("alpine:init", () => {
       ROCK_QUALITY_INDEX:false,
       ROCK_MASS_RATING:false,
       MAXIMUM_STABLE_UNSUPPORTED_SPAN_HISTORY:false,
+      COMBINED_HISTORICAL_RECORD: false,
 
 
 
@@ -1615,7 +1616,7 @@ document.addEventListener("alpine:init", () => {
             console.log(res.data.historical_data);
             this.history_list = res.data.historical_data;
             console.log(this.history_list);
-            this.init()
+            
           });
       },
       // GetUCS_virginStress

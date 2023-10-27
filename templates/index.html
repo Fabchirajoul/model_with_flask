@@ -979,8 +979,11 @@
 
                         <p style="text-align: center;">COMBINED PREDICTED RECORD PER ROCK MASS QUALITY</p>
                         <!-- Numerical computation value by the machine learning model -->
+                        <div style="text-align: center;">
+                            <button class="btn btn-info" @click="COMBINED_HISTORICAL_RECORD=!COMBINED_HISTORICAL_RECORD">Open/close</button>
+                        </div>
 
-                        <table class="table" x-show="history" style="text-align: center;">
+                        <table class="table" x-show="COMBINED_HISTORICAL_RECORD" style="text-align: center;">
                             <thead>
 
                                 <th>Jn</th>
@@ -1018,10 +1021,13 @@
 
                         </table>
 
-
-
+                    </div>
+                    <hr>
+                    <div class="col-md-12">
+                        <p style="text-align: center;">INDIVIDUAL PREDICTED RECORD PER ROCK MASS QUALITY</p>
                     </div>
                     <!-- ucs/vsr history starts here  -->
+                    
                     <div class="col-md-6">
                         <!-- UCS historical data -->
                         <p style="text-align: center;">UCS/VSR HISTORY</p>
