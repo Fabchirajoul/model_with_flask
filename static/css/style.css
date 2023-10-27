@@ -29,3 +29,12 @@ td, th{
 #home-text{
     font-size: 20px;
 }
+
+@media print {
+    * {
+      display: none;
+    }
+    #printableTable {
+      display: block;
+    }
+  }

@@ -1565,11 +1565,6 @@ document.addEventListener("alpine:init", () => {
       MAXIMUM_STABLE_UNSUPPORTED_SPAN_HISTORY:false,
       COMBINED_HISTORICAL_RECORD: false,
 
-
-
-
-
-
       init() {
         this.historicalData();
         this.getUCS();
@@ -1584,6 +1579,8 @@ document.addEventListener("alpine:init", () => {
         this.get_ESR();
         this.get_MUS();
       },
+
+  
       // WORK WITH HISSTORICAL DATA
       history_list: [],
       MainID: '',
@@ -1780,7 +1777,7 @@ document.addEventListener("alpine:init", () => {
             console.log(res.data)
             console.log('JN VAL: ' + res.data.Q_historical_data[0].Jn_PredictedValue);
 
-            this.use_Jn = res.data.Q_historical_data[0].Jn_PredictedValue;
+            this.use_Jn = res.data.Q_historical_data[0].Jn_PredictedValue.toFixed(2);
             this.use_Jr = res.data.Q_historical_data[0].Jr_PredictedValue;
             this.use_Ja = res.data.Q_historical_data[0].Ja_PredictedValue;
             this.use_Jw = res.data.Q_historical_data[0].Jw_PredictedValue;
