@@ -801,8 +801,9 @@ document.addEventListener("alpine:init", () => {
        ],
 
       // RMR value declaratipn
-      Q_Value: "",
-      rmr_val: "",
+      RMR_Q_Value:0,
+      Q_Value: 0,
+      rmr_val: 0,
       // RQD value declaration
       Depth_from_surface: "",
       depth_to_surface: "",
@@ -815,6 +816,7 @@ document.addEventListener("alpine:init", () => {
       ExcMessage: "",
 
       // Rock mass quality function based on RQD value declarations
+
       rmqMessage: "",
       rmq_value: 0,
       openRockMassQuality: false,
@@ -1423,13 +1425,15 @@ document.addEventListener("alpine:init", () => {
             "Ideal conditions for mining or tunneling operations";
         }
       },
+      rmr_predicted:0,
       RMR() {
         axios
           .post("/api/rmr_model", {
-            Q_Value: this.Q_Value,
+            Q_Value: this.RMR_Q_Value,
           })
           .then((res) => {
             this.RMR_PredictedValue = res.data.prediction;
+            this.rmr_predicted=this.RMR_PredictedValue.toFixed(2);
 
             this.Post_RMR()
             console.log(res.data);
@@ -1467,9 +1471,9 @@ document.addEventListener("alpine:init", () => {
       },
 
        // MUS value declarations
-       MUSValue: "",
-       Q_Value: "",
-       ESR_VALUE: "",
+       MUSValue: 0,
+       Q_Value: 0,
+       ESR_VALUE: 0,
 
       MUS() {
         axios
@@ -1611,6 +1615,7 @@ document.addEventListener("alpine:init", () => {
             console.log(res.data.historical_data);
             this.history_list = res.data.historical_data;
             console.log(this.history_list);
+            this.init()
           });
       },
       // GetUCS_virginStress
@@ -1643,17 +1648,20 @@ document.addEventListener("alpine:init", () => {
         axios.get("/api/get_srf_model")
           .then((res) => {
             this.SRF_Hist = res.data.historical_data;
-            this.use_UCS = res.data.historical_data[0].UCS_PredictedValue;
-            this.use_Depth_To = res.data.historical_data[0].Depth_To;
-            console.log(res.data.historical_data[0].Depth_To);
+            this.use_UCS = res.data.historical_data.UCS_PredictedValue;
+            // this.use_Depth_To = res.data.historical_data[0].Depth_To;
+            console.log("In the Get function:",this.SRF_Hist);
           });
       },
+  
       Post_SRF() {
+        console.log("Hopefully:",this.Virgin_stress_ratio)
         axios.post('/api/srf_model_save',
           {
 
-            MainID: this.EditID,
-            SRF_PredictedValue: this.srf_predicted
+            UCS_PredictedValue: this.Virgin_stress_ratio,
+            SRF_PredictedValue: this.srf_predicted,
+
 
           })
           .then((res) => {
@@ -1695,7 +1703,6 @@ document.addEventListener("alpine:init", () => {
 
       Post_Jr() {
         axios.post('/api/Jr_model_save', {
-          
           Jr_description: this.JrDesc,
           Jr_PredictedValue: this.Jr_PredictedValue,
         })
@@ -1784,6 +1791,7 @@ document.addEventListener("alpine:init", () => {
           })
       },
 
+      
       Post_Q() {
         axios.post('/api/Q_model_save', {
           RQD_PredictedValue: this.RQDValue,
@@ -1808,9 +1816,7 @@ document.addEventListener("alpine:init", () => {
         axios.get('/api/get_RMR_model')
           .then((res) => {
             console.log(res.data)
-
-
-            this.use_Q_Value = res.data.RMR_historical_data[0].Q_Value_PredictedValue;
+            // this.use_Q_Value = res.data.RMR_historical_data[0].Q_Value_PredictedValue;
             
             this.RMR_Hist = res.data.RMR_historical_data;
 
@@ -1818,8 +1824,10 @@ document.addEventListener("alpine:init", () => {
       },
 
       Post_RMR() {
+        console.log(this.rmr_val)
         axios.post('/api/RMR_model_save', {          
-          RMR_PredictedValue: this.RMR_PredictedValue
+          RMR_PredictedValue: this.rmr_predicted,
+          Q_Value_PredictedValue:this.RMR_Q_Value,
 
         })
           .then((res) => {
@@ -1828,6 +1836,7 @@ document.addEventListener("alpine:init", () => {
             this.get_RMR();
           })
       },
+
         //ESR Value MODEL
         get_ESR() {
           axios.get('/api/get_ESR_model')
@@ -1872,13 +1881,15 @@ document.addEventListener("alpine:init", () => {
         },
   
         Post_MUS() {
-          axios.post('/api/MUS_model_save', {          
-            Maximum_unsupported_span: this.Maximum_unsupported_span
+          axios.post('/api/MUS_model_save', { 
+            Q_Value_PredictedValue: this.Q_Value,
+            ESR_PredictedValue: this.ESR_VALUE,        
+            Maximum_unsupported_span: this.Maximum_unsupported_span,
   
           })
             .then((res) => {
               console.log(res.data);
-              this.MUSValue = "Based on your input, the predicted Maximum Unsupported span value is " + this.Maximum_unsupported_span / 2 + "m";
+              this.MUSValue = "Based on your input, the predicted Maximum Unsupported span value is " + this.Maximum_unsupported_span  + "m";
               console.log('I am working: ' + this.MUSValue)
 
               console.log('MUS VALUE IS: ' + this.Maximum_unsupported_span);

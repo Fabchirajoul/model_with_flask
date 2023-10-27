@@ -114,9 +114,10 @@ def SRF_Pred():
 @app.route('/api/srf_model_save', methods=['POST'])
 def SRF_Pred_save():
     if request.method == 'POST':
-        data = request.get_json() 
+        data = request.get_json()
 
         # Extract data from the JSON
+        UCS_PredictedValue = float(data['UCS_PredictedValue'])
         SRF_PredictedValue = data['SRF_PredictedValue']
         # MainID = data['MainID']
 
@@ -125,8 +126,9 @@ def SRF_Pred_save():
         cursor = conn.cursor()
 
         # Insert data into the database
-        cursor.execute("UPDATE MainDataTable SET SRF_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (SRF_PredictedValue,))
-
+        cursor.execute("UPDATE MainDataTable SET UCS_PredictedValue=?, SRF_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (UCS_PredictedValue,SRF_PredictedValue,))
+        print("UCS VALUE IS:",UCS_PredictedValue)
+        print("SRF VALUE IS:",SRF_PredictedValue)
         # Commit the transaction and close the connection
         conn.commit()
         conn.close()
@@ -139,13 +141,13 @@ def Get_srf():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT MainID, Density, Depth_To, UCS_Mpa, UCS_PredictedValue, SRF_PredictedValue FROM MainDataTable WHERE UCS_PredictedValue IS NOT NULL and SRF_PredictedValue IS NOT NULL ORDER BY MainID DESC LIMIT 5')
+    cursor.execute('SELECT UCS_PredictedValue, SRF_PredictedValue FROM MainDataTable WHERE UCS_PredictedValue IS NOT NULL and SRF_PredictedValue IS NOT NULL ORDER BY MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
 
     # Define the column names
-    column_names = ['MainID', 'Density', 'Depth_To', 'UCS_Mpa', 'UCS_PredictedValue', 'SRF_PredictedValue']
+    column_names = ['UCS_PredictedValue', 'SRF_PredictedValue']
 
     # Convert the fetched rows to a list of dictionaries
     data = [dict(zip(column_names, row)) for row in rows]
@@ -365,9 +367,8 @@ def Jr_Pred():
 def Jr_Pred_save():
     if request.method == 'POST':
         data = request.get_json()
-        
         Jr_description = data['Jr_description']
-        Jr_PredictedValue = float(data['Jr_PredictedValue'])
+        Jr_PredictedValue = data['Jr_PredictedValue']
 
         # Connect to the SQLite database
         conn = sqlite3.connect('capstonedb.db')
@@ -1424,7 +1425,11 @@ def RMR_Pred_save():
         data = request.get_json()
 
         # Extract data from the JSON
+        Q_Value_PredictedValue = float(data['Q_Value_PredictedValue'])
         RMR_PredictedValue = float(data['RMR_PredictedValue'])
+
+        print("Q value:",Q_Value_PredictedValue)
+        print("RMR value:",RMR_PredictedValue)
        
 
         # Connect to the SQLite database
@@ -1432,7 +1437,7 @@ def RMR_Pred_save():
         cursor = conn.cursor()
 
         # Insert data into the database
-        cursor.execute("UPDATE MainDataTable SET RMR_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (RMR_PredictedValue,))
+        cursor.execute("UPDATE MainDataTable SET Q_Value_PredictedValue=?, RMR_PredictedValue=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Q_Value_PredictedValue,RMR_PredictedValue,))
         
 
 
@@ -1448,13 +1453,13 @@ def Get_RMR():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT MainID, SRF_PredictedValue, Jn_PredictedValue, Jr_PredictedValue, Ja_PredictedValue, Jw_PredictedValue, RQD_PredictedValue, Q_Value_PredictedValue, RMR_PredictedValue FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
+    cursor.execute('SELECT MainID, Q_Value_PredictedValue, RMR_PredictedValue FROM MainDataTable WHERE Q_Value_PredictedValue IS NOT NULL and RMR_PredictedValue IS NOT NULL   ORDER BY MainDataTable.MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
 
     # Define the column names
-    column_names = ['MainID', 'SRF_PredictedValue', 'Jn_PredictedValue', 'Jr_PredictedValue', 'Ja_PredictedValue', 'Jw_PredictedValue', 'RQD_PredictedValue', 'Q_Value_PredictedValue', 'RMR_PredictedValue']
+    column_names = ['MainID', 'Q_Value_PredictedValue', 'RMR_PredictedValue']
 
     # Convert the fetched rows to a list of dictionaries
     data = [dict(zip(column_names, row)) for row in rows]
@@ -1582,6 +1587,8 @@ def MUS_Pred_save():
         data = request.get_json()
 
         # Extract data from the JSON
+        Q_Value_PredictedValue= float(data['Q_Value_PredictedValue'])
+        ESR_PredictedValue = float(data['ESR_PredictedValue'])
         Maximum_unsupported_span = float(data['Maximum_unsupported_span'])
        
 
@@ -1590,7 +1597,7 @@ def MUS_Pred_save():
         cursor = conn.cursor()
 
         # Insert data into the database
-        cursor.execute("UPDATE MainDataTable SET Maximum_unsupported_span=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Maximum_unsupported_span,))
+        cursor.execute("UPDATE MainDataTable SET Q_Value_PredictedValue=?, ESR_PredictedValue=?, Maximum_unsupported_span=? WHERE MainID=(SELECT MAX(MainID) FROM MainDataTable)", (Q_Value_PredictedValue,ESR_PredictedValue,Maximum_unsupported_span,))
         
 
 
@@ -1606,13 +1613,13 @@ def Get_MUS():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT MainID, SRF_PredictedValue, RMR_PredictedValue, RQD_PredictedValue,  Q_Value_PredictedValue, ESR_PredictedValue, Maximum_unsupported_span FROM MainDataTable ORDER BY MainDataTable.MainID DESC LIMIT 5')
+    cursor.execute('SELECT  Q_Value_PredictedValue, ESR_PredictedValue, Maximum_unsupported_span FROM MainDataTable WHERE Q_Value_PredictedValue IS NOT NULL and ESR_PredictedValue IS NOT NULL and Maximum_unsupported_span IS NOT NULL ORDER BY MainDataTable.MainID DESC LIMIT 5')
     rows = cursor.fetchall()
 
     conn.close()
 
     # Define the column names
-    column_names = ['MainID', 'SRF_PredictedValue', 'Q_Value_PredictedValue', 'RMR_PredictedValue', 'RQD_PredictedValue', 'ESR_PredictedValue', 'Maximum_unsupported_span']
+    column_names = ['Q_Value_PredictedValue', 'ESR_PredictedValue', 'Maximum_unsupported_span']
 
     # Convert the fetched rows to a list of dictionaries
     data = [dict(zip(column_names, row)) for row in rows]
@@ -1715,7 +1722,7 @@ def logout():
 def historical_data():
     conn = sqlite3.connect('capstonedb.db')
     c = conn.cursor()
-    c.execute("SELECT Jn_PredictedValue,Ja_PredictedValue,Jr_PredictedValue,Jw_PredictedValue,UCS_PredictedValue,RQD_PredictedValue,SRF_PredictedValue,Q_Value_PredictedValue, RMR_PredictedValue,ESR_PredictedValue,Maximum_unsupported_span FROM MainDataTable ORDER BY MainID DESC LIMIT 7")
+    c.execute("SELECT Jn_PredictedValue,Ja_PredictedValue,Jr_PredictedValue,Jw_PredictedValue,UCS_PredictedValue,RQD_PredictedValue,SRF_PredictedValue,Q_Value_PredictedValue, RMR_PredictedValue,ESR_PredictedValue,Maximum_unsupported_span FROM MainDataTable WHERE Jn_PredictedValue IS NOT NULL and Ja_PredictedValue IS NOT NULL and Jr_PredictedValue IS NOT NULL and Jw_PredictedValue IS NOT NULL and UCS_PredictedValue IS NOT NULL and RQD_PredictedValue IS NOT NULL and SRF_PredictedValue IS NOT NULL and Q_Value_PredictedValue IS NOT NULL and RMR_PredictedValue IS NOT NULL and ESR_PredictedValue IS NOT NULL and Maximum_unsupported_span IS NOT NULL ORDER BY MainID DESC LIMIT 7")
     rows = c.fetchall()  # Fetch all rows from the cursor
     conn.close()
 

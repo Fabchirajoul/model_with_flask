@@ -148,9 +148,12 @@
                     <div class="row justify-content-center" x-cloak>
                         <!-- 2 UCS/Virgin Stress Ratio -->
                         <div class="col-md-10" x-show="UCS_Virgin_Stress_Ratio">
-                            <marquee direction="right" scrollmount="8"><h4>UNIAXIAL COMPRESSIVE STRENGTH / VIRGIN STRESS RATIO</h4></marquee>
+                            <marquee direction="right" scrollmount="8">
+                                <h4>UNIAXIAL COMPRESSIVE STRENGTH / VIRGIN STRESS RATIO</h4>
+                            </marquee>
                             <hr>
-                            <h5>PREDICTED VALUE: <span x-text="ucsvsr_value" style="color: rgba(238, 255, 0, 0.756)"></span></h5>
+                            <h5>PREDICTED VALUE: <span x-text="ucsvsr_value"
+                                    style="color: rgba(238, 255, 0, 0.756)"></span></h5>
                             <hr>
                             <label>Density (Kg/mm^3)</label><br>
                             <input class="form-control" x-model="Density" type="number"
@@ -166,7 +169,8 @@
                                 <button @click="refresh()" class="btn btn-info">refresh</button>
                             </div>
                             <div>
-                                <p class="badge rounded-pill badge-info" style="float: right;"><a href="#" x-on:click="openHome('Stress_Reduction_Ratio')">
+                                <p class="badge rounded-pill badge-info" style="float: right;"><a href="#"
+                                        x-on:click="openHome('Stress_Reduction_Ratio')">
                                         NEXT > </a>
                                 </p>
                             </div>
@@ -197,9 +201,11 @@
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
                             <div>
-                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#" x-on:click="openHome('UCS_Virgin_Stress_Ratio')">
+                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#"
+                                        x-on:click="openHome('UCS_Virgin_Stress_Ratio')">
                                         < PREVIOUS </a></span>
-                                <span class="badge rounded-pill badge-info" style="float: right;"><a href="#" x-on:click="openHome('Jn_Description')">NEXT
+                                <span class="badge rounded-pill badge-info" style="float: right;"><a href="#"
+                                        x-on:click="openHome('Jn_Description')">NEXT
                                         ></a></span>
                             </div>
                         </div>
@@ -234,9 +240,11 @@
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
                             <div>
-                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#" x-on:click="openHome('Stress_Reduction_Ratio')">
+                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#"
+                                        x-on:click="openHome('Stress_Reduction_Ratio')">
                                         < PREVIOUS </a></span>
-                                <span class="badge rounded-pill badge-info" style="float: right;"><a href="#" x-on:click="openHome('Jr_Description')">NEXT
+                                <span class="badge rounded-pill badge-info" style="float: right;"><a href="#"
+                                        x-on:click="openHome('Jr_Description')">NEXT
                                         ></a></span>
                             </div>
 
@@ -272,9 +280,11 @@
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
                             <div>
-                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#" x-on:click="openHome('Jn_Description')">
+                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#"
+                                        x-on:click="openHome('Jn_Description')">
                                         < PREVIOUS </a></span>
-                                <span class="badge rounded-pill badge-info" style="float: right;"><a href="#" x-on:click="openHome('Ja_Description')">NEXT
+                                <span class="badge rounded-pill badge-info" style="float: right;"><a href="#"
+                                        x-on:click="openHome('Ja_Description')">NEXT
                                         ></a></span>
                             </div>
 
@@ -310,9 +320,11 @@
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
                             <div>
-                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#" x-on:click="openHome('Jr_Description')">
+                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#"
+                                        x-on:click="openHome('Jr_Description')">
                                         < PREVIOUS </a></span>
-                                <span class="badge rounded-pill badge-info" style="float: right;"><a href="#" x-on:click="openHome('Jw_Description')">NEXT
+                                <span class="badge rounded-pill badge-info" style="float: right;"><a href="#"
+                                        x-on:click="openHome('Jw_Description')">NEXT
                                         ></a></span>
                             </div>
 
@@ -349,7 +361,8 @@
                                 <button @click="refresh()" class="btn btn-info">REFRESH</button>
                             </div>
                             <div>
-                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#" x-on:click="openHome('Ja_Description')">
+                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#"
+                                        x-on:click="openHome('Ja_Description')">
                                         < PREVIOUS </a></span>
                                 <span class="badge rounded-pill badge-info" style="float: right;"><a href="#"
                                         x-on:click="openHome('Rock_Quality_Designator')">NEXT ></a></span>
@@ -389,7 +402,8 @@
                                     QUALITY</button>
                             </div>
                             <div>
-                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#" x-on:click="openHome('Jw_Description')">
+                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#"
+                                        x-on:click="openHome('Jw_Description')">
                                         < PREVIOUS </a></span>
                                 <span class="badge rounded-pill badge-info" style="float: right;"><a href="#"
                                         x-on:click="openHome('Rock_Quality_Index_Q_Value')">NEXT ></a></span>
@@ -491,9 +505,11 @@
                                 <button @click="Q_value_analysis()" class="btn btn-info">SUPPORT REQUIREMENT</button>
                             </div>
                             <div>
-                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#" x-on:click="openHome('Rock_Quality_Designator')">
+                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#"
+                                        x-on:click="openHome('Rock_Quality_Designator')">
                                         < PREVIOUS </a></span>
-                                <span class="badge rounded-pill badge-info" style="float: right;"><a href="#" x-on:click="openHome('Rock_Mass_Rating')">NEXT
+                                <span class="badge rounded-pill badge-info" style="float: right;"><a href="#"
+                                        x-on:click="openHome('Rock_Mass_Rating')">NEXT
                                         ></a></span>
                             </div>
 
@@ -537,7 +553,7 @@
                             <hr>
 
                             <label>Q Value (Q Predict)</label>
-                            <input class="form-control" type="number" x-model="Q_Value"
+                            <input class="form-control" type="number" x-model="RMR_Q_Value"
                                 placeholder="Click to Enter the Q value previously predicted (Q PREDICT)"><br>
                             <!-- <input class="form-control" type="number" x-model="LNQ" placeholder="Click to Enter the LNQ"> LNQ value<br> -->
                             <div style="text-align: center;">
@@ -583,7 +599,8 @@
                             </div>
 
                             <div>
-                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#" x-on:click="openHome('Rock_Mass_Rating')">
+                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#"
+                                        x-on:click="openHome('Rock_Mass_Rating')">
                                         < PREVIOUS </a></span>
                                 <span class="badge rounded-pill badge-info" style="float: right;"><a href="#"
                                         x-on:click="openHome('Maximum_Unsupported_Span')">NEXT ></a></span>
@@ -616,10 +633,11 @@
 
 
                             <div>
-                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#" x-on:click="openHome('Excavation_Category')">
+                                <span class="badge rounded-pill badge-info" style="float: left;"><a href="#"
+                                        x-on:click="openHome('Excavation_Category')">
                                         < PREVIOUS </a></span>
-                                <span class="badge rounded-pill badge-info" style="float: right;"><a href="#" x-on:click="openHome('history')"
-                                        style="float: right;">VIEW RECORD</a></span>
+                                <span class="badge rounded-pill badge-info" style="float: right;"><a href="#"
+                                        x-on:click="openHome('history')" style="float: right;">VIEW RECORD</a></span>
                             </div><br>
 
                             <!-- Logical function for MUS  -->
@@ -955,12 +973,60 @@
                 <h5 class="text-center">HISTORICAL DATA</h5>
                 <hr>
                 <div class="row" x-show="history">
+
+
+                    <div class="col-md-12">
+
+                        <p style="text-align: center;">COMBINED PREDICTED RECORD PER ROCK MASS QUALITY</p>
+                        <!-- Numerical computation value by the machine learning model -->
+
+                        <table class="table" x-show="history" style="text-align: center;">
+                            <thead>
+
+                                <th>Jn</th>
+                                <th>Ja</th>
+                                <th>Jr</th>
+                                <th>Jw</th>
+                                <th>UCS/VSR</th>
+                                <th>RQD</th>
+                                <th>Q</th>
+                                <th>SRF</th>
+                                <th>RMR</th>
+                                <th>ESR</th>
+                                <th>MUS</th>
+
+                            </thead>
+
+                            <tbody>
+                                <template x-for="i in history_list">
+                                    <tr>
+                                        <td x-text="i.Jn_PredictedValue.toFixed(2)"></td>
+                                        <td x-text="i.Ja_PredictedValue.toFixed(2)"></td>
+                                        <td x-text="i.Jr_PredictedValue.toFixed(2)"></td>
+                                        <td x-text="i.Jw_PredictedValue.toFixed(2)"></td>
+                                        <td x-text="i.UCS_PredictedValue.toFixed(2)"></td>
+                                        <td x-text="i.RQD_PredictedValue.toFixed(2)"></td>
+                                        <td x-text="i.Q_Value_PredictedValue.toFixed(2)"></td>
+                                        <td x-text="i.SRF_PredictedValue.toFixed(2)"></td>
+                                        <td x-text="i.RMR_PredictedValue.toFixed(2)"></td>
+                                        <td x-text="i.ESR_PredictedValue.toFixed(2)"></td>
+                                        <td x-text="i.Maximum_unsupported_span.toFixed(2)"></td>
+                                    </tr>
+                                </template>
+
+                            </tbody>
+
+                        </table>
+
+
+
+                    </div>
                     <!-- ucs/vsr history starts here  -->
                     <div class="col-md-6">
                         <!-- UCS historical data -->
                         <p style="text-align: center;">UCS/VSR HISTORY</p>
                         <div style="text-align: center;">
-                            <button class="btn btn-info" @click="UCS_VSR_HISTORY=!UCS_VSR_HISTORY" >Open/close</button>
+                            <button class="btn btn-info" @click="UCS_VSR_HISTORY=!UCS_VSR_HISTORY">Open/close</button>
                         </div>
                         <table class="table" x-show="UCS_VSR_HISTORY" style="text-align: center;">
                             <thead>
@@ -982,7 +1048,7 @@
                                 </template>
                             </tbody>
                         </table>
-                      
+
                     </div>
                     <!-- ends here  -->
                     <!-- SRF history starts here  -->
@@ -990,7 +1056,7 @@
                         <!-- UCS historical data -->
                         <p style="text-align: center;">SRF HISTORY</p>
                         <div style="text-align: center;">
-                            <button class="btn btn-info" @click="SRF_HISTORY=!SRF_HISTORY" >Open/close</button>
+                            <button class="btn btn-info" @click="SRF_HISTORY=!SRF_HISTORY">Open/close</button>
                         </div>
                         <table class="table" x-show="SRF_HISTORY" style="text-align: center;">
                             <thead>
@@ -1017,7 +1083,7 @@
                         <!-- Jn historical data -->
                         <p style="text-align: center;">Jn HISTORY</p>
                         <div style="text-align: center;">
-                            <button class="btn btn-info" @click="Jn_HISTORY=!Jn_HISTORY" >Open/close</button>
+                            <button class="btn btn-info" @click="Jn_HISTORY=!Jn_HISTORY">Open/close</button>
                         </div>
                         <table class="table" x-show="Jn_HISTORY" style="text-align: center;">
                             <thead>
@@ -1044,7 +1110,7 @@
                         <!-- UCS historical data -->
                         <p style="text-align: center;">Jr HISTORY</p>
                         <div style="text-align: center;">
-                            <button class="btn btn-info" @click="Jr_HISTORY=!Jr_HISTORY" >Open/close</button>
+                            <button class="btn btn-info" @click="Jr_HISTORY=!Jr_HISTORY">Open/close</button>
                         </div>
                         <table class="table" x-show="Jr_HISTORY" style="text-align: center;">
                             <thead>
@@ -1072,7 +1138,7 @@
                         <!-- UCS historical data -->
                         <p style="text-align: center;">Ja HISTORY</p>
                         <div style="text-align: center;">
-                            <button class="btn btn-info" @click="Ja_HISTORY=!Ja_HISTORY" >Open/close</button>
+                            <button class="btn btn-info" @click="Ja_HISTORY=!Ja_HISTORY">Open/close</button>
                         </div>
                         <table class="table" x-show="Ja_HISTORY" style="text-align: center;">
                             <thead>
@@ -1099,7 +1165,7 @@
                         <!-- UCS historical data -->
                         <p style="text-align: center;">Jw HISTORY</p>
                         <div style="text-align: center;">
-                            <button class="btn btn-info" @click="Jw_HISTORY=!Jw_HISTORY" >Open/close</button>
+                            <button class="btn btn-info" @click="Jw_HISTORY=!Jw_HISTORY">Open/close</button>
                         </div>
                         <table class="table" x-show="Jw_HISTORY" style="text-align: center;">
                             <thead>
@@ -1123,7 +1189,8 @@
                         <!-- UCS historical data -->
                         <p style="text-align: center;">ROCK QUALITY DESIGNATOR</p>
                         <div style="text-align: center;">
-                            <button class="btn btn-info" @click="ROCK_QUALITY_DESIGNATOR=!ROCK_QUALITY_DESIGNATOR" >Open/close</button>
+                            <button class="btn btn-info"
+                                @click="ROCK_QUALITY_DESIGNATOR=!ROCK_QUALITY_DESIGNATOR">Open/close</button>
                         </div>
                         <table class="table" x-show="ROCK_QUALITY_DESIGNATOR" style="text-align: center;">
                             <thead>
@@ -1167,22 +1234,86 @@
                             <tbody>
                                 <template x-for="i in ESR_Hist">
                                     <tr>
-                                        
+
                                         <td x-text="i.ESR_Conditions"></td>
                                         <td x-text="i.ESR_PredictedValue.toFixed(2)"></td>
-                    
+
                                     </tr>
                                 </template>
                             </tbody>
                         </table>
                     </div>
 
-                    <!-- Q History  -->
+
+                    <!-- MUS History  -->
                     <div class="col-md-6">
+                        <!-- UCS historical data -->
+                        <p style="text-align: center;">MAXIMUM STABLE UNSUPPORTED SPAN HISTORY</p>
+                        <div style="text-align: center;">
+                            <button class="btn btn-info"
+                                @click="MAXIMUM_STABLE_UNSUPPORTED_SPAN_HISTORY=!MAXIMUM_STABLE_UNSUPPORTED_SPAN_HISTORY">Open/close</button>
+                        </div>
+                        <table class="table" x-show="MAXIMUM_STABLE_UNSUPPORTED_SPAN_HISTORY"
+                            style="text-align: center;">
+                            <thead>
+                                <th>Predicted Q</th>
+                                <th>Predicted ESR</th>
+                                <th>Predicted MUS</th>
+
+                                <!-- <th>ACTION</th> -->
+                            </thead>
+                            <tbody>
+                                <template x-for="i in MUS_Hist">
+                                    <tr>
+                                        <td x-text="i.Q_Value_PredictedValue"></td>
+                                        <td x-text="i.ESR_PredictedValue"></td>
+                                        <td x-text="i.Maximum_unsupported_span.toFixed(2)"></td>
+
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+                    <!-- RMR History  -->
+                    <div class="col-md-6">
+                        <!-- UCS historical data -->
+                        <p style="text-align: center;">ROCK MASS RATING</p>
+                        <div style="text-align: center;">
+                            <button class="btn btn-info" @click="ROCK_MASS_RATING=!ROCK_MASS_RATING">Open/close</button>
+                        </div>
+                        <table class="table" x-show="ROCK_MASS_RATING" style="text-align: center;">
+                            <thead>
+                                <th>Predicted Q</th>
+                                <th>Predicted RMR</th>
+
+                                <!-- <th>ACTION</th> -->
+                            </thead>
+                            <tbody>
+                                <template x-for="i in RMR_Hist">
+                                    <tr>
+                                        <td x-text="i.Q_Value_PredictedValue"></td>
+                                        <td x-text="i.RMR_PredictedValue.toFixed(2)"></td>
+
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+                    <!-- Q History  -->
+
+                    <div class="col-md-12">
                         <!-- UCS historical data -->
                         <p style="text-align: center;">ROCK QUALITY INDEX</p>
                         <div style="text-align: center;">
-                            <button class="btn btn-info" @click="ROCK_QUALITY_INDEX=!ROCK_QUALITY_INDEX" >Open/close</button>
+                            <button class="btn btn-info"
+                                @click="ROCK_QUALITY_INDEX=!ROCK_QUALITY_INDEX">Open/close</button>
                         </div>
                         <table class="table" x-show="ROCK_QUALITY_INDEX" style="text-align: center;">
                             <thead>
@@ -1213,108 +1344,8 @@
                         </table>
                     </div>
 
-                     <!-- RMR History  -->
-                     <div class="col-md-6">
-                        <!-- UCS historical data -->
-                        <p style="text-align: center;">ROCK MASS RATING</p>
-                        <div style="text-align: center;">
-                            <button class="btn btn-info" @click="ROCK_MASS_RATING=!ROCK_MASS_RATING" >Open/close</button>
-                        </div>
-                        <table class="table" x-show="ROCK_MASS_RATING" style="text-align: center;">
-                            <thead>
-                                <th>Predicted Q</th>
-                                <th>Predicted RMR</th>
-                                
-                                <!-- <th>ACTION</th> -->
-                            </thead>
-                            <tbody>
-                                <template x-for="i in RMR_Hist">
-                                    <tr>
-                                        <td x-text="i.Q_Value_PredictedValue"></td>
-                                        <td x-text="i.RMR_PredictedValue.toFixed(2)"></td>
-
-                                    </tr>
-                                </template>
-                            </tbody>
-                        </table>
-                    </div>
 
 
-                     <!-- MUS History  -->
-                     <div class="col-md-12">
-                        <!-- UCS historical data -->
-                        <p style="text-align: center;">MAXIMUM STABLE UNSUPPORTED SPAN HISTORY</p>
-                        <div style="text-align: center;">
-                            <button class="btn btn-info" @click="MAXIMUM_STABLE_UNSUPPORTED_SPAN_HISTORY=!MAXIMUM_STABLE_UNSUPPORTED_SPAN_HISTORY" >Open/close</button>
-                        </div>
-                        <table class="table" x-show="MAXIMUM_STABLE_UNSUPPORTED_SPAN_HISTORY" style="text-align: center;">
-                            <thead>
-                                <th>Predicted Q</th>
-                                <th>Predicted ESR</th>
-                                <th>Predicted MUS</th>
-                                
-                                <!-- <th>ACTION</th> -->
-                            </thead>
-                            <tbody>
-                                <template x-for="i in MUS_Hist">
-                                    <tr>                                        
-                                        <td x-text="i.Q_Value_PredictedValue"></td>
-                                        <td x-text="i.ESR_PredictedValue"></td>
-                                        <td x-text="i.Maximum_unsupported_span.toFixed(2)"></td>
-
-                                    </tr>
-                                </template>
-                            </tbody>
-                        </table>
-                    </div>
-
-
-
-
-
-
-
-                    <br>
-                    <p style="text-align: center;">COMBINED PREDICTED RECORD PER ROCK MASS QUALITY</p>
-                    <!-- Numerical computation value by the machine learning model -->
-
-                    <table class="table" x-show="history" style="text-align: center;">
-                        <thead>
-
-                            <th>Jn</th>
-                            <th>Ja</th>
-                            <th>Jr</th>
-                            <th>Jw</th>
-                            <th>UCS/VSR</th>
-                            <th>RQD</th>
-                            <th>Q</th>
-                            <th>SRF</th>
-                            <th>RMR</th>
-                            <th>ESR</th>
-                            <th>MUS</th>
-
-                        </thead>
-
-                        <tbody>
-                            <template x-for="i in history_list">
-                                <tr>
-                                    <td x-text="i.Jn_PredictedValue.toFixed(2)"></td>
-                                    <td x-text="i.Ja_PredictedValue.toFixed(2)"></td>
-                                    <td x-text="i.Jr_PredictedValue.toFixed(2)"></td>
-                                    <td x-text="i.Jw_PredictedValue.toFixed(2)"></td>
-                                    <td x-text="i.UCS_PredictedValue.toFixed(2)"></td>
-                                    <td x-text="i.RQD_PredictedValue.toFixed(2)"></td>
-                                    <td x-text="i.Q_Value_PredictedValue.toFixed(2)"></td>
-                                    <td x-text="i.SRF_PredictedValue.toFixed(2)"></td>
-                                    <td x-text="i.RMR_PredictedValue.toFixed(2)"></td>
-                                    <td x-text="i.ESR_PredictedValue.toFixed(2)"></td>
-                                    <td x-text="i.Maximum_unsupported_span.toFixed(2)"></td>
-                                </tr>
-                            </template>
-
-                        </tbody>
-
-                    </table>
 
 
                 </div>
@@ -1339,7 +1370,8 @@
                             © 2023 Copyright Reserved<br>
 
                             <a class="footer" href="#!">UJ & ACCENTURE WORK READINESS PROGRAM</a><br>
-                            <a class="footer" target="_blank" href="https://github.com/Fabchirajoul/model_with_flask.git">SOURCE CODE LINK</a>
+                            <a class="footer" target="_blank"
+                                href="https://github.com/Fabchirajoul/model_with_flask.git">SOURCE CODE LINK</a>
                         </div>
                     </div>
                 </div>
@@ -1348,10 +1380,7 @@
         </section>
     </div>
     <!-- MDB -->
-    <script
-    type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"
-    ></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
 
 
 </html>
