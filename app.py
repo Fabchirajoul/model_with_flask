@@ -73,7 +73,7 @@ def Get_UCS():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT  Density, Depth_To, UCS_Mpa, UCS_PredictedValue FROM MainDataTable WHERE UCS_PredictedValue IS NOT NULL ORDER BY MainDataTable.MainID DESC LIMIT 10')
+    cursor.execute('SELECT  Density, Depth_To, UCS_Mpa, UCS_PredictedValue FROM MainDataTable WHERE Density IS NOT NULL and Depth_To IS NOT NULL and UCS_Mpa IS NOT NULL and UCS_PredictedValue IS NOT NULL ORDER BY MainDataTable.MainID DESC LIMIT 10')
     rows = cursor.fetchall()
 
     conn.close()

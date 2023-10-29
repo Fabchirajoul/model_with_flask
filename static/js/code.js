@@ -864,15 +864,6 @@ document.addEventListener("alpine:init", () => {
       ucsvsr_value: "",
       UCS_Predicted: "",
 
-
- // MUS Recommendations description 
-     MUS_Jn:0,
-    MUS_Jr:0,
-    MUS_Jw:0,
-    MUS_Ja:0,
-    MUS_SRF:0,
-  MUS_RQD:0,
-
       openHome(currentSection) {
         this.homepage = true;
         this.UCS_Virgin_Stress_Ratio = false;
@@ -1023,7 +1014,7 @@ document.addEventListener("alpine:init", () => {
           this.UCS_Virgin_Stress_Ratio = false;
           this.homepage = false;
           this.about = false;
-          this.Virgin_stress_ratio = this.use_UCS.toFixed(2);
+          this.Virgin_stress_ratio = this.use_UCS;
           this.Jn_Description = false;
           this.Jr_Description = false;
           this.Ja_Description = false;
@@ -1041,7 +1032,7 @@ document.addEventListener("alpine:init", () => {
           this.UCS_Virgin_Stress_Ratio = false;
           this.homepage = false;
           this.about = false;
-          this.Q_Value = this.RMR_Q_Value;
+          this.Q_Value = this.use_Q_Value;
           this.Jn_Description = false;
           this.Jr_Description = false;
           this.Ja_Description = false;
@@ -1160,14 +1151,14 @@ document.addEventListener("alpine:init", () => {
           })
           .then((res) => {
             console.log(res.data);
-            this.UCS_Predicted = res.data.prediction.toFixed(2);
+            this.UCS_Predicted = res.data.prediction;
             console.log('111 predicted value: ' + this.UCS_Predicted);
 
             this.Post_UCS()
 
             this.ucsvsr_value =
               "Based on your input, the ratio of the Uniaxial compressive strength to the virgin stress is " +
-              this.UCS_Predicted;
+              this.UCS_Predicted.toFixed(2);
           });
       },
 
@@ -1178,7 +1169,7 @@ document.addEventListener("alpine:init", () => {
           })
           .then((res) => {
             console.log(res.data);
-            this.srf_predicted = res.data.prediction.toFixed(2);
+            this.srf_predicted = res.data.prediction;
 
             this.Post_SRF()
             this.srf_value =
@@ -1253,7 +1244,6 @@ document.addEventListener("alpine:init", () => {
           })
           .then((res) => {
             this.Jn_PredictedValue = res.data.prediction[0];
-            
             this.JnVal =
               "Based on your input, the predicted Jn value is " +
               res.data.prediction[0].toFixed(2);
@@ -1269,7 +1259,6 @@ document.addEventListener("alpine:init", () => {
           })
           .then((res) => {
             this.Jr_PredictedValue = res.data.prediction[0];
-            
 
             this.JrVal =
               "Based on your input, the predicted Joint Orientation (Jr value) is " +
@@ -1287,7 +1276,6 @@ document.addEventListener("alpine:init", () => {
           })
           .then((res) => {
             this.Ja_PredictedValue = res.data.prediction[0];
-            
 
             this.JaVal =
               "Based on your input, the predicted Joint Alteration (Ja value) is " +
@@ -1800,12 +1788,12 @@ document.addEventListener("alpine:init", () => {
             console.log(res.data)
             console.log('JN VAL: ' + res.data.Q_historical_data[0].Jn_PredictedValue);
 
-            this.use_Jn = res.data.Q_historical_data[0].Jn_PredictedValue.toFixed(2);
+            this.use_Jn = res.data.Q_historical_data[0].Jn_PredictedValue;
             this.use_Jr = res.data.Q_historical_data[0].Jr_PredictedValue;
             this.use_Ja = res.data.Q_historical_data[0].Ja_PredictedValue;
             this.use_Jw = res.data.Q_historical_data[0].Jw_PredictedValue;
             this.use_SRF = res.data.Q_historical_data[0].SRF_PredictedValue;
-            this.use_RQD = res.data.Q_historical_data[0].RQD_PredictedValue.toFixed(2);
+            this.use_RQD = res.data.Q_historical_data[0].RQD_PredictedValue;
             
             this.Q_Hist = res.data.Q_historical_data;
 
