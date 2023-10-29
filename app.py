@@ -1305,7 +1305,7 @@ def Get_RQD():
     conn = sqlite3.connect('capstonedb.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT MainID, Depth_From, Depth_To, True_Thickness, Hardness, RQD_PredictedValue FROM MainDataTable WHERE Depth_From IS NOT NULL and Depth_To IS NOT NULL and True_Thickness IS NOT NULL and Hardness IS NOT NULL and RQD_PredictedValue IS NOT NULL ORDER BY MainDataTable.MainID DESC LIMIT 10')
+    cursor.execute('SELECT MainID, Depth_From, Depth_To, True_Thickness, Hardness, RQD_PredictedValue FROM MainDataTable WHERE RQD_PredictedValue IS NOT NULL ORDER BY MainDataTable.MainID DESC LIMIT 10')
     rows = cursor.fetchall()
 
     conn.close()

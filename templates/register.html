@@ -21,7 +21,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
         integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <link href="static/css/style.css" rel="stylesheet" />
+    <link href="static/css/style.css" rel="stylesheet" />
 
 </head>
 <!-- <body>
@@ -61,30 +61,43 @@
     
 </body> -->
 
-<body>
+<body
+    style="background-image: url(./static/images/coal-mine.jpg); background-size: cover; background-attachment: fixed">
     <br>
     <br>
     <div class="container">
-        <div class="row d-flex justify-content-center">
-            <br><br>
 
-            <div class="col-md-8">
+        <main>
+            <br>
+            <br>
+            <br>
+            <div class="row d-flex justify-content-center">
+                <br><br>
 
-                <form class="form-control" action="/register" method="post">
-                    <h3>SIGN UP</h3>
-                    <hr>
+                <div class="col-md-8">
 
-                    <label for="username">Username:</label><br>
-                    <input class="form-control" type="text" id="username" name="username"><br>
-                    <label for="password">Password:</label><br>
-                    <input class="form-control" type="password" id="password" name="password"><br>
-                    <input class="btn btn-success" type="submit" value="SIGN UP">
-                    <p class="muted sm">Have an account already? <a href="/login">Sign in</a></p>
+                    <form class="form-control" action="/register" method="post">
+                        <h3>SIGN UP</h3>
+                        <hr>
 
-                </form>
-            </div>
-        </div>
+                        <label for="username">Username:</label><br>
+                        <input class="form-control" type="text" id="username" name="username"><br>
+                        <label for="password">Password:</label><br>
+                        <input class="form-control" type="password" id="password" name="password"><br>
+                        <input class="btn btn-success" type="submit" value="SIGN UP">
+                        <p class="muted sm">Have an account already? <a href="/login">Sign in</a></p>
+
+                    </form>
+                </div>
+            </div><br>
+            <br>
+            <br>
+            <br>
+        </main>
     </div>
+    <br>
+    <br>
+    <br>
     <br>
 
 </body>

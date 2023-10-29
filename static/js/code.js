@@ -864,6 +864,15 @@ document.addEventListener("alpine:init", () => {
       ucsvsr_value: "",
       UCS_Predicted: "",
 
+
+ // MUS Recommendations description 
+     MUS_Jn:0,
+    MUS_Jr:0,
+    MUS_Jw:0,
+    MUS_Ja:0,
+    MUS_SRF:0,
+  MUS_RQD:0,
+
       openHome(currentSection) {
         this.homepage = true;
         this.UCS_Virgin_Stress_Ratio = false;
@@ -1244,6 +1253,7 @@ document.addEventListener("alpine:init", () => {
           })
           .then((res) => {
             this.Jn_PredictedValue = res.data.prediction[0];
+            
             this.JnVal =
               "Based on your input, the predicted Jn value is " +
               res.data.prediction[0].toFixed(2);
@@ -1259,6 +1269,7 @@ document.addEventListener("alpine:init", () => {
           })
           .then((res) => {
             this.Jr_PredictedValue = res.data.prediction[0];
+            
 
             this.JrVal =
               "Based on your input, the predicted Joint Orientation (Jr value) is " +
@@ -1276,6 +1287,7 @@ document.addEventListener("alpine:init", () => {
           })
           .then((res) => {
             this.Ja_PredictedValue = res.data.prediction[0];
+            
 
             this.JaVal =
               "Based on your input, the predicted Joint Alteration (Ja value) is " +
@@ -1486,7 +1498,7 @@ document.addEventListener("alpine:init", () => {
       
             this.Post_MUS()
             
-            // this.MUSValue = parseInt(Maximum_unsupported_span);
+            this.MUSValue = parseInt(Maximum_unsupported_span);
             console.log(res.data);
             this.MUSValue = "Based on your input, the predicted Maximum Unsupported span value is " + this.Maximum_unsupported_span + "m";
             console.log('I am working: ' + this.MUSValue)
@@ -1613,6 +1625,8 @@ document.addEventListener("alpine:init", () => {
             console.log(res.data.historical_data);
             this.history_list = res.data.historical_data;
             console.log(this.history_list);
+            // this.use_Depth_To = res.data.historical_data[0].Depth;
+            // console.log("Depth poi" + this.use_Depth_To);
             
           });
       },
@@ -1621,7 +1635,14 @@ document.addEventListener("alpine:init", () => {
         axios.get("/api/get_ucs_model")
           .then((res) => {
             this.UCS_Hist = res.data.historical_data;
-            console.log(this.UCS_Hist);
+            console.log("lol" + this.UCS_Hist);
+            console.log(res.data)
+
+            this.use_Depth_To = res.data.historical_data[0].Depth_To;
+            console.log("Depth_To", this.use_Depth_To)
+            console.log("use_Depth_To", this.use_use_Depth_To)
+            console.log("Depth", this.use_Depth)
+
           });
       },
 
@@ -1636,18 +1657,20 @@ document.addEventListener("alpine:init", () => {
           })
           .then((res) => {
             console.log(res.data);
+            // this.use_Depth_To = res.data.historical_data[0].Depth_To;
+
+
             console.log('predicted value: ' + this.UCS_Predicted)
             this.getUCS();
           })
       },
 
-      // WORK with SRF [get and post data to database]
+      // WORK with SRF [get and post data to database] depth_to_surface
       getSRF() {
         axios.get("/api/get_srf_model")
           .then((res) => {
             this.SRF_Hist = res.data.historical_data;
-            this.use_UCS = res.data.historical_data.UCS_PredictedValue;
-            // this.use_Depth_To = res.data.historical_data[0].Depth_To;
+            this.use_UCS = res.data.historical_data[0].UCS_PredictedValue;
             console.log("In the Get function:",this.SRF_Hist);
           });
       },
