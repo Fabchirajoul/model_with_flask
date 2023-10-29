@@ -1023,7 +1023,7 @@ document.addEventListener("alpine:init", () => {
           this.UCS_Virgin_Stress_Ratio = false;
           this.homepage = false;
           this.about = false;
-          this.Virgin_stress_ratio = this.use_UCS;
+          this.Virgin_stress_ratio = this.use_UCS.toFixed(2);
           this.Jn_Description = false;
           this.Jr_Description = false;
           this.Ja_Description = false;
@@ -1041,7 +1041,7 @@ document.addEventListener("alpine:init", () => {
           this.UCS_Virgin_Stress_Ratio = false;
           this.homepage = false;
           this.about = false;
-          this.Q_Value = this.use_Q_Value;
+          this.Q_Value = this.RMR_Q_Value;
           this.Jn_Description = false;
           this.Jr_Description = false;
           this.Ja_Description = false;
@@ -1160,7 +1160,7 @@ document.addEventListener("alpine:init", () => {
           })
           .then((res) => {
             console.log(res.data);
-            this.UCS_Predicted = res.data.prediction;
+            this.UCS_Predicted = res.data.prediction.toFixed(2);
             console.log('111 predicted value: ' + this.UCS_Predicted);
 
             this.Post_UCS()
@@ -1178,7 +1178,7 @@ document.addEventListener("alpine:init", () => {
           })
           .then((res) => {
             console.log(res.data);
-            this.srf_predicted = res.data.prediction;
+            this.srf_predicted = res.data.prediction.toFixed(2);
 
             this.Post_SRF()
             this.srf_value =
@@ -1494,7 +1494,7 @@ document.addEventListener("alpine:init", () => {
             ESR_VALUE: this.ESR_VALUE,
           })
           .then((res) => {
-            this.Maximum_unsupported_span = res.data.prediction;
+            this.Maximum_unsupported_span = res.data.prediction.toFixed(2);
       
             this.Post_MUS()
             
