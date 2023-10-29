@@ -1486,7 +1486,7 @@ document.addEventListener("alpine:init", () => {
       
             this.Post_MUS()
             
-            this.MUSValue = parseInt(Maximum_unsupported_span);
+            // this.MUSValue = parseInt(Maximum_unsupported_span);
             console.log(res.data);
             this.MUSValue = "Based on your input, the predicted Maximum Unsupported span value is " + this.Maximum_unsupported_span + "m";
             console.log('I am working: ' + this.MUSValue)
