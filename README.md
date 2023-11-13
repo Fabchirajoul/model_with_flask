@@ -2,7 +2,7 @@
 
 # Installation
 Clone this repository
-https://github.com/Fabchirajoul/model_with_flask.git
+https://github.com/Fabchirajoul/MUS_ML_API.git
 
 Go to the project directory
 cd CAPSTONE_WITH_FLASK
@@ -48,10 +48,7 @@ Windows
    configure the web service as a Python 3
 
 
-   click on create web service
-
-   
-   link: https://group1-uavo.onrender.com
+ 
 
 
 
